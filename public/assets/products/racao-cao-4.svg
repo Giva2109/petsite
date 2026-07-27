@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#f0fdf4"/>
+  <rect x="100" y="80" width="200" height="260" rx="16" fill="#16a34a"/>
+  <rect x="115" y="95" width="170" height="100" rx="8" fill="#dcfce7"/>
+  <text x="200" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="48">=</text>
+  <text x="200" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="white">S�NIOR</text>
+  <text x="200" y="250" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#bbf7d0">15kg</text>
+</svg>

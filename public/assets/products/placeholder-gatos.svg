@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#fdf4ff"/>
+  <rect x="90" y="70" width="220" height="270" rx="20" fill="#7c3aed"/>
+  <rect x="110" y="90" width="180" height="110" rx="10" fill="#ede9fe"/>
+  <text x="200" y="160" text-anchor="middle" font-size="56">=</text>
+  <text x="200" y="230" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="white">UniPet</text>
+  <text x="200" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" fill="#ddd6fe">Linha para Gatos</text>
+</svg>
