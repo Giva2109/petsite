@@ -11,3 +11,7 @@ export const STORE_TAGLINE =
 
 /** Produtos exibidos por página (paginação local) */
 export const PRODUCTS_PER_PAGE = 12
+
+/** Chave pública do Mercado Pago (segura no frontend) */
+export const MERCADOPAGO_PUBLIC_KEY =
+  import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY || ''

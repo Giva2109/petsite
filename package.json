@@ -5,13 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:netlify": "netlify dev",
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
     "catalog:images": "python scripts/extract_pdf_images.py"
   },
   "dependencies": {
+    "@mercadopago/sdk-react": "^1.0.6",
     "lucide-react": "^1.27.0",
+    "mercadopago": "^2.3.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
@@ -20,6 +23,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
+    "netlify-cli": "^23.12.3",
     "oxlint": "^1.71.0",
     "tailwindcss": "^4.3.3",
     "vite": "^8.1.1"

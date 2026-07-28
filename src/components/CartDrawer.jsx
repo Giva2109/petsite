@@ -6,15 +6,25 @@ import {
   Trash2,
   MessageCircle,
   ShoppingCart,
+  CreditCard,
 } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
 import { formatCurrency } from '../utils/currency'
 import { openWhatsAppOrder } from '../utils/whatsapp'
+import PaymentCheckout from './PaymentCheckout'
+import PixPaymentModal from './PixPaymentModal'
+import PaymentSuccess from './PaymentSuccess'
 
 export default function CartDrawer({ isOpen, onClose }) {
-  const { items, updateQuantity, removeItem, totalPrice } = useCart()
+  const { items, updateQuantity, removeItem, totalPrice, clearCart } = useCart()
   const [customerName, setCustomerName] = useState('')
   const [address, setAddress] = useState('')
+  const [isPaymentOpen, setIsPaymentOpen] = useState(false)
+  const [pixResult, setPixResult] = useState(null)
+  const [successResult, setSuccessResult] = useState(null)
+  const [paymentError, setPaymentError] = useState('')
+
+  const canPayOnline = totalPrice != null && totalPrice > 0
 
   useEffect(() => {
     if (isOpen) {
@@ -37,19 +47,19 @@ export default function CartDrawer({ isOpen, onClose }) {
     return () => window.removeEventListener('keydown', handleEscape)
   }, [isOpen, onClose])
 
-  const handleCheckout = () => {
+  const handleWhatsAppCheckout = () => {
     if (items.length === 0) return
+    openWhatsAppOrder({ items, customerName, address })
+  }
 
-    openWhatsAppOrder({
-      items,
-      customerName,
-      address,
-    })
+  const handlePaymentSuccess = () => {
+    clearCart()
+    setCustomerName('')
+    setAddress('')
   }
 
   return (
     <>
-      {/* Overlay */}
       <div
         className={`fixed inset-0 z-50 bg-black/40 transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
@@ -58,7 +68,6 @@ export default function CartDrawer({ isOpen, onClose }) {
         aria-hidden="true"
       />
 
-      {/* Drawer */}
       <aside
         className={`fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-white shadow-2xl transition-transform duration-300 ease-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -171,7 +180,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                   htmlFor="customer-name"
                   className="mb-1 block text-sm font-medium text-gray-700"
                 >
-                  Nome do Cliente (opcional)
+                  Nome do Cliente
                 </label>
                 <input
                   id="customer-name"
@@ -187,7 +196,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                   htmlFor="address"
                   className="mb-1 block text-sm font-medium text-gray-700"
                 >
-                  Endereço de Entrega (opcional)
+                  Endereço de Entrega
                 </label>
                 <textarea
                   id="address"
@@ -215,17 +224,76 @@ export default function CartDrawer({ isOpen, onClose }) {
               </span>
             </div>
 
+            {paymentError && (
+              <p className="mb-3 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">
+                {paymentError}
+              </p>
+            )}
+
+            {canPayOnline ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setPaymentError('')
+                  setIsPaymentOpen(true)
+                }}
+                className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl bg-sky-600 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2"
+              >
+                <CreditCard className="h-5 w-5" aria-hidden="true" />
+                Pagar com Mercado Pago
+              </button>
+            ) : (
+              <p className="mb-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800">
+                Pagamento online disponível quando todos os itens tiverem preço
+                definido. Use o WhatsApp para pedidos sob consulta.
+              </p>
+            )}
+
             <button
               type="button"
-              onClick={handleCheckout}
+              onClick={handleWhatsAppCheckout}
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
             >
               <MessageCircle className="h-5 w-5" aria-hidden="true" />
-              Finalizar Pedido via WhatsApp
+              Finalizar via WhatsApp
             </button>
           </div>
         )}
       </aside>
+
+      <PaymentCheckout
+        isOpen={isPaymentOpen}
+        onClose={() => setIsPaymentOpen(false)}
+        amount={totalPrice}
+        items={items}
+        customerName={customerName}
+        address={address}
+        onPixResult={(result) => {
+          setPixResult(result)
+          handlePaymentSuccess()
+        }}
+        onCardApproved={(result) => {
+          setSuccessResult(result)
+          handlePaymentSuccess()
+        }}
+        onError={(message) => setPaymentError(message)}
+      />
+
+      {pixResult && (
+        <PixPaymentModal
+          pix={pixResult.pix}
+          amount={pixResult.amount}
+          onClose={() => setPixResult(null)}
+        />
+      )}
+
+      {successResult && (
+        <PaymentSuccess
+          amount={successResult.amount}
+          paymentId={successResult.paymentId}
+          onClose={() => setSuccessResult(null)}
+        />
+      )}
     </>
   )
 }
