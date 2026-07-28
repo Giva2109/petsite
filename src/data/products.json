@@ -1599,6 +1599,19 @@
     "catalogPage": 41
   },
   {
+    "id": 194,
+    "name": "PremieR Cookie - Filhotes - Porte Pequeno - Sabor Original",
+    "category": "caes",
+    "brand": "UniPet",
+    "line": "PremieR Cookie",
+    "price": 16.00,
+    "originalPrice": null,
+    "image": "/assets/products/catalog/page-41-img-01.webp",
+    "description": "Linha PremieR Cookie. Filhotes. Sabor Original. Embalagem 250g. Pacoteira.",
+    "weight": "250g",
+    "catalogPage": 41
+  },
+  {
     "id": 124,
     "name": "PremieR Cookie - Filhotes - Porte Pequeno - Sabor Coco e Aveia",
     "category": "caes",
