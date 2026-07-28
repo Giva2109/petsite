@@ -93,6 +93,12 @@ MANUAL_PRICE_OVERRIDES: dict[int, float] = {
     151: 221.90, # AMB INT GATOS AD LIGHT SALM 7,5 KG
     161: 170.80, # PREMIER GOURMET ORGAN FRAN 85 G (20 UN) = 8,54 x 20
     162: 159.80, # PREMIER GOURMET GATOS AD ORGAN FRAN 70 G (20 UN) = 7,99 x 20
+    50: 179.90,  # GOLDEN FORM GATOS AD CAST 10,1 KG
+    51: 32.90,   # GOLDEN FORM GATOS AD CAST 1 KG
+    52: 75.90,   # GOLDEN FORM GATOS AD CAST 3 KG
+    53: 179.90,  # GOLDEN FORM GATOS AD CAST CARNE 10,1 KG
+    54: 75.90,   # GOLDEN FORM GATOS AD CAST CARNE 3 KG
+    55: 75.90,   # GOLDEN FORM GATOS AD CAST CARNE 3 KG
 }
 
 FLAVOR_SYNONYMS = {
@@ -218,11 +224,13 @@ def parse_signals(text: str, age: str = "", category: str = "") -> Signals:
     elif category == "caes" or "CAES" in normalized:
         signals.species = "CAES"
 
-    if re.search(r"\b(FILHOTES|FILH|FIL|PAPINHA)\b", normalized):
+    if re.search(r"\b(FILHOTES|FILH|PAPINHA)\b", normalized):
         signals.stage = "FILHOTES"
-    elif re.search(r"\b(SENIOR|SEN)\b", normalized):
+    elif re.search(r"\bFIL\b", normalized) and not re.search(r"\bFRANG", normalized):
+        signals.stage = "FILHOTES"
+    elif re.search(r"\b(SENIOR|SENIOR|SEN)\b", normalized):
         signals.stage = "SENIOR"
-    elif re.search(r"\b(CASTRAD|CAST)\b", normalized):
+    elif re.search(r"\b(CASTRADOS|CASTRAD|CAST)\b", normalized):
         signals.stage = "CASTRADOS"
     elif re.search(r"\bLIGHT\b", normalized):
         signals.stage = "LIGHT"
@@ -402,6 +410,11 @@ def score_match(product: dict, entry: PriceEntry) -> float:
     if product_sig.stage == "CASTRADOS" and "CAST" not in normalize_text(entry.description):
         if product["line"] == "PremieR Gourmet" and product_sig.weight in {"70g", "85g"}:
             score -= 5
+        else:
+            return -1
+
+    if product_sig.stage == "FILHOTES" and re.search(r"\bCAST\b", normalize_text(entry.description)):
+        return -1
 
     if grain_free_price is not None:
         score += 20

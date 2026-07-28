@@ -48,12 +48,12 @@ OK score=14 [46] Golden - Senior - Sabor Frango e Arroz (15kg) <= GOLDEN FORM C�
 OK score=30 [47] Golden Gatos - Adultos - Sabor Frango (10.1kg) <= GOLDEN FORM GATOS AD FRANG 10,1 KG | 164.9 x 1 = 164.9
 OK score=30 [48] Golden Gatos - Adultos - Sabor Frango (1kg) <= GOLDEN FORM GATOS AD FRANG 1 KG | 29.9 x 1 = 29.9
 OK score=30 [49] Golden Gatos - Adultos - Sabor Frango (3kg) <= GOLDEN FORM GATOS AD FRANG 3 KG | 68.9 x 1 = 68.9
-OK score=30 [50] Golden Gatos - Castrados - Sabor Frango (10.1kg) <= GOLDEN FORM GATOS FIL FRANG 10,1 KG | 177.9 x 1 = 177.9
-OK score=30 [51] Golden Gatos - Castrados - Sabor Frango (1kg) <= GOLDEN FORM GATOS FIL FRANG 1 KG | 31.5 x 1 = 31.5
-OK score=30 [52] Golden Gatos - Castrados - Sabor Frango (3kg) <= GOLDEN FORM GATOS FIL FRANG 3 KG | 71.9 x 1 = 71.9
-OK score=24 [53] Golden Gatos - Castrados - Sabor Frango e Carne (10.1kg) <= GOLDEN FORM GATOS FIL FRANG 10,1 KG | 177.9 x 1 = 177.9
-OK score=24 [54] Golden Gatos - Castrados - Sabor Frango e Carne (3kg) <= GOLDEN FORM GATOS FIL FRANG 3 KG | 71.9 x 1 = 71.9
-OK score=24 [55] Golden Gatos - Castrados - Sabor Frango e Carne (3kg) <= GOLDEN FORM GATOS FIL FRANG 3 KG | 71.9 x 1 = 71.9
+OK manual [50] Golden Gatos - Castrados - Sabor Frango (10.1kg) = 179.9
+OK manual [51] Golden Gatos - Castrados - Sabor Frango (1kg) = 32.9
+OK manual [52] Golden Gatos - Castrados - Sabor Frango (3kg) = 75.9
+OK manual [53] Golden Gatos - Castrados - Sabor Frango e Carne (10.1kg) = 179.9
+OK manual [54] Golden Gatos - Castrados - Sabor Frango e Carne (3kg) = 75.9
+OK manual [55] Golden Gatos - Castrados - Sabor Frango e Carne (3kg) = 75.9
 OK score=30 [56] Golden Gatos - Filhotes - Sabor Frango (10.1kg) <= GOLDEN FORM GATOS FIL FRANG 10,1 KG | 177.9 x 1 = 177.9
 OK score=30 [57] Golden Gatos - Filhotes - Sabor Frango (1kg) <= GOLDEN FORM GATOS FIL FRANG 1 KG | 31.5 x 1 = 31.5
 OK score=30 [58] Golden Gatos - Filhotes - Sabor Frango (3kg) <= GOLDEN FORM GATOS FIL FRANG 3 KG | 71.9 x 1 = 71.9
@@ -80,7 +80,6 @@ OK score=14 [78] Golden Seleção Natural Cães - Senior - Sabor Frango e Arroz 
 OK score=14 [79] Golden Seleção Natural Gatos - Adultos - Sabor Frango e Arroz (10.1kg) <= GOLDEN SELEÇÃO NATUR GATOS ADULT 10,1 KG | 184.9 x 1 = 184.9
 OK score=14 [80] Golden Seleção Natural Gatos - Adultos - Sabor Frango e Arroz (1kg) <= GOLDEN SELEÇÃO NATUR GATOS ADULT 1,0 KG | 29.5 x 1 = 29.5
 OK score=14 [81] Golden Seleção Natural Gatos - Adultos - Sabor Frango e Arroz (3kg) <= GOLDEN SELEÇÃO NATUR GATOS ADULT 3,0 KG | 76.9 x 1 = 76.9
-OK score=14 [82] Golden Seleção Natural Gatos - Castrados - Sabor Frango com (1kg) <= GOLDEN SELEÇÃO NATUR GATOS FILH 1,0 KG | 31.5 x 1 = 31.5
 OK score=14 [83] Golden Seleção Natural Gatos - Filhotes - Sabor Frango e Arroz (10.1kg) <= GOLDEN SELEÇÃO NATUR GATOS FILH 10,1 KG | 195.9 x 1 = 195.9
 OK score=14 [84] Golden Seleção Natural Gatos - Filhotes - Sabor Frango e Arroz (1kg) <= GOLDEN SELEÇÃO NATUR GATOS FILH 1,0 KG | 31.5 x 1 = 31.5
 OK score=14 [85] Golden Seleção Natural Gatos - Filhotes - Sabor Frango e Arroz (3kg) <= GOLDEN SELEÇÃO NATUR GATOS FILH 3,0 KG | 81.9 x 1 = 81.9
@@ -103,8 +102,6 @@ OK score=24 [101] Nattu Cães - Filhotes - Sabor Frango, mandioca (1kg) <= PREMI
 OK manual [102] Nattu Cães - Grain Free - Porte Pequeno - Sabor Frango, batata-doce, ervilha, blueberry e (10.1kg) = 289.9
 OK manual [103] Nattu Cães - Grain Free - Porte Pequeno - Sabor Frango, batata-doce, ervilha, blueberry e (2.5kg) = 114.9
 OK score=24 [104] Nattu Cães - Senior - Sabor Frango, mandioca (2.5kg) <= PREMIER NATTU CÃES ADULT RAÇAS PEQ SENIOR MANDIOCA 2,5 KG | 103.9 x 1 = 103.9
-OK score=12 [105] Nattu Cães - Castrados - Sabor Frango, abóbora, brócolis (1.5kg) <= PREMIER NUTR CLÍN GATOS OBESIDADE 1,5 KG | 104.9 x 1 = 104.9
-OK score=12 [106] Nattu Cães - Castrados - Sabor Frango, mandioca (7.5kg) <= PREMIER NUTR CLÍN GATOS URIN ESTRU 7,5 KG | 379.9 x 1 = 379.9
 OK manual [108] Nattu Gatos - Adultos - Porte Pequeno - Sabor Frango, batata doce (85g) = 159.8
 OK score=24 [109] Nattu Gatos - Castrados - Sabor Frango, Abóbora, Brócolis e (70g) <= PREMIER NATTU ÚMIDOS GATOS CAST FRAN/ABÓB 70 G (20 UN) | 7.49 x 20 = 149.8
 OK manual [110] Nattu Gatos - Filhotes - Sabor Frango, abóbora, brócolis e (85g) = 149.8
@@ -113,7 +110,7 @@ OK score=14 [114] PremieR Ambientes Internos - Adultos - Porte Pequeno - Sabor F
 OK score=14 [115] PremieR Ambientes Internos - Adultos - Porte Pequeno - Sabor Frango e Salmão (1kg) <= AMBIENTES INTER CÃES ADULT 1 KG | 43.5 x 1 = 43.5
 OK score=14 [116] PremieR Ambientes Internos - Adultos - Porte Pequeno - Sabor Frango e Salmão (2.5kg) <= AMBIENTES INTER CÃES ADULT 2,5 KG | 93.9 x 1 = 93.9
 OK score=14 [117] PremieR Ambientes Internos - Adultos - Porte Pequeno - Sabor Frango e Salmão (7.5kg) <= AMBIENTES INTER CÃES ADULT 7,5 KG | 227.9 x 1 = 227.9
-OK score=14 [118] PremieR Ambientes Internos - Castrados - Porte Pequeno - Sabor Salmão (1kg) <= AMBIENTES INTER CÃES FILH PAPINHA 1 KG | 50.5 x 1 = 50.5
+OK score=14 [118] PremieR Ambientes Internos - Castrados - Porte Pequeno - Sabor Salmão (1kg) <= AMBIENTES INTER CÃES ADULT CASTRADOS 1 KG | 45.9 x 1 = 45.9
 OK score=14 [119] PremieR Ambientes Internos - Filhotes - Porte Pequeno - Sabor Frango e Salmão (12kg) <= AMBIENTES INTER CÃES FILH 12 KG | 265.9 x 1 = 265.9
 OK score=14 [120] PremieR Ambientes Internos - Sênior - Sabor Frango e Salmão (1kg) <= AMBIENTES INTER CÃES ADULT SENIOR 1 KG | 45.9 x 1 = 45.9
 OK score=14 [121] PremieR Cookie - Adultos - Porte Pequeno - Sabor Frango (250g) <= PREMIER COOKIE CÃES ADULT RAÇAS PEQ 250 G | 18.9 x 1 = 18.9
@@ -134,8 +131,8 @@ OK score=12 [134] PremieR Formula Cães - Light - Porte Grande - Sabor Frango e 
 OK score=12 [135] PremieR Formula Cães - Light - Porte Grande - Sabor Frango e Mandioca; Cordeiro (15kg) <= PREMIER FORM CÃES ADULT LIGHT 15 KG | 267.9 x 1 = 267.9
 OK score=12 [136] PremieR Formula Cães - Light - Porte Médio - Sabor Frango e Mandioca (15kg) <= PREMIER FORM CÃES ADULT LIGHT 15 KG | 267.9 x 1 = 267.9
 OK score=30 [138] PremieR Formula Gatos - Adultos - Sabor Frango (7.5kg) <= PREMIER FORM GATOS ADULT FRANGO 7,5 KG | 199.9 x 1 = 199.9
-OK score=30 [139] PremieR Formula Gatos - Castrados - Sabor Frango (1.5kg) <= PREMIER FORM GATOS FILH FRANGO 1,5 KG | 76.9 x 1 = 76.9
-OK score=30 [140] PremieR Formula Gatos - Castrados - Sabor Frango (7.5kg) <= PREMIER FORM GATOS FILH FRANGO 7,5 KG | 210.9 x 1 = 210.9
+OK score=30 [139] PremieR Formula Gatos - Castrados - Sabor Frango (1.5kg) <= PREMIER FORM GATOS CAST FRANGO 1,5 KG | 76.9 x 1 = 76.9
+OK score=30 [140] PremieR Formula Gatos - Castrados - Sabor Frango (7.5kg) <= PREMIER FORM GATOS CAST FRANGO 7,5 KG | 210.9 x 1 = 210.9
 OK score=24 [141] PremieR Formula Úmidos - Castrados - Sabor Atum, brócolis e cenoura (70g) <= PREMIER FORM ÚMIDOS GATOS AD CAST ATUM 70 G (20 UND) | 4.99 x 20 = 99.8
 OK score=24 [142] PremieR Formula Úmidos - Castrados - Sabor Frango, brócolis e cenoura (70g) <= PREMIER FORM ÚMIDOS GATOS AD CAST FRAN 70 G (20 UND) | 4.99 x 20 = 99.8
 OK score=12 [143] PremieR Formula Úmidos - Úmidos - Sabor Carne, brócolis e cenoura (85g) <= PREMIER NUTR CLÍN ÚMIDOS CÃES/GATOS RECUPERAÇÃO 85G (20 UND) | 14.9 x 20 = 298.0
@@ -173,7 +170,7 @@ OK score=14 [174] PremieR Seleção Natural - Adultos - Sabor Frango (2.5kg) <= 
 OK score=30 [175] PremieR Seleção Natural - Adultos - Sabor Frango e Batata Doce (1kg) <= PREMIER SEL NAT CÃES ADULT RAÇAS PEQ BATATA DOCE 1 KG | 45.9 x 1 = 45.9
 OK score=30 [176] PremieR Seleção Natural - Adultos - Sabor Frango e batata doce (2.5kg) <= PREMIER SEL NAT CÃES ADULT RAÇAS PEQ BATATA DOCE 2,5 KG | 99.9 x 1 = 99.9
 OK score=14 [177] PremieR Seleção Natural - Adultos - Sabor Frango (1.5kg) <= PREMIER NUTR CLÍN GATOS OBESIDADE 1,5 KG | 104.9 x 1 = 104.9
-OK score=14 [178] PremieR Seleção Natural - Castrados - Sabor Frango (1.5kg) <= PREMIER NUTR CLÍN GATOS OBESIDADE 1,5 KG | 104.9 x 1 = 104.9
+OK score=14 [178] PremieR Seleção Natural - Castrados - Sabor Frango (1.5kg) <= PREMIER SELEÇÃO NATUR GATOS ADULT CAST 1,5 KG | 90.9 x 1 = 90.9
 OK score=24 [180] Vitta Natural - Adultos - Porte Pequeno - Sabor Carne e Arroz (15kg) <= VITTA NATURAL CÃES AD RAÇAS PEQ CARNE/ARRO 15 KG | 134.9 x 1 = 134.9
 OK score=24 [181] Vitta Natural - Adultos - Porte Pequeno - Sabor Carne e Arroz (3kg) <= VITTA NATURAL CÃES AD RAÇAS PEQ CARNE/ARRO 3 KG | 49.9 x 1 = 49.9
 OK score=24 [183] Vitta Natural - Adultos - Porte Pequeno - Sabor Frango e Arroz (15kg) <= VITTA NATURAL CÃES AD RAÇAS PEQ FRAN/CER 15 KG | 139.9 x 1 = 139.9
@@ -188,10 +185,13 @@ OK score=24 [191] Vitta Natural - Filhotes - Porte Pequeno - Sabor Frango e Arro
 OK score=24 [192] Vitta Natural - Filhotes - Sabor Frango e Arroz (15kg) <= VITTA NATURAL CÃES FIL FRAN/CER 15 KG | 158.9 x 1 = 158.9
 OK score=24 [193] Vitta Natural - Castrados - Sabor Frango e Arroz (10.1kg) <= VITTA NATURAL GATOS AD CAST FRANG 10,1 KG | 154.9 x 1 = 154.9
 
-Correspondidos: 187/194
+Correspondidos: 184/194
 
 Sem preço:
 [26] Golden | Golden - Filhotes - Porte Médio - Sabor Carne e Arroz | 20kg
+[82] Golden Seleção Natural Gatos | Golden Seleção Natural Gatos - Castrados - Sabor Frango com | 1kg
+[105] Nattu Cães | Nattu Cães - Castrados - Sabor Frango, abóbora, brócolis | 1.5kg
+[106] Nattu Cães | Nattu Cães - Castrados - Sabor Frango, mandioca | 7.5kg
 [107] Nattu Cães | Nattu Cães - Filhotes - Sabor Frango, abóbora, brócolis | 1.5kg
 [112] Nattu Gatos | Nattu Gatos - Filhotes - Sabor quinoa | 85g
 [113] Nattu Úmidos | Nattu Úmidos - Produto - Sabor Frango, batata-doce, brócolis, cenoura e cranberry | 60g
