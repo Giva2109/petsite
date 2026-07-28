@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import productsData from '../data/products.json'
 import { buildWeightOptions } from '../utils/weight'
+import { matchesLifeStage } from '../utils/lifeStage'
 
 /**
  * Hook de produtos — lê catálogo estático (extraído do PDF PremieRpet 2026).
@@ -10,6 +11,7 @@ export function useProducts({
   category = 'todos',
   search = '',
   line = 'todas',
+  lifeStage = 'todos',
   weight = 'todos',
 } = {}) {
   const lines = useMemo(() => {
@@ -31,6 +33,8 @@ export function useProducts({
 
       const matchesLine = line === 'todas' || product.line === line
 
+      const matchesLifeStageFilter = matchesLifeStage(product, lifeStage)
+
       const matchesWeight =
         weight === 'todos' || product.weight === weight
 
@@ -41,9 +45,9 @@ export function useProducts({
         product.line.toLowerCase().includes(query) ||
         product.description.toLowerCase().includes(query)
 
-      return matchesCategory && matchesLine && matchesWeight && matchesSearch
+      return matchesCategory && matchesLine && matchesLifeStageFilter && matchesWeight && matchesSearch
     })
-  }, [category, search, line, weight])
+  }, [category, search, line, lifeStage, weight])
 
   return {
     products,

@@ -2,6 +2,7 @@ import { Search, ShoppingCart } from 'lucide-react'
 import { STORE_NAME } from '../config/constants'
 import CategoryFilter from './CategoryFilter'
 import LineFilter from './LineFilter'
+import LifeStageFilter from './LifeStageFilter'
 import WeightFilter from './WeightFilter'
 import BrandIcon from './BrandIcon'
 
@@ -13,6 +14,8 @@ export default function Header({
   line,
   lines,
   onLineChange,
+  lifeStage,
+  onLifeStageChange,
   weight,
   weightOptions,
   onWeightChange,
@@ -73,6 +76,10 @@ export default function Header({
               lines={lines}
               activeLine={line}
               onLineChange={onLineChange}
+            />
+            <LifeStageFilter
+              activeLifeStage={lifeStage}
+              onLifeStageChange={onLifeStageChange}
             />
             <WeightFilter
               weightOptions={weightOptions}

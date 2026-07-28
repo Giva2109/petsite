@@ -14,6 +14,7 @@ function App() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('todos')
   const [line, setLine] = useState('todas')
+  const [lifeStage, setLifeStage] = useState('todos')
   const [weight, setWeight] = useState('todos')
   const [isCartOpen, setIsCartOpen] = useState(false)
 
@@ -21,6 +22,7 @@ function App() {
     category,
     search,
     line,
+    lifeStage,
     weight,
   })
   const { addItem, totalItems } = useCart()
@@ -35,7 +37,7 @@ function App() {
     hasPrev,
   } = usePagination(products, {
     pageSize: PRODUCTS_PER_PAGE,
-    resetDeps: [category, search, line, weight],
+    resetDeps: [category, search, line, lifeStage, weight],
   })
 
   const handleAddToCart = (product, quantity) => {
@@ -53,6 +55,8 @@ function App() {
         line={line}
         lines={lines}
         onLineChange={setLine}
+        lifeStage={lifeStage}
+        onLifeStageChange={setLifeStage}
         weight={weight}
         weightOptions={weightOptions}
         onWeightChange={setWeight}
