@@ -2,6 +2,7 @@ import { Search, ShoppingCart } from 'lucide-react'
 import { STORE_NAME } from '../config/constants'
 import CategoryFilter from './CategoryFilter'
 import LineFilter from './LineFilter'
+import WeightFilter from './WeightFilter'
 import BrandIcon from './BrandIcon'
 
 export default function Header({
@@ -12,6 +13,9 @@ export default function Header({
   line,
   lines,
   onLineChange,
+  weight,
+  weightOptions,
+  onWeightChange,
   cartCount,
   onCartOpen,
 }) {
@@ -64,11 +68,18 @@ export default function Header({
             activeCategory={category}
             onCategoryChange={onCategoryChange}
           />
-          <LineFilter
-            lines={lines}
-            activeLine={line}
-            onLineChange={onLineChange}
-          />
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end sm:gap-2">
+            <LineFilter
+              lines={lines}
+              activeLine={line}
+              onLineChange={onLineChange}
+            />
+            <WeightFilter
+              weightOptions={weightOptions}
+              activeWeight={weight}
+              onWeightChange={onWeightChange}
+            />
+          </div>
         </div>
       </div>
     </header>

@@ -1,5 +1,6 @@
-import { useMemo, useState, useEffect, useCallback } from 'react'
+import { useMemo } from 'react'
 import productsData from '../data/products.json'
+import { buildWeightOptions } from '../utils/weight'
 
 /**
  * Hook de produtos — lê catálogo estático (extraído do PDF PremieRpet 2026).
@@ -9,11 +10,17 @@ export function useProducts({
   category = 'todos',
   search = '',
   line = 'todas',
+  weight = 'todos',
 } = {}) {
   const lines = useMemo(() => {
     const unique = [...new Set(productsData.map((p) => p.line))].sort()
     return unique
   }, [])
+
+  const weightOptions = useMemo(
+    () => buildWeightOptions(productsData),
+    [],
+  )
 
   const products = useMemo(() => {
     const query = search.trim().toLowerCase()
@@ -24,6 +31,9 @@ export function useProducts({
 
       const matchesLine = line === 'todas' || product.line === line
 
+      const matchesWeight =
+        weight === 'todos' || product.weight === weight
+
       const matchesSearch =
         !query ||
         product.name.toLowerCase().includes(query) ||
@@ -31,9 +41,16 @@ export function useProducts({
         product.line.toLowerCase().includes(query) ||
         product.description.toLowerCase().includes(query)
 
-      return matchesCategory && matchesLine && matchesSearch
+      return matchesCategory && matchesLine && matchesWeight && matchesSearch
     })
-  }, [category, search, line])
+  }, [category, search, line, weight])
 
-  return { products, lines, isLoading: false, error: null, total: products.length }
+  return {
+    products,
+    lines,
+    weightOptions,
+    isLoading: false,
+    error: null,
+    total: products.length,
+  }
 }
