@@ -13,7 +13,7 @@ export default function HeroBanner() {
         </h1>
         <p className="mt-4 max-w-lg text-sm leading-relaxed text-emerald-50/95 sm:text-base lg:text-lg">
           {STORE_TAGLINE}. Navegue pelo catálogo completo, monte seu pedido e
-          finalize pelo WhatsApp com cotação de preços via PIX.
+          finalize pelo WhatsApp com cotação de preços via Cartão de crédito ou PIX.
         </p>
       </div>
 
