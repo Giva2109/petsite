@@ -23,6 +23,11 @@ export default function CartDrawer({ isOpen, onClose }) {
   const [pixResult, setPixResult] = useState(null)
   const [successResult, setSuccessResult] = useState(null)
   const [paymentError, setPaymentError] = useState('')
+  const [whatsappError, setWhatsappError] = useState('')
+  const [fieldErrors, setFieldErrors] = useState({
+    customerName: '',
+    address: '',
+  })
 
   const canPayOnline = totalPrice != null && totalPrice > 0
 
@@ -49,7 +54,33 @@ export default function CartDrawer({ isOpen, onClose }) {
 
   const handleWhatsAppCheckout = () => {
     if (items.length === 0) return
-    openWhatsAppOrder({ items, customerName, address })
+
+    const trimmedName = customerName.trim()
+    const trimmedAddress = address.trim()
+    const errors = {}
+
+    if (!trimmedName) {
+      errors.customerName = 'Informe o nome do cliente'
+    }
+    if (!trimmedAddress) {
+      errors.address = 'Informe o endereço de entrega'
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
+      setWhatsappError(
+        'Preencha o nome do cliente e o endereço de entrega para finalizar pelo WhatsApp.'
+      )
+      return
+    }
+
+    setFieldErrors({ customerName: '', address: '' })
+    setWhatsappError('')
+    openWhatsAppOrder({
+      items,
+      customerName: trimmedName,
+      address: trimmedAddress,
+    })
   }
 
   const handlePaymentSuccess = () => {
@@ -180,32 +211,75 @@ export default function CartDrawer({ isOpen, onClose }) {
                   htmlFor="customer-name"
                   className="mb-1 block text-sm font-medium text-gray-700"
                 >
-                  Nome do Cliente
+                  Nome do Cliente <span className="text-red-500">*</span>
                 </label>
                 <input
                   id="customer-name"
                   type="text"
                   value={customerName}
-                  onChange={(e) => setCustomerName(e.target.value)}
+                  onChange={(e) => {
+                    setCustomerName(e.target.value)
+                    if (fieldErrors.customerName) {
+                      setFieldErrors((prev) => ({ ...prev, customerName: '' }))
+                    }
+                    if (whatsappError) setWhatsappError('')
+                  }}
                   placeholder="Seu nome"
-                  className="w-full rounded-xl border border-gray-200 px-3 py-2.5 text-base focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                  required
+                  aria-invalid={Boolean(fieldErrors.customerName)}
+                  aria-describedby={
+                    fieldErrors.customerName ? 'customer-name-error' : undefined
+                  }
+                  className={`w-full rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
+                    fieldErrors.customerName
+                      ? 'border-red-300 focus:border-red-400 focus:ring-red-200'
+                      : 'border-gray-200 focus:border-emerald-400 focus:ring-emerald-200'
+                  }`}
                 />
+                {fieldErrors.customerName && (
+                  <p
+                    id="customer-name-error"
+                    className="mt-1 text-xs text-red-600"
+                  >
+                    {fieldErrors.customerName}
+                  </p>
+                )}
               </div>
               <div>
                 <label
                   htmlFor="address"
                   className="mb-1 block text-sm font-medium text-gray-700"
                 >
-                  Endereço de Entrega
+                  Endereço de Entrega <span className="text-red-500">*</span>
                 </label>
                 <textarea
                   id="address"
                   value={address}
-                  onChange={(e) => setAddress(e.target.value)}
+                  onChange={(e) => {
+                    setAddress(e.target.value)
+                    if (fieldErrors.address) {
+                      setFieldErrors((prev) => ({ ...prev, address: '' }))
+                    }
+                    if (whatsappError) setWhatsappError('')
+                  }}
                   placeholder="Rua, número, bairro, cidade..."
                   rows={3}
-                  className="w-full resize-none rounded-xl border border-gray-200 px-3 py-2.5 text-base focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+                  required
+                  aria-invalid={Boolean(fieldErrors.address)}
+                  aria-describedby={
+                    fieldErrors.address ? 'address-error' : undefined
+                  }
+                  className={`w-full resize-none rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
+                    fieldErrors.address
+                      ? 'border-red-300 focus:border-red-400 focus:ring-red-200'
+                      : 'border-gray-200 focus:border-emerald-400 focus:ring-emerald-200'
+                  }`}
                 />
+                {fieldErrors.address && (
+                  <p id="address-error" className="mt-1 text-xs text-red-600">
+                    {fieldErrors.address}
+                  </p>
+                )}
               </div>
             </div>
           )}
@@ -227,6 +301,12 @@ export default function CartDrawer({ isOpen, onClose }) {
             {paymentError && (
               <p className="mb-3 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">
                 {paymentError}
+              </p>
+            )}
+
+            {whatsappError && (
+              <p className="mb-3 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">
+                {whatsappError}
               </p>
             )}
 
