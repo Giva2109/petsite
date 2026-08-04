@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   X,
   Minus,
@@ -12,6 +12,7 @@ import { useCart } from '../hooks/useCart'
 import { formatCurrency } from '../utils/currency'
 import { openWhatsAppOrder } from '../utils/whatsapp'
 import { saveOrder } from '../utils/ordersApi'
+import { createIdempotencyKey } from '../utils/idempotency'
 import { validateCheckoutFields, formatDeliveryAddress } from '../utils/checkoutForm'
 import CheckoutAddressForm from './CheckoutAddressForm'
 import PaymentCheckout from './PaymentCheckout'
@@ -50,6 +51,8 @@ export default function CartDrawer({ isOpen, onClose }) {
   const [paymentError, setPaymentError] = useState('')
   const [checkoutError, setCheckoutError] = useState('')
   const [fieldErrors, setFieldErrors] = useState(EMPTY_FIELD_ERRORS)
+  const checkoutInFlightRef = useRef(false)
+  const idempotencyKeyRef = useRef(null)
 
   const canPayOnline = totalPrice != null && totalPrice > 0
 
@@ -109,31 +112,45 @@ export default function CartDrawer({ isOpen, onClose }) {
     return result.values
   }
 
+  const resetCheckoutSession = () => {
+    checkoutInFlightRef.current = false
+    idempotencyKeyRef.current = null
+    setIsSavingOrder(false)
+  }
+
   const persistOrder = async (channel) => {
+    if (checkoutInFlightRef.current) return null
+
     const values = getValidatedCheckout()
     if (!values) return null
 
+    if (!idempotencyKeyRef.current) {
+      idempotencyKeyRef.current = createIdempotencyKey()
+    }
+
+    checkoutInFlightRef.current = true
     setIsSavingOrder(true)
+
     try {
       const saved = await saveOrder({
         items,
         ...values,
+        idempotencyKey: idempotencyKeyRef.current,
         channel,
         totalAmount: totalPrice,
       })
       return { ...values, orderId: saved.id }
     } catch (error) {
+      resetCheckoutSession()
       setCheckoutError(
         error.message || 'Não foi possível salvar o pedido. Tente novamente.'
       )
       return null
-    } finally {
-      setIsSavingOrder(false)
     }
   }
 
   const handleWhatsAppCheckout = async () => {
-    if (items.length === 0 || isSavingOrder) return
+    if (items.length === 0 || checkoutInFlightRef.current) return
 
     const saved = await persistOrder('WHATSAPP')
     if (!saved) return
@@ -144,15 +161,19 @@ export default function CartDrawer({ isOpen, onClose }) {
       phone: saved.phone,
       address: saved.deliveryAddress,
     })
+
+    resetCheckoutForm()
+    resetCheckoutSession()
   }
 
   const handleOpenPayment = async () => {
-    if (isSavingOrder) return
+    if (checkoutInFlightRef.current) return
     setPaymentError('')
 
     const saved = await persistOrder('MERCADOPAGO')
     if (!saved) return
 
+    setIsSavingOrder(false)
     setIsPaymentOpen(true)
   }
 
@@ -175,6 +196,7 @@ export default function CartDrawer({ isOpen, onClose }) {
   const handlePaymentSuccess = () => {
     clearCart()
     resetCheckoutForm()
+    resetCheckoutSession()
   }
 
   const resolvedDeliveryAddress = sameDeliveryAddress
@@ -451,7 +473,10 @@ export default function CartDrawer({ isOpen, onClose }) {
 
       <PaymentCheckout
         isOpen={isPaymentOpen}
-        onClose={() => setIsPaymentOpen(false)}
+        onClose={() => {
+          setIsPaymentOpen(false)
+          resetCheckoutSession()
+        }}
         amount={totalPrice}
         items={items}
         customerName={customerName}

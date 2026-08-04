@@ -13,6 +13,7 @@ function buildOrderPayload({
   neighborhood,
   sameDeliveryAddress,
   deliveryAddress,
+  idempotencyKey,
   channel,
   totalAmount,
 }) {
@@ -28,6 +29,7 @@ function buildOrderPayload({
     neighborhood: neighborhood || null,
     sameDeliveryAddress,
     deliveryAddress,
+    idempotencyKey,
     channel,
     totalAmount,
     items: items.map(({ product, quantity }) => ({
