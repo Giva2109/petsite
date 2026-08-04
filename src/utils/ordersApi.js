@@ -1,10 +1,29 @@
 import { API_BASE_URL } from '../config/constants'
 
-function buildOrderPayload({ items, customerName, phone, address, channel, totalAmount }) {
+function buildOrderPayload({
+  items,
+  customerName,
+  phone,
+  zipCode,
+  street,
+  city,
+  state,
+  neighborhood,
+  sameDeliveryAddress,
+  deliveryAddress,
+  channel,
+  totalAmount,
+}) {
   return {
     customerName,
     phone,
-    address,
+    zipCode,
+    street,
+    city,
+    state,
+    neighborhood: neighborhood || null,
+    sameDeliveryAddress,
+    deliveryAddress,
     channel,
     totalAmount,
     items: items.map(({ product, quantity }) => ({

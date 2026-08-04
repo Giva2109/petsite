@@ -12,27 +12,41 @@ import { useCart } from '../hooks/useCart'
 import { formatCurrency } from '../utils/currency'
 import { openWhatsAppOrder } from '../utils/whatsapp'
 import { saveOrder } from '../utils/ordersApi'
-import { validateCheckoutFields } from '../utils/checkoutForm'
+import { validateCheckoutFields, formatDeliveryAddress } from '../utils/checkoutForm'
+import CheckoutAddressForm from './CheckoutAddressForm'
 import PaymentCheckout from './PaymentCheckout'
 import PixPaymentModal from './PixPaymentModal'
 import PaymentSuccess from './PaymentSuccess'
+
+const EMPTY_FIELD_ERRORS = {
+  customerName: '',
+  phone: '',
+  zipCode: '',
+  street: '',
+  city: '',
+  state: '',
+  sameDeliveryAddress: '',
+  deliveryAddress: '',
+}
 
 export default function CartDrawer({ isOpen, onClose }) {
   const { items, updateQuantity, removeItem, totalPrice, clearCart } = useCart()
   const [customerName, setCustomerName] = useState('')
   const [phone, setPhone] = useState('')
-  const [address, setAddress] = useState('')
+  const [zipCode, setZipCode] = useState('')
+  const [street, setStreet] = useState('')
+  const [city, setCity] = useState('')
+  const [state, setState] = useState('')
+  const [neighborhood, setNeighborhood] = useState('')
+  const [sameDeliveryAddress, setSameDeliveryAddress] = useState(true)
+  const [deliveryAddress, setDeliveryAddress] = useState('')
   const [isPaymentOpen, setIsPaymentOpen] = useState(false)
   const [isSavingOrder, setIsSavingOrder] = useState(false)
   const [pixResult, setPixResult] = useState(null)
   const [successResult, setSuccessResult] = useState(null)
   const [paymentError, setPaymentError] = useState('')
   const [checkoutError, setCheckoutError] = useState('')
-  const [fieldErrors, setFieldErrors] = useState({
-    customerName: '',
-    phone: '',
-    address: '',
-  })
+  const [fieldErrors, setFieldErrors] = useState(EMPTY_FIELD_ERRORS)
 
   const canPayOnline = totalPrice != null && totalPrice > 0
 
@@ -65,15 +79,27 @@ export default function CartDrawer({ isOpen, onClose }) {
   }
 
   const getValidatedCheckout = () => {
-    const result = validateCheckoutFields({ customerName, phone, address })
+    const result = validateCheckoutFields({
+      customerName,
+      phone,
+      zipCode,
+      street,
+      city,
+      state,
+      neighborhood,
+      sameDeliveryAddress,
+      deliveryAddress,
+    })
+
     if (Object.keys(result.errors).length > 0) {
       setFieldErrors((prev) => ({ ...prev, ...result.errors }))
       setCheckoutError(
-        'Preencha nome, telefone e endereço para continuar com o pedido.'
+        'Preencha os dados obrigatórios e confirme o endereço de entrega.'
       )
       return null
     }
-    setFieldErrors({ customerName: '', phone: '', address: '' })
+
+    setFieldErrors(EMPTY_FIELD_ERRORS)
     setCheckoutError('')
     return result.values
   }
@@ -86,9 +112,7 @@ export default function CartDrawer({ isOpen, onClose }) {
     try {
       const saved = await saveOrder({
         items,
-        customerName: values.customerName,
-        phone: values.phone,
-        address: values.address,
+        ...values,
         channel,
         totalAmount: totalPrice,
       })
@@ -113,7 +137,7 @@ export default function CartDrawer({ isOpen, onClose }) {
       items,
       customerName: saved.customerName,
       phone: saved.phone,
-      address: saved.address,
+      address: saved.deliveryAddress,
     })
   }
 
@@ -127,12 +151,34 @@ export default function CartDrawer({ isOpen, onClose }) {
     setIsPaymentOpen(true)
   }
 
-  const handlePaymentSuccess = () => {
-    clearCart()
+  const resetCheckoutForm = () => {
     setCustomerName('')
     setPhone('')
-    setAddress('')
+    setZipCode('')
+    setStreet('')
+    setCity('')
+    setState('')
+    setNeighborhood('')
+    setSameDeliveryAddress(true)
+    setDeliveryAddress('')
+    setFieldErrors(EMPTY_FIELD_ERRORS)
+    setCheckoutError('')
   }
+
+  const handlePaymentSuccess = () => {
+    clearCart()
+    resetCheckoutForm()
+  }
+
+  const resolvedDeliveryAddress = sameDeliveryAddress
+    ? formatDeliveryAddress({
+        street,
+        neighborhood,
+        city,
+        state,
+        zipCode,
+      })
+    : deliveryAddress
 
   return (
     <>
@@ -269,9 +315,6 @@ export default function CartDrawer({ isOpen, onClose }) {
                   placeholder="Seu nome"
                   required
                   aria-invalid={Boolean(fieldErrors.customerName)}
-                  aria-describedby={
-                    fieldErrors.customerName ? 'customer-name-error' : undefined
-                  }
                   className={`w-full rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
                     fieldErrors.customerName
                       ? 'border-red-300 focus:border-red-400 focus:ring-red-200'
@@ -279,14 +322,12 @@ export default function CartDrawer({ isOpen, onClose }) {
                   }`}
                 />
                 {fieldErrors.customerName && (
-                  <p
-                    id="customer-name-error"
-                    className="mt-1 text-xs text-red-600"
-                  >
+                  <p className="mt-1 text-xs text-red-600">
                     {fieldErrors.customerName}
                   </p>
                 )}
               </div>
+
               <div>
                 <label
                   htmlFor="phone"
@@ -307,7 +348,6 @@ export default function CartDrawer({ isOpen, onClose }) {
                   placeholder="(11) 99999-9999"
                   required
                   aria-invalid={Boolean(fieldErrors.phone)}
-                  aria-describedby={fieldErrors.phone ? 'phone-error' : undefined}
                   className={`w-full rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
                     fieldErrors.phone
                       ? 'border-red-300 focus:border-red-400 focus:ring-red-200'
@@ -315,44 +355,28 @@ export default function CartDrawer({ isOpen, onClose }) {
                   }`}
                 />
                 {fieldErrors.phone && (
-                  <p id="phone-error" className="mt-1 text-xs text-red-600">
-                    {fieldErrors.phone}
-                  </p>
+                  <p className="mt-1 text-xs text-red-600">{fieldErrors.phone}</p>
                 )}
               </div>
-              <div>
-                <label
-                  htmlFor="address"
-                  className="mb-1 block text-sm font-medium text-gray-700"
-                >
-                  Endereço de Entrega <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  id="address"
-                  value={address}
-                  onChange={(e) => {
-                    setAddress(e.target.value)
-                    clearFieldError('address')
-                  }}
-                  placeholder="Rua, número, bairro, cidade..."
-                  rows={3}
-                  required
-                  aria-invalid={Boolean(fieldErrors.address)}
-                  aria-describedby={
-                    fieldErrors.address ? 'address-error' : undefined
-                  }
-                  className={`w-full resize-none rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
-                    fieldErrors.address
-                      ? 'border-red-300 focus:border-red-400 focus:ring-red-200'
-                      : 'border-gray-200 focus:border-emerald-400 focus:ring-emerald-200'
-                  }`}
-                />
-                {fieldErrors.address && (
-                  <p id="address-error" className="mt-1 text-xs text-red-600">
-                    {fieldErrors.address}
-                  </p>
-                )}
-              </div>
+
+              <CheckoutAddressForm
+                zipCode={zipCode}
+                onZipCodeChange={setZipCode}
+                street={street}
+                onStreetChange={setStreet}
+                city={city}
+                onCityChange={setCity}
+                state={state}
+                onStateChange={setState}
+                neighborhood={neighborhood}
+                onNeighborhoodChange={setNeighborhood}
+                sameDeliveryAddress={sameDeliveryAddress}
+                onSameDeliveryAddressChange={setSameDeliveryAddress}
+                deliveryAddress={deliveryAddress}
+                onDeliveryAddressChange={setDeliveryAddress}
+                fieldErrors={fieldErrors}
+                onClearError={clearFieldError}
+              />
             </div>
           )}
         </div>
@@ -419,7 +443,7 @@ export default function CartDrawer({ isOpen, onClose }) {
         items={items}
         customerName={customerName}
         phone={phone}
-        address={address}
+        address={resolvedDeliveryAddress}
         onPixResult={(result) => {
           setPixResult(result)
           handlePaymentSuccess()
