@@ -26,18 +26,26 @@ export function formatCepDisplay(value) {
 
 export function formatDeliveryAddress({
   street,
+  streetNumber,
+  complement,
   neighborhood,
   city,
   state,
   zipCode,
 }) {
-  const parts = [street.trim()]
-  if (neighborhood?.trim()) {
-    parts.push(neighborhood.trim())
+  let address = `${street.trim()}, ${streetNumber.trim()}`
+
+  if (complement?.trim()) {
+    address += ` - ${complement.trim()}`
   }
+
+  if (neighborhood?.trim()) {
+    address += `, ${neighborhood.trim()}`
+  }
+
   const location = `${city.trim()}/${state.trim().toUpperCase()}`
   const cep = formatCepDisplay(zipCode)
-  return `${parts.join(', ')} - ${location} - CEP ${cep}`
+  return `${address} - ${location} - CEP ${cep}`
 }
 
 export function validateCheckoutFields({
@@ -45,6 +53,8 @@ export function validateCheckoutFields({
   phone,
   zipCode,
   street,
+  streetNumber,
+  complement = '',
   city,
   state,
   neighborhood = '',
@@ -55,6 +65,8 @@ export function validateCheckoutFields({
   const trimmedName = customerName.trim()
   const trimmedPhone = phone.trim()
   const trimmedStreet = street.trim()
+  const trimmedNumber = streetNumber.trim()
+  const trimmedComplement = complement.trim()
   const trimmedCity = city.trim()
   const trimmedState = state.trim().toUpperCase()
   const trimmedNeighborhood = neighborhood.trim()
@@ -81,6 +93,10 @@ export function validateCheckoutFields({
     errors.street = 'Informe o logradouro'
   }
 
+  if (!trimmedNumber) {
+    errors.streetNumber = 'Informe o número'
+  }
+
   if (!trimmedCity) {
     errors.city = 'Informe a cidade'
   }
@@ -99,6 +115,8 @@ export function validateCheckoutFields({
   const resolvedDeliveryAddress = sameDeliveryAddress
     ? formatDeliveryAddress({
         street: trimmedStreet,
+        streetNumber: trimmedNumber,
+        complement: trimmedComplement,
         neighborhood: trimmedNeighborhood,
         city: trimmedCity,
         state: trimmedState,
@@ -113,6 +131,8 @@ export function validateCheckoutFields({
       phone: normalizePhone(trimmedPhone),
       zipCode: normalizedCep,
       street: trimmedStreet,
+      streetNumber: trimmedNumber,
+      complement: trimmedComplement,
       city: trimmedCity,
       state: trimmedState,
       neighborhood: trimmedNeighborhood,

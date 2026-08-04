@@ -23,6 +23,7 @@ const EMPTY_FIELD_ERRORS = {
   phone: '',
   zipCode: '',
   street: '',
+  streetNumber: '',
   city: '',
   state: '',
   sameDeliveryAddress: '',
@@ -35,6 +36,8 @@ export default function CartDrawer({ isOpen, onClose }) {
   const [phone, setPhone] = useState('')
   const [zipCode, setZipCode] = useState('')
   const [street, setStreet] = useState('')
+  const [streetNumber, setStreetNumber] = useState('')
+  const [complement, setComplement] = useState('')
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
   const [neighborhood, setNeighborhood] = useState('')
@@ -84,6 +87,8 @@ export default function CartDrawer({ isOpen, onClose }) {
       phone,
       zipCode,
       street,
+      streetNumber,
+      complement,
       city,
       state,
       neighborhood,
@@ -156,6 +161,8 @@ export default function CartDrawer({ isOpen, onClose }) {
     setPhone('')
     setZipCode('')
     setStreet('')
+    setStreetNumber('')
+    setComplement('')
     setCity('')
     setState('')
     setNeighborhood('')
@@ -173,6 +180,8 @@ export default function CartDrawer({ isOpen, onClose }) {
   const resolvedDeliveryAddress = sameDeliveryAddress
     ? formatDeliveryAddress({
         street,
+        streetNumber,
+        complement,
         neighborhood,
         city,
         state,
@@ -364,6 +373,10 @@ export default function CartDrawer({ isOpen, onClose }) {
                 onZipCodeChange={setZipCode}
                 street={street}
                 onStreetChange={setStreet}
+                streetNumber={streetNumber}
+                onStreetNumberChange={setStreetNumber}
+                complement={complement}
+                onComplementChange={setComplement}
                 city={city}
                 onCityChange={setCity}
                 state={state}

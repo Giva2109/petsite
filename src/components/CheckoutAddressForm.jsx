@@ -15,6 +15,10 @@ export default function CheckoutAddressForm({
   onZipCodeChange,
   street,
   onStreetChange,
+  streetNumber,
+  onStreetNumberChange,
+  complement,
+  onComplementChange,
   city,
   onCityChange,
   state,
@@ -126,6 +130,52 @@ export default function CheckoutAddressForm({
         {fieldErrors.street && (
           <p className="mt-1 text-xs text-red-600">{fieldErrors.street}</p>
         )}
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label
+            htmlFor="street-number"
+            className="mb-1 block text-sm font-medium text-gray-700"
+          >
+            Número <span className="text-red-500">*</span>
+          </label>
+          <input
+            id="street-number"
+            type="text"
+            inputMode="numeric"
+            autoComplete="address-line2"
+            value={streetNumber}
+            onChange={(e) => {
+              onStreetNumberChange(e.target.value)
+              onClearError('streetNumber')
+            }}
+            placeholder="123"
+            required
+            aria-invalid={Boolean(fieldErrors.streetNumber)}
+            className={fieldClass(fieldErrors.streetNumber)}
+          />
+          {fieldErrors.streetNumber && (
+            <p className="mt-1 text-xs text-red-600">{fieldErrors.streetNumber}</p>
+          )}
+        </div>
+
+        <div>
+          <label
+            htmlFor="complement"
+            className="mb-1 block text-sm font-medium text-gray-700"
+          >
+            Complemento
+          </label>
+          <input
+            id="complement"
+            type="text"
+            value={complement}
+            onChange={(e) => onComplementChange(e.target.value)}
+            placeholder="Apto, bloco, sala..."
+            className={fieldClass(false)}
+          />
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
