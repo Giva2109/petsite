@@ -15,3 +15,6 @@ export const PRODUCTS_PER_PAGE = 12
 /** Chave pública do Mercado Pago (segura no frontend) */
 export const MERCADOPAGO_PUBLIC_KEY =
   import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY || ''
+
+/** URL da API Java (Fly.io). Em dev, use proxy do Vite com string vazia. */
+export const API_BASE_URL = import.meta.env.VITE_API_URL || ''

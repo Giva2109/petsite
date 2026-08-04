@@ -13,7 +13,12 @@ function formatItemLine({ product, quantity }) {
 /**
  * Monta a mensagem de pedido formatada para o WhatsApp.
  */
-export function buildOrderMessage({ items, customerName = '', address = '' }) {
+export function buildOrderMessage({
+  items,
+  customerName = '',
+  phone = '',
+  address = '',
+}) {
   const itemLines = items.map(formatItemLine).join('\n')
 
   const hasUnknownPrice = items.some(({ product }) => product.price == null)
@@ -34,6 +39,10 @@ ${itemLines}
 
   if (customerName.trim()) {
     message += `\n\n*Cliente:* ${customerName.trim()}`
+  }
+
+  if (phone.trim()) {
+    message += `\n*Telefone:* ${phone.trim()}`
   }
 
   if (address.trim()) {

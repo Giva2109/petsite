@@ -11,6 +11,8 @@ import {
 import { useCart } from '../hooks/useCart'
 import { formatCurrency } from '../utils/currency'
 import { openWhatsAppOrder } from '../utils/whatsapp'
+import { saveOrder } from '../utils/ordersApi'
+import { validateCheckoutFields } from '../utils/checkoutForm'
 import PaymentCheckout from './PaymentCheckout'
 import PixPaymentModal from './PixPaymentModal'
 import PaymentSuccess from './PaymentSuccess'
@@ -18,14 +20,17 @@ import PaymentSuccess from './PaymentSuccess'
 export default function CartDrawer({ isOpen, onClose }) {
   const { items, updateQuantity, removeItem, totalPrice, clearCart } = useCart()
   const [customerName, setCustomerName] = useState('')
+  const [phone, setPhone] = useState('')
   const [address, setAddress] = useState('')
   const [isPaymentOpen, setIsPaymentOpen] = useState(false)
+  const [isSavingOrder, setIsSavingOrder] = useState(false)
   const [pixResult, setPixResult] = useState(null)
   const [successResult, setSuccessResult] = useState(null)
   const [paymentError, setPaymentError] = useState('')
-  const [whatsappError, setWhatsappError] = useState('')
+  const [checkoutError, setCheckoutError] = useState('')
   const [fieldErrors, setFieldErrors] = useState({
     customerName: '',
+    phone: '',
     address: '',
   })
 
@@ -52,40 +57,80 @@ export default function CartDrawer({ isOpen, onClose }) {
     return () => window.removeEventListener('keydown', handleEscape)
   }, [isOpen, onClose])
 
-  const handleWhatsAppCheckout = () => {
-    if (items.length === 0) return
-
-    const trimmedName = customerName.trim()
-    const trimmedAddress = address.trim()
-    const errors = {}
-
-    if (!trimmedName) {
-      errors.customerName = 'Informe o nome do cliente'
+  const clearFieldError = (field) => {
+    if (fieldErrors[field]) {
+      setFieldErrors((prev) => ({ ...prev, [field]: '' }))
     }
-    if (!trimmedAddress) {
-      errors.address = 'Informe o endereço de entrega'
-    }
+    if (checkoutError) setCheckoutError('')
+  }
 
-    if (Object.keys(errors).length > 0) {
-      setFieldErrors(errors)
-      setWhatsappError(
-        'Preencha o nome do cliente e o endereço de entrega para finalizar pelo WhatsApp.'
+  const getValidatedCheckout = () => {
+    const result = validateCheckoutFields({ customerName, phone, address })
+    if (Object.keys(result.errors).length > 0) {
+      setFieldErrors((prev) => ({ ...prev, ...result.errors }))
+      setCheckoutError(
+        'Preencha nome, telefone e endereço para continuar com o pedido.'
       )
-      return
+      return null
     }
+    setFieldErrors({ customerName: '', phone: '', address: '' })
+    setCheckoutError('')
+    return result.values
+  }
 
-    setFieldErrors({ customerName: '', address: '' })
-    setWhatsappError('')
+  const persistOrder = async (channel) => {
+    const values = getValidatedCheckout()
+    if (!values) return null
+
+    setIsSavingOrder(true)
+    try {
+      const saved = await saveOrder({
+        items,
+        customerName: values.customerName,
+        phone: values.phone,
+        address: values.address,
+        channel,
+        totalAmount: totalPrice,
+      })
+      return { ...values, orderId: saved.id }
+    } catch (error) {
+      setCheckoutError(
+        error.message || 'Não foi possível salvar o pedido. Tente novamente.'
+      )
+      return null
+    } finally {
+      setIsSavingOrder(false)
+    }
+  }
+
+  const handleWhatsAppCheckout = async () => {
+    if (items.length === 0 || isSavingOrder) return
+
+    const saved = await persistOrder('WHATSAPP')
+    if (!saved) return
+
     openWhatsAppOrder({
       items,
-      customerName: trimmedName,
-      address: trimmedAddress,
+      customerName: saved.customerName,
+      phone: saved.phone,
+      address: saved.address,
     })
+  }
+
+  const handleOpenPayment = async () => {
+    if (isSavingOrder) return
+    setPaymentError('')
+
+    const saved = await persistOrder('MERCADOPAGO')
+    if (!saved) return
+
+    setIsPaymentOpen(true)
   }
 
   const handlePaymentSuccess = () => {
     clearCart()
     setCustomerName('')
+    setPhone('')
     setAddress('')
   }
 
@@ -219,10 +264,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                   value={customerName}
                   onChange={(e) => {
                     setCustomerName(e.target.value)
-                    if (fieldErrors.customerName) {
-                      setFieldErrors((prev) => ({ ...prev, customerName: '' }))
-                    }
-                    if (whatsappError) setWhatsappError('')
+                    clearFieldError('customerName')
                   }}
                   placeholder="Seu nome"
                   required
@@ -247,6 +289,39 @@ export default function CartDrawer({ isOpen, onClose }) {
               </div>
               <div>
                 <label
+                  htmlFor="phone"
+                  className="mb-1 block text-sm font-medium text-gray-700"
+                >
+                  Telefone / WhatsApp <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value)
+                    clearFieldError('phone')
+                  }}
+                  placeholder="(11) 99999-9999"
+                  required
+                  aria-invalid={Boolean(fieldErrors.phone)}
+                  aria-describedby={fieldErrors.phone ? 'phone-error' : undefined}
+                  className={`w-full rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
+                    fieldErrors.phone
+                      ? 'border-red-300 focus:border-red-400 focus:ring-red-200'
+                      : 'border-gray-200 focus:border-emerald-400 focus:ring-emerald-200'
+                  }`}
+                />
+                {fieldErrors.phone && (
+                  <p id="phone-error" className="mt-1 text-xs text-red-600">
+                    {fieldErrors.phone}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label
                   htmlFor="address"
                   className="mb-1 block text-sm font-medium text-gray-700"
                 >
@@ -257,10 +332,7 @@ export default function CartDrawer({ isOpen, onClose }) {
                   value={address}
                   onChange={(e) => {
                     setAddress(e.target.value)
-                    if (fieldErrors.address) {
-                      setFieldErrors((prev) => ({ ...prev, address: '' }))
-                    }
-                    if (whatsappError) setWhatsappError('')
+                    clearFieldError('address')
                   }}
                   placeholder="Rua, número, bairro, cidade..."
                   rows={3}
@@ -304,20 +376,18 @@ export default function CartDrawer({ isOpen, onClose }) {
               </p>
             )}
 
-            {whatsappError && (
+            {checkoutError && (
               <p className="mb-3 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">
-                {whatsappError}
+                {checkoutError}
               </p>
             )}
 
             {canPayOnline ? (
               <button
                 type="button"
-                onClick={() => {
-                  setPaymentError('')
-                  setIsPaymentOpen(true)
-                }}
-                className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl bg-sky-600 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2"
+                onClick={handleOpenPayment}
+                disabled={isSavingOrder}
+                className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl bg-sky-600 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <CreditCard className="h-5 w-5" aria-hidden="true" />
                 Pagar com Mercado Pago
@@ -332,10 +402,11 @@ export default function CartDrawer({ isOpen, onClose }) {
             <button
               type="button"
               onClick={handleWhatsAppCheckout}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+              disabled={isSavingOrder}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
             >
               <MessageCircle className="h-5 w-5" aria-hidden="true" />
-              Finalizar via WhatsApp
+              {isSavingOrder ? 'Salvando pedido...' : 'Finalizar via WhatsApp'}
             </button>
           </div>
         )}
@@ -347,6 +418,7 @@ export default function CartDrawer({ isOpen, onClose }) {
         amount={totalPrice}
         items={items}
         customerName={customerName}
+        phone={phone}
         address={address}
         onPixResult={(result) => {
           setPixResult(result)
