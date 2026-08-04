@@ -41,12 +41,31 @@ function buildOrderPayload({
 }
 
 async function parseError(response) {
+  const text = await response.text()
+
   try {
-    const data = await response.json()
-    return data.detail || data.title || 'Não foi possível registrar o pedido'
+    const data = JSON.parse(text)
+    return data.detail || data.title || `Erro ${response.status} ao registrar pedido`
   } catch {
-    return 'Não foi possível registrar o pedido'
+    if (response.status === 404) {
+      return 'API não encontrada. Configure VITE_API_URL=https://unipet-api.fly.dev no Netlify.'
+    }
+    return text || `Erro ${response.status} ao registrar pedido`
   }
+}
+
+function getApiUrl() {
+  if (API_BASE_URL) {
+    return `${API_BASE_URL}/api/orders`
+  }
+
+  if (import.meta.env.PROD) {
+    throw new Error(
+      'API não configurada no site. Adicione VITE_API_URL=https://unipet-api.fly.dev no Netlify e faça redeploy.'
+    )
+  }
+
+  return '/api/orders'
 }
 
 /**
@@ -55,13 +74,20 @@ async function parseError(response) {
  */
 export async function saveOrder(orderData) {
   const payload = buildOrderPayload(orderData)
-  const url = `${API_BASE_URL}/api/orders`
+  const url = getApiUrl()
 
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
+  let response
+  try {
+    response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+  } catch {
+    throw new Error(
+      'Não foi possível conectar à API. Verifique se VITE_API_URL está configurada no Netlify.'
+    )
+  }
 
   if (!response.ok) {
     throw new Error(await parseError(response))
