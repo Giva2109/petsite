@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Loader2 } from 'lucide-react'
 import { fetchAddressByCep, formatCepDisplay } from '../utils/viaCep'
+import { isParqueCecapNeighborhood } from '../utils/discount'
 
 function fieldClass(hasError) {
   return `w-full rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
@@ -58,6 +59,7 @@ export default function CheckoutAddressForm({
       onClearError('street')
       onClearError('city')
       onClearError('state')
+      onClearError('neighborhood')
       onClearError('zipCode')
     } catch {
       setCepLookupError('Não foi possível buscar o CEP. Tente novamente.')
@@ -105,7 +107,8 @@ export default function CheckoutAddressForm({
           <p className="mt-1 text-xs text-amber-700">{cepLookupError}</p>
         )}
         <p className="mt-1 text-xs text-gray-500">
-          Logradouro, cidade e estado são preenchidos automaticamente via ViaCEP.
+          Logradouro, bairro, cidade e estado são preenchidos automaticamente via
+          ViaCEP.
         </p>
       </div>
 
@@ -176,6 +179,37 @@ export default function CheckoutAddressForm({
             className={fieldClass(false)}
           />
         </div>
+      </div>
+
+      <div>
+        <label
+          htmlFor="neighborhood"
+          className="mb-1 block text-sm font-medium text-gray-700"
+        >
+          Bairro <span className="text-red-500">*</span>
+        </label>
+        <input
+          id="neighborhood"
+          type="text"
+          autoComplete="address-level3"
+          value={neighborhood}
+          onChange={(e) => {
+            onNeighborhoodChange(e.target.value)
+            onClearError('neighborhood')
+          }}
+          placeholder="Bairro"
+          required
+          aria-invalid={Boolean(fieldErrors.neighborhood)}
+          className={fieldClass(fieldErrors.neighborhood)}
+        />
+        {fieldErrors.neighborhood && (
+          <p className="mt-1 text-xs text-red-600">{fieldErrors.neighborhood}</p>
+        )}
+        {isParqueCecapNeighborhood(neighborhood) && (
+          <p className="mt-1 text-xs font-medium text-emerald-700">
+            Desconto de 10% aplicado para moradores do Parque Cecap.
+          </p>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-3">

@@ -105,6 +105,10 @@ export function validateCheckoutFields({
     errors.state = 'Informe o estado (UF com 2 letras)'
   }
 
+  if (!trimmedNeighborhood) {
+    errors.neighborhood = 'Informe o bairro'
+  }
+
   if (sameDeliveryAddress !== true && sameDeliveryAddress !== false) {
     errors.sameDeliveryAddress =
       'Marque se o endereço de entrega é o mesmo ou informe outro endereço'

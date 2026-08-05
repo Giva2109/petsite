@@ -1,5 +1,30 @@
 import { WHATSAPP_NUMBER } from '../config/constants'
 import { formatCurrency } from './currency'
+import { calculateOrderTotals } from './discount'
+
+function formatOrderTotalLines({ items, neighborhood = '' }) {
+  const hasUnknownPrice = items.some(({ product }) => product.price == null)
+
+  if (hasUnknownPrice) {
+    return '*Total:* A combinar — aguardo cotação'
+  }
+
+  const totals = calculateOrderTotals(
+    items.reduce(
+      (sum, { product, quantity }) => sum + product.price * quantity,
+      0
+    ),
+    neighborhood
+  )
+
+  if (totals.hasDiscount) {
+    return `*Subtotal:* ${formatCurrency(totals.subtotal)}
+*Desconto Parque Cecap (10%):* - ${formatCurrency(totals.discountAmount)}
+*Total:* ${formatCurrency(totals.total)}`
+  }
+
+  return `*Total:* ${formatCurrency(totals.total)}`
+}
 
 function formatItemLine({ product, quantity }) {
   const priceLabel =
@@ -18,24 +43,17 @@ export function buildOrderMessage({
   customerName = '',
   phone = '',
   address = '',
+  neighborhood = '',
 }) {
   const itemLines = items.map(formatItemLine).join('\n')
-
-  const hasUnknownPrice = items.some(({ product }) => product.price == null)
-
-  const total = hasUnknownPrice
-    ? null
-    : items.reduce(
-        (sum, { product, quantity }) => sum + product.price * quantity,
-        0
-      )
+  const totalLines = formatOrderTotalLines({ items, neighborhood })
 
   let message = `Olá! Gostaria de fazer o seguinte pedido:
 
 *Itens:*
 ${itemLines}
 
-*Total:* ${total != null ? formatCurrency(total) : 'A combinar — aguardo cotação'}`
+${totalLines}`
 
   if (customerName.trim()) {
     message += `\n\n*Cliente:* ${customerName.trim()}`
@@ -49,11 +67,15 @@ ${itemLines}
     message += `\n*Endereço:* ${address.trim()}`
   }
 
-  message += hasUnknownPrice
+  message += hasUnknownPrice(items)
     ? '\n\nAguardo cotação dos valores e confirmação de disponibilidade. Obrigado!'
     : '\n\nAguardo as orientações para o pagamento via PIX / QR Code!'
 
   return message
+}
+
+function hasUnknownPrice(items) {
+  return items.some(({ product }) => product.price == null)
 }
 
 /**
@@ -81,17 +103,26 @@ export function buildPaymentConfirmationMessage({
   phone = '',
   address = '',
   totalAmount,
+  subtotalAmount,
+  discountAmount = 0,
   paymentId = '',
   paymentMethod = 'Mercado Pago',
 }) {
   const itemLines = items.map(formatItemLine).join('\n')
+
+  let totalLines = `*Total pago:* ${formatCurrency(totalAmount)}`
+  if (discountAmount > 0 && subtotalAmount != null) {
+    totalLines = `*Subtotal:* ${formatCurrency(subtotalAmount)}
+*Desconto Parque Cecap (10%):* - ${formatCurrency(discountAmount)}
+*Total pago:* ${formatCurrency(totalAmount)}`
+  }
 
   let message = `Olá! Acabei de realizar o pagamento do meu pedido:
 
 *Itens:*
 ${itemLines}
 
-*Total pago:* ${formatCurrency(totalAmount)}`
+${totalLines}`
 
   if (customerName.trim()) {
     message += `\n\n*Cliente:* ${customerName.trim()}`

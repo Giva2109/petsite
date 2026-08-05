@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   X,
   Minus,
@@ -15,6 +15,7 @@ import { saveOrder } from '../utils/ordersApi'
 import { createIdempotencyKey } from '../utils/idempotency'
 import { validateCheckoutFields, formatDeliveryAddress } from '../utils/checkoutForm'
 import { getCheckoutAction } from '../utils/checkoutFlow'
+import { calculateOrderTotals } from '../utils/discount'
 import CheckoutAddressForm from './CheckoutAddressForm'
 import PaymentCheckout from './PaymentCheckout'
 import PixPaymentModal from './PixPaymentModal'
@@ -26,6 +27,7 @@ const EMPTY_FIELD_ERRORS = {
   zipCode: '',
   street: '',
   streetNumber: '',
+  neighborhood: '',
   city: '',
   state: '',
   sameDeliveryAddress: '',
@@ -57,6 +59,11 @@ export default function CartDrawer({ isOpen, onClose }) {
   const pendingWhatsAppRef = useRef(null)
 
   const checkoutAction = getCheckoutAction(items)
+
+  const orderTotals = useMemo(
+    () => calculateOrderTotals(totalPrice, neighborhood),
+    [totalPrice, neighborhood]
+  )
 
   useEffect(() => {
     if (isOpen) {
@@ -139,7 +146,7 @@ export default function CartDrawer({ isOpen, onClose }) {
         ...values,
         idempotencyKey: idempotencyKeyRef.current,
         channel,
-        totalAmount: totalPrice,
+        totalAmount: orderTotals.total,
       })
       return { ...values, orderId: saved.id }
     } catch (error) {
@@ -162,6 +169,7 @@ export default function CartDrawer({ isOpen, onClose }) {
       customerName: saved.customerName,
       phone: saved.phone,
       address: saved.deliveryAddress,
+      neighborhood: saved.neighborhood,
     })
 
     resetCheckoutForm()
@@ -211,7 +219,10 @@ export default function CartDrawer({ isOpen, onClose }) {
       customerName,
       phone,
       address: resolvedDeliveryAddress,
-      totalAmount: totalPrice,
+      totalAmount: orderTotals.total,
+      subtotalAmount: orderTotals.subtotal,
+      discountPercent: orderTotals.discountPercent,
+      discountAmount: orderTotals.discountAmount,
       ...paymentInfo,
     }
     resetCheckoutSession()
@@ -450,16 +461,33 @@ export default function CartDrawer({ isOpen, onClose }) {
 
         {items.length > 0 && (
           <div className="border-t border-gray-100 px-5 py-4">
-            <div className="mb-4 flex items-center justify-between">
-              <span className="text-base font-medium text-gray-600">Total</span>
-              <span
-                className={`text-2xl font-bold ${
-                  totalPrice != null ? 'text-emerald-700' : 'text-amber-600'
-                }`}
-              >
-                {formatCurrency(totalPrice)}
-              </span>
-            </div>
+            {orderTotals.subtotal != null ? (
+              <div className="mb-4 space-y-2">
+                <div className="flex items-center justify-between text-sm text-gray-600">
+                  <span>Subtotal</span>
+                  <span>{formatCurrency(orderTotals.subtotal)}</span>
+                </div>
+                {orderTotals.hasDiscount && (
+                  <div className="flex items-center justify-between text-sm font-medium text-emerald-700">
+                    <span>Desconto Parque Cecap (10%)</span>
+                    <span>- {formatCurrency(orderTotals.discountAmount)}</span>
+                  </div>
+                )}
+                <div className="flex items-center justify-between border-t border-gray-100 pt-2">
+                  <span className="text-base font-medium text-gray-600">Total</span>
+                  <span className="text-2xl font-bold text-emerald-700">
+                    {formatCurrency(orderTotals.total)}
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className="mb-4 flex items-center justify-between">
+                <span className="text-base font-medium text-gray-600">Total</span>
+                <span className="text-2xl font-bold text-amber-600">
+                  {formatCurrency(orderTotals.total)}
+                </span>
+              </div>
+            )}
 
             {paymentError && (
               <p className="mb-3 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">
@@ -500,7 +528,7 @@ export default function CartDrawer({ isOpen, onClose }) {
           setIsPaymentOpen(false)
           resetCheckoutSession()
         }}
-        amount={totalPrice}
+        amount={orderTotals.total}
         items={items}
         customerName={customerName}
         phone={phone}
