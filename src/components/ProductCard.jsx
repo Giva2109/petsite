@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Minus, Plus, ShoppingBag } from 'lucide-react'
+import { Minus, Plus, ShoppingBag, MessageCircle } from 'lucide-react'
 import { formatCurrency } from '../utils/currency'
+import { openWhatsAppAvailability } from '../utils/whatsapp'
 
 export default function ProductCard({ product, onAddToCart }) {
   const [quantity, setQuantity] = useState(1)
@@ -21,6 +22,10 @@ export default function ProductCard({ product, onAddToCart }) {
   const handleAdd = () => {
     onAddToCart(product, quantity)
     setQuantity(1)
+  }
+
+  const handleAvailability = () => {
+    openWhatsAppAvailability({ product })
   }
 
   return (
@@ -115,6 +120,15 @@ export default function ProductCard({ product, onAddToCart }) {
         >
           <ShoppingBag className="h-5 w-5" aria-hidden="true" />
           Adicionar ao Pedido
+        </button>
+
+        <button
+          type="button"
+          onClick={handleAvailability}
+          className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-green-200 bg-green-50 py-2.5 text-sm font-semibold text-green-700 transition hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
+        >
+          <MessageCircle className="h-4 w-4" aria-hidden="true" />
+          Consultar disponibilidade
         </button>
       </div>
     </article>

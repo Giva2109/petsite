@@ -10,10 +10,11 @@ import {
 } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
 import { formatCurrency } from '../utils/currency'
-import { openWhatsAppOrder } from '../utils/whatsapp'
+import { openWhatsAppOrder, openWhatsAppPaymentConfirmation } from '../utils/whatsapp'
 import { saveOrder } from '../utils/ordersApi'
 import { createIdempotencyKey } from '../utils/idempotency'
 import { validateCheckoutFields, formatDeliveryAddress } from '../utils/checkoutForm'
+import { getCheckoutAction } from '../utils/checkoutFlow'
 import CheckoutAddressForm from './CheckoutAddressForm'
 import PaymentCheckout from './PaymentCheckout'
 import PixPaymentModal from './PixPaymentModal'
@@ -54,7 +55,7 @@ export default function CartDrawer({ isOpen, onClose }) {
   const checkoutInFlightRef = useRef(false)
   const idempotencyKeyRef = useRef(null)
 
-  const canPayOnline = totalPrice != null && totalPrice > 0
+  const checkoutAction = getCheckoutAction(items)
 
   useEffect(() => {
     if (isOpen) {
@@ -177,6 +178,40 @@ export default function CartDrawer({ isOpen, onClose }) {
     setIsPaymentOpen(true)
   }
 
+  const handleFinalizeOrder = async () => {
+    if (items.length === 0 || checkoutInFlightRef.current) return
+
+    if (checkoutAction.mode === 'online') {
+      await handleOpenPayment()
+      return
+    }
+
+    await handleWhatsAppCheckout()
+  }
+
+  const resolvedDeliveryAddress = sameDeliveryAddress
+    ? formatDeliveryAddress({
+        street,
+        streetNumber,
+        complement,
+        neighborhood,
+        city,
+        state,
+        zipCode,
+      })
+    : deliveryAddress
+
+  const notifyPaymentViaWhatsApp = (paymentInfo) => {
+    openWhatsAppPaymentConfirmation({
+      items,
+      customerName,
+      phone,
+      address: resolvedDeliveryAddress,
+      totalAmount: totalPrice,
+      ...paymentInfo,
+    })
+  }
+
   const resetCheckoutForm = () => {
     setCustomerName('')
     setPhone('')
@@ -193,23 +228,12 @@ export default function CartDrawer({ isOpen, onClose }) {
     setCheckoutError('')
   }
 
-  const handlePaymentSuccess = () => {
+  const handlePaymentSuccess = (paymentInfo = {}) => {
+    notifyPaymentViaWhatsApp(paymentInfo)
     clearCart()
     resetCheckoutForm()
     resetCheckoutSession()
   }
-
-  const resolvedDeliveryAddress = sameDeliveryAddress
-    ? formatDeliveryAddress({
-        street,
-        streetNumber,
-        complement,
-        neighborhood,
-        city,
-        state,
-        zipCode,
-      })
-    : deliveryAddress
 
   return (
     <>
@@ -441,31 +465,22 @@ export default function CartDrawer({ isOpen, onClose }) {
               </p>
             )}
 
-            {canPayOnline ? (
-              <button
-                type="button"
-                onClick={handleOpenPayment}
-                disabled={isSavingOrder}
-                className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl bg-sky-600 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                <CreditCard className="h-5 w-5" aria-hidden="true" />
-                Pagar com Mercado Pago
-              </button>
-            ) : (
-              <p className="mb-3 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800">
-                Pagamento online disponível quando todos os itens tiverem preço
-                definido. Use o WhatsApp para pedidos sob consulta.
-              </p>
-            )}
+            <p className="mb-3 rounded-xl bg-gray-50 px-3 py-2 text-xs text-gray-600">
+              {checkoutAction.hint}
+            </p>
 
             <button
               type="button"
-              onClick={handleWhatsAppCheckout}
+              onClick={handleFinalizeOrder}
               disabled={isSavingOrder}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 py-3.5 text-base font-bold text-white shadow-lg transition hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
+              className={`flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-base font-bold text-white shadow-lg transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${checkoutAction.buttonClass}`}
             >
-              <MessageCircle className="h-5 w-5" aria-hidden="true" />
-              {isSavingOrder ? 'Salvando pedido...' : 'Finalizar via WhatsApp'}
+              {checkoutAction.mode === 'online' ? (
+                <CreditCard className="h-5 w-5" aria-hidden="true" />
+              ) : (
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+              )}
+              {isSavingOrder ? 'Salvando pedido...' : checkoutAction.label}
             </button>
           </div>
         )}
@@ -484,11 +499,17 @@ export default function CartDrawer({ isOpen, onClose }) {
         address={resolvedDeliveryAddress}
         onPixResult={(result) => {
           setPixResult(result)
-          handlePaymentSuccess()
+          handlePaymentSuccess({
+            paymentId: result.paymentId,
+            paymentMethod: 'PIX (Mercado Pago — aguardando confirmação)',
+          })
         }}
         onCardApproved={(result) => {
           setSuccessResult(result)
-          handlePaymentSuccess()
+          handlePaymentSuccess({
+            paymentId: result.paymentId,
+            paymentMethod: 'Cartão (Mercado Pago — aprovado)',
+          })
         }}
         onError={(message) => setPaymentError(message)}
       />
