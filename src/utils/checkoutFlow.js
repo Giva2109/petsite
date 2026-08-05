@@ -18,7 +18,7 @@ export function getCheckoutAction(items) {
       mode: 'online',
       label: 'Finalizar pedido',
       channel: 'MERCADOPAGO',
-      hint: 'Pagamento via Pix ou cartão. Após confirmar, enviaremos os detalhes pelo WhatsApp.',
+      hint: 'Pagamento via Pix ou cartão. Após concluir o pagamento, o WhatsApp abrirá para você enviar a confirmação.',
       buttonClass:
         'bg-emerald-600 hover:bg-emerald-700 focus:ring-emerald-400',
     }

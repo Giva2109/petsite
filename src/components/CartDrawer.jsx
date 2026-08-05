@@ -54,6 +54,7 @@ export default function CartDrawer({ isOpen, onClose }) {
   const [fieldErrors, setFieldErrors] = useState(EMPTY_FIELD_ERRORS)
   const checkoutInFlightRef = useRef(false)
   const idempotencyKeyRef = useRef(null)
+  const pendingWhatsAppRef = useRef(null)
 
   const checkoutAction = getCheckoutAction(items)
 
@@ -201,15 +202,29 @@ export default function CartDrawer({ isOpen, onClose }) {
       })
     : deliveryAddress
 
-  const notifyPaymentViaWhatsApp = (paymentInfo) => {
-    openWhatsAppPaymentConfirmation({
-      items,
+  const capturePaymentForWhatsApp = (paymentInfo) => {
+    pendingWhatsAppRef.current = {
+      items: items.map(({ product, quantity }) => ({
+        product: { ...product },
+        quantity,
+      })),
       customerName,
       phone,
       address: resolvedDeliveryAddress,
       totalAmount: totalPrice,
       ...paymentInfo,
-    })
+    }
+    resetCheckoutSession()
+  }
+
+  const finalizePostPayment = () => {
+    const pending = pendingWhatsAppRef.current
+    if (pending) {
+      openWhatsAppPaymentConfirmation(pending)
+      pendingWhatsAppRef.current = null
+    }
+    clearCart()
+    resetCheckoutForm()
   }
 
   const resetCheckoutForm = () => {
@@ -226,13 +241,6 @@ export default function CartDrawer({ isOpen, onClose }) {
     setDeliveryAddress('')
     setFieldErrors(EMPTY_FIELD_ERRORS)
     setCheckoutError('')
-  }
-
-  const handlePaymentSuccess = (paymentInfo = {}) => {
-    notifyPaymentViaWhatsApp(paymentInfo)
-    clearCart()
-    resetCheckoutForm()
-    resetCheckoutSession()
   }
 
   return (
@@ -498,18 +506,18 @@ export default function CartDrawer({ isOpen, onClose }) {
         phone={phone}
         address={resolvedDeliveryAddress}
         onPixResult={(result) => {
-          setPixResult(result)
-          handlePaymentSuccess({
+          capturePaymentForWhatsApp({
             paymentId: result.paymentId,
             paymentMethod: 'PIX (Mercado Pago — aguardando confirmação)',
           })
+          setPixResult(result)
         }}
         onCardApproved={(result) => {
-          setSuccessResult(result)
-          handlePaymentSuccess({
+          capturePaymentForWhatsApp({
             paymentId: result.paymentId,
             paymentMethod: 'Cartão (Mercado Pago — aprovado)',
           })
+          setSuccessResult(result)
         }}
         onError={(message) => setPaymentError(message)}
       />
@@ -518,7 +526,10 @@ export default function CartDrawer({ isOpen, onClose }) {
         <PixPaymentModal
           pix={pixResult.pix}
           amount={pixResult.amount}
-          onClose={() => setPixResult(null)}
+          onClose={() => {
+            setPixResult(null)
+            finalizePostPayment()
+          }}
         />
       )}
 
@@ -526,7 +537,10 @@ export default function CartDrawer({ isOpen, onClose }) {
         <PaymentSuccess
           amount={successResult.amount}
           paymentId={successResult.paymentId}
-          onClose={() => setSuccessResult(null)}
+          onClose={() => {
+            setSuccessResult(null)
+            finalizePostPayment()
+          }}
         />
       )}
     </>

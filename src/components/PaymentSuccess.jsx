@@ -30,15 +30,15 @@ export default function PaymentSuccess({ amount, paymentId, onClose }) {
           <p className="mt-2 text-sm text-gray-500">ID: {paymentId}</p>
         )}
         <p className="mt-4 text-sm text-gray-600">
-          Obrigado pela sua compra. Em breve entraremos em contato sobre a
-          entrega.
+          Obrigado pela sua compra. Ao continuar, você será direcionado ao
+          WhatsApp para enviar a confirmação do pedido.
         </p>
         <button
           type="button"
           onClick={onClose}
           className="mt-6 w-full rounded-xl bg-emerald-600 py-3 font-semibold text-white hover:bg-emerald-700"
         >
-          Continuar comprando
+          Enviar confirmação e continuar
         </button>
       </div>
     </div>

@@ -75,7 +75,9 @@ export default function PixPaymentModal({ pix, amount, onClose }) {
         </button>
 
         <p className="mt-4 text-center text-xs text-gray-500">
-          Após o pagamento, a confirmação pode levar alguns instantes.
+          Após o pagamento, a confirmação pode levar alguns instantes. Ao fechar
+          esta tela, você será direcionado ao WhatsApp para enviar a confirmação
+          do pedido.
         </p>
       </div>
     </div>
