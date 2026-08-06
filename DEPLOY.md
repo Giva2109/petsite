@@ -1,5 +1,8 @@
 # Deploy UniPet — resumo
 
+**Site em produção:** https://unipet1.com  
+**Alternativo:** https://unipet1.netlify.app
+
 ## Backend (Fly.io + Supabase)
 
 Guia completo: [petsite-api/DEPLOY.md](../petsite-api/DEPLOY.md)
@@ -20,6 +23,15 @@ VITE_API_URL=https://unipet-api.fly.dev
 ```
 
 Depois: **Trigger deploy**.
+
+### Domínio customizado
+
+1. Netlify → **Domain management** → adicionar `unipet1.com` e `www.unipet1.com`
+2. Configurar DNS no registrador do domínio
+3. Atualizar CORS na API (ver `petsite-api/DEPLOY.md` — Passo 6)
+4. Mercado Pago: autorizar `unipet1.com` no painel do desenvolvedor
+
+As variáveis `VITE_*` **não precisam mudar** ao trocar o domínio.
 
 ## Supabase
 

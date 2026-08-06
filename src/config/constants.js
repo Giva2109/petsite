@@ -6,6 +6,7 @@ export const WHATSAPP_NUMBER =
   import.meta.env.VITE_WHATSAPP_NUMBER || '5511942232220'
 
 export const STORE_NAME = 'UniPet'
+export const STORE_URL = 'https://unipet1.com'
 export const STORE_TAGLINE =
   'Catálogo 2026 — rações e acessórios para cães e gatos'
 

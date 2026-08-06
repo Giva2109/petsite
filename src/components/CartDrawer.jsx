@@ -531,7 +531,7 @@ export default function CartDrawer({ isOpen, onClose }) {
         amount={orderTotals.total}
         items={items}
         customerName={customerName}
-        phone={phone}
+        neighborhood={neighborhood}
         address={resolvedDeliveryAddress}
         onPixResult={(result) => {
           capturePaymentForWhatsApp({

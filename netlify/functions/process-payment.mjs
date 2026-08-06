@@ -28,6 +28,34 @@ function calculateOrderTotal(items = []) {
   }, 0)
 }
 
+function normalizeNeighborhood(value = '') {
+  return value
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+}
+
+function isParqueCecapNeighborhood(neighborhood) {
+  return normalizeNeighborhood(neighborhood) === 'parque cecap'
+}
+
+function roundMoney(value) {
+  return Math.round(value * 100) / 100
+}
+
+function calculateExpectedTotal(items, neighborhood = '') {
+  const subtotal = calculateOrderTotal(items)
+  if (subtotal == null) return null
+
+  if (!isParqueCecapNeighborhood(neighborhood)) {
+    return roundMoney(subtotal)
+  }
+
+  const discount = roundMoney(subtotal * 0.1)
+  return roundMoney(subtotal - discount)
+}
+
 function buildDescription(items = []) {
   if (!items.length) return 'Pedido UniPet'
 
@@ -63,7 +91,8 @@ export const handler = async (event) => {
     return jsonResponse(400, { success: false, message: 'JSON inválido.' })
   }
 
-  const { formData, items = [], customerName = '', address = '' } = payload
+  const { formData, items = [], customerName = '', address = '', neighborhood = '' } =
+    payload
 
   if (!formData || formData.transaction_amount == null) {
     return jsonResponse(400, {
@@ -73,7 +102,7 @@ export const handler = async (event) => {
   }
 
   try {
-    const expectedTotal = calculateOrderTotal(items)
+    const expectedTotal = calculateExpectedTotal(items, neighborhood)
     const amount = Number(formData.transaction_amount)
 
     if (expectedTotal != null && Math.abs(expectedTotal - amount) > 0.01) {

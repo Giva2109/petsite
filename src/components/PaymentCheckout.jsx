@@ -20,16 +20,19 @@ export default function PaymentCheckout({
   items,
   customerName,
   address,
+  neighborhood = '',
   onPixResult,
   onCardApproved,
   onError,
 }) {
   const [isProcessing, setIsProcessing] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   useEffect(() => {
     if (isOpen) {
       ensureMercadoPagoInit()
       document.body.style.overflow = 'hidden'
+      setSubmitError('')
     } else {
       document.body.style.overflow = ''
     }
@@ -62,12 +65,14 @@ export default function PaymentCheckout({
 
   const handleSubmit = async ({ formData }) => {
     setIsProcessing(true)
+    setSubmitError('')
     try {
       const result = await processPayment({
         formData,
         items,
         customerName,
         address,
+        neighborhood,
       })
 
       if (result.pix) {
@@ -83,13 +88,20 @@ export default function PaymentCheckout({
       }
 
       if (result.status === 'pending' || result.status === 'in_process') {
-        onError?.('Pagamento em processamento. Aguarde a confirmação.')
+        const message =
+          'Pagamento em processamento. Aguarde a confirmação.'
+        setSubmitError(message)
+        onError?.(message)
         return
       }
 
-      onError?.('Pagamento não aprovado. Tente outro método.')
+      const message = 'Pagamento não aprovado. Tente outro método.'
+      setSubmitError(message)
+      onError?.(message)
     } catch (error) {
-      onError?.(error.message)
+      const message = error.message || 'Não foi possível processar o pagamento.'
+      setSubmitError(message)
+      onError?.(message)
     } finally {
       setIsProcessing(false)
     }
@@ -120,6 +132,12 @@ export default function PaymentCheckout({
         </div>
 
         <div className="overflow-y-auto px-4 py-4">
+          {submitError && (
+            <p className="mb-3 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-700">
+              {submitError}
+            </p>
+          )}
+
           {isProcessing && (
             <div className="mb-3 flex items-center gap-2 rounded-xl bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
               <Loader2 className="h-4 w-4 animate-spin" />
@@ -128,6 +146,7 @@ export default function PaymentCheckout({
           )}
 
           <Payment
+            key={`payment-${Number(amount)}`}
             initialization={{
               amount: Number(amount),
             }}
