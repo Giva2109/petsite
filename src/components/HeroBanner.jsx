@@ -1,6 +1,8 @@
-import { STORE_NAME, STORE_TAGLINE } from '../config/constants'
+import { useTenant } from '../context/TenantContext'
 
 export default function HeroBanner() {
+  const { tenant } = useTenant()
+
   return (
     <section className="mb-10 overflow-hidden rounded-3xl border-2 border-teal-600 shadow-xl lg:flex lg:items-stretch">
       {/* Texto — lado esquerdo */}
@@ -9,10 +11,10 @@ export default function HeroBanner() {
           Catálogo 2026 · Pedido via WhatsApp
         </p>
         <h1 className="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
-          {STORE_NAME}
+          {tenant.name}
         </h1>
         <p className="mt-4 max-w-lg text-sm leading-relaxed text-emerald-50/95 sm:text-base lg:text-lg">
-          {STORE_TAGLINE}. Navegue pelo catálogo completo, monte seu pedido e
+          {tenant.tagline}. Navegue pelo catálogo completo, monte seu pedido e
           finalize pelo WhatsApp com cotação de preços, pagamento via Cartão de crédito ou PIX.
         </p>
       </div>
@@ -20,8 +22,8 @@ export default function HeroBanner() {
       {/* Logotipo — lado direito */}
       <div className="flex flex-1 items-center justify-center self-stretch bg-[#faf7f2] p-2 sm:p-3">
         <img
-          src="/logo.webp"
-          alt={`${STORE_NAME} — Cães, Gatos e Companhia`}
+          src={tenant.logoUrl || '/logo.webp'}
+          alt={`${tenant.name} — Cães, Gatos e Companhia`}
           className="h-auto w-[98%] max-w-none object-contain sm:w-[97%] lg:max-h-[96%] lg:w-[98%]"
           width={1024}
           height={576}

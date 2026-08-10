@@ -8,6 +8,14 @@ export function normalizeNeighborhood(value = '') {
     .replace(/[\u0300-\u036f]/g, '')
 }
 
+export function isEligibleNeighborhood(neighborhood, configuredNeighborhood) {
+  if (!configuredNeighborhood?.trim()) return false
+  return (
+    normalizeNeighborhood(neighborhood) ===
+    normalizeNeighborhood(configuredNeighborhood)
+  )
+}
+
 export function isParqueCecapNeighborhood(neighborhood) {
   return normalizeNeighborhood(neighborhood) === 'parque cecap'
 }
@@ -17,11 +25,13 @@ function roundMoney(value) {
 }
 
 /**
- * Calcula subtotal, desconto e total com base no bairro.
- * @param {number | null | undefined} subtotal
- * @param {string} neighborhood
+ * Calcula subtotal, desconto e total com base no bairro e configurações da loja.
  */
-export function calculateOrderTotals(subtotal, neighborhood = '') {
+export function calculateOrderTotals(
+  subtotal,
+  neighborhood = '',
+  settings = {}
+) {
   if (subtotal == null || Number.isNaN(subtotal)) {
     return {
       subtotal: null,
@@ -32,8 +42,11 @@ export function calculateOrderTotals(subtotal, neighborhood = '') {
     }
   }
 
-  const hasDiscount = isParqueCecapNeighborhood(neighborhood)
-  const discountPercent = hasDiscount ? PARQUE_CECAP_DISCOUNT_PERCENT : 0
+  const discountPercent = Number(settings.discountPercent || 0)
+  const hasDiscount =
+    discountPercent > 0 &&
+    isEligibleNeighborhood(neighborhood, settings.discountNeighborhood)
+
   const discountAmount = hasDiscount
     ? roundMoney(subtotal * (discountPercent / 100))
     : 0
@@ -41,7 +54,7 @@ export function calculateOrderTotals(subtotal, neighborhood = '') {
 
   return {
     subtotal,
-    discountPercent,
+    discountPercent: hasDiscount ? discountPercent : 0,
     discountAmount,
     total,
     hasDiscount,

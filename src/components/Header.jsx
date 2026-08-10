@@ -1,5 +1,6 @@
 import { Search, ShoppingCart } from 'lucide-react'
-import { STORE_NAME } from '../config/constants'
+import { Link } from 'react-router-dom'
+import { useTenant } from '../context/TenantContext'
 import CategoryFilter from './CategoryFilter'
 import LineFilter from './LineFilter'
 import LifeStageFilter from './LifeStageFilter'
@@ -22,19 +23,21 @@ export default function Header({
   cartCount,
   onCartOpen,
 }) {
+  const { tenant } = useTenant()
+
   return (
     <header className="sticky top-0 z-40 border-b border-emerald-100 bg-white/95 shadow-sm backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-3">
-          <a href="#" className="flex shrink-0 items-center gap-2">
+          <Link to="/" className="flex shrink-0 items-center gap-2">
             <BrandIcon size="md" />
             <div className="hidden sm:block">
               <p className="text-lg font-bold leading-tight text-emerald-900">
-                {STORE_NAME}
+                {tenant.name}
               </p>
               <p className="text-xs text-emerald-600">Catálogo 2026</p>
             </div>
-          </a>
+          </Link>
 
           <div className="relative flex-1 max-w-md">
             <Search

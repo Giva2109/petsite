@@ -21,6 +21,8 @@ export default function PaymentCheckout({
   customerName,
   address,
   neighborhood = '',
+  discountNeighborhood = '',
+  discountPercent = 0,
   onPixResult,
   onCardApproved,
   onError,
@@ -73,6 +75,8 @@ export default function PaymentCheckout({
         customerName,
         address,
         neighborhood,
+        discountNeighborhood,
+        discountPercent,
       })
 
       if (result.pix) {

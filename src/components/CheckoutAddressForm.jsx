@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Loader2 } from 'lucide-react'
 import { fetchAddressByCep, formatCepDisplay } from '../utils/viaCep'
-import { isParqueCecapNeighborhood } from '../utils/discount'
+import { isEligibleNeighborhood } from '../utils/discount'
+import { useTenant } from '../context/TenantContext'
 
 function fieldClass(hasError) {
   return `w-full rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
@@ -35,6 +36,7 @@ export default function CheckoutAddressForm({
 }) {
   const [isLoadingCep, setIsLoadingCep] = useState(false)
   const [cepLookupError, setCepLookupError] = useState('')
+  const { settings } = useTenant()
 
   const handleCepBlur = async () => {
     const digits = zipCode.replace(/\D/g, '')
@@ -205,9 +207,11 @@ export default function CheckoutAddressForm({
         {fieldErrors.neighborhood && (
           <p className="mt-1 text-xs text-red-600">{fieldErrors.neighborhood}</p>
         )}
-        {isParqueCecapNeighborhood(neighborhood) && (
+        {isEligibleNeighborhood(neighborhood, settings.discountNeighborhood) &&
+          settings.discountPercent > 0 && (
           <p className="mt-1 text-xs font-medium text-emerald-700">
-            Desconto de 10% aplicado para moradores do Parque Cecap.
+            Desconto de {settings.discountPercent}% aplicado para moradores de{' '}
+            {settings.discountNeighborhood}.
           </p>
         )}
       </div>

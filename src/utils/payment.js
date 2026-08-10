@@ -9,6 +9,8 @@ export async function processPayment({
   customerName = '',
   address = '',
   neighborhood = '',
+  discountNeighborhood = '',
+  discountPercent = 0,
 }) {
   const response = await fetch(PAYMENT_ENDPOINT, {
     method: 'POST',
@@ -19,6 +21,8 @@ export async function processPayment({
       customerName,
       address,
       neighborhood,
+      discountNeighborhood,
+      discountPercent,
     }),
   })
 

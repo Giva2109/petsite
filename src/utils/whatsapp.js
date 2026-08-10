@@ -2,7 +2,7 @@ import { WHATSAPP_NUMBER } from '../config/constants'
 import { formatCurrency } from './currency'
 import { calculateOrderTotals } from './discount'
 
-function formatOrderTotalLines({ items, neighborhood = '' }) {
+function formatOrderTotalLines({ items, neighborhood = '', settings = {} }) {
   const hasUnknownPrice = items.some(({ product }) => product.price == null)
 
   if (hasUnknownPrice) {
@@ -14,12 +14,13 @@ function formatOrderTotalLines({ items, neighborhood = '' }) {
       (sum, { product, quantity }) => sum + product.price * quantity,
       0
     ),
-    neighborhood
+    neighborhood,
+    settings
   )
 
   if (totals.hasDiscount) {
     return `*Subtotal:* ${formatCurrency(totals.subtotal)}
-*Desconto Parque Cecap (10%):* - ${formatCurrency(totals.discountAmount)}
+*Desconto ${settings.discountNeighborhood || 'bairro'} (${totals.discountPercent}%):* - ${formatCurrency(totals.discountAmount)}
 *Total:* ${formatCurrency(totals.total)}`
   }
 
@@ -44,9 +45,10 @@ export function buildOrderMessage({
   phone = '',
   address = '',
   neighborhood = '',
+  settings = {},
 }) {
   const itemLines = items.map(formatItemLine).join('\n')
-  const totalLines = formatOrderTotalLines({ items, neighborhood })
+  const totalLines = formatOrderTotalLines({ items, neighborhood, settings })
 
   let message = `Olá! Gostaria de fazer o seguinte pedido:
 
@@ -105,6 +107,7 @@ export function buildPaymentConfirmationMessage({
   totalAmount,
   subtotalAmount,
   discountAmount = 0,
+  discountPercent = 0,
   paymentId = '',
   paymentMethod = 'Mercado Pago',
 }) {
@@ -113,7 +116,7 @@ export function buildPaymentConfirmationMessage({
   let totalLines = `*Total pago:* ${formatCurrency(totalAmount)}`
   if (discountAmount > 0 && subtotalAmount != null) {
     totalLines = `*Subtotal:* ${formatCurrency(subtotalAmount)}
-*Desconto Parque Cecap (10%):* - ${formatCurrency(discountAmount)}
+*Desconto (${discountPercent || 10}%):* - ${formatCurrency(discountAmount)}
 *Total pago:* ${formatCurrency(totalAmount)}`
   }
 

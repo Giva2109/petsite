@@ -15,6 +15,7 @@ function buildOrderPayload({
   deliveryAddress,
   idempotencyKey,
   channel,
+  tenantSlug,
   totalAmount,
 }) {
   return {
@@ -31,6 +32,7 @@ function buildOrderPayload({
     deliveryAddress,
     idempotencyKey,
     channel,
+    tenantSlug: tenantSlug || null,
     totalAmount,
     items: items.map(({ product, quantity }) => ({
       productId: product.id,

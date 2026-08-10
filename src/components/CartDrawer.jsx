@@ -16,6 +16,7 @@ import { createIdempotencyKey } from '../utils/idempotency'
 import { validateCheckoutFields, formatDeliveryAddress } from '../utils/checkoutForm'
 import { getCheckoutAction } from '../utils/checkoutFlow'
 import { calculateOrderTotals } from '../utils/discount'
+import { useTenant } from '../context/TenantContext'
 import CheckoutAddressForm from './CheckoutAddressForm'
 import PaymentCheckout from './PaymentCheckout'
 import PixPaymentModal from './PixPaymentModal'
@@ -36,6 +37,7 @@ const EMPTY_FIELD_ERRORS = {
 
 export default function CartDrawer({ isOpen, onClose }) {
   const { items, updateQuantity, removeItem, totalPrice, clearCart } = useCart()
+  const { tenant, settings } = useTenant()
   const [customerName, setCustomerName] = useState('')
   const [phone, setPhone] = useState('')
   const [zipCode, setZipCode] = useState('')
@@ -61,8 +63,8 @@ export default function CartDrawer({ isOpen, onClose }) {
   const checkoutAction = getCheckoutAction(items)
 
   const orderTotals = useMemo(
-    () => calculateOrderTotals(totalPrice, neighborhood),
-    [totalPrice, neighborhood]
+    () => calculateOrderTotals(totalPrice, neighborhood, settings),
+    [totalPrice, neighborhood, settings]
   )
 
   useEffect(() => {
@@ -146,6 +148,7 @@ export default function CartDrawer({ isOpen, onClose }) {
         ...values,
         idempotencyKey: idempotencyKeyRef.current,
         channel,
+        tenantSlug: tenant.slug,
         totalAmount: orderTotals.total,
       })
       return { ...values, orderId: saved.id }
@@ -170,6 +173,7 @@ export default function CartDrawer({ isOpen, onClose }) {
       phone: saved.phone,
       address: saved.deliveryAddress,
       neighborhood: saved.neighborhood,
+      settings,
     })
 
     resetCheckoutForm()
@@ -469,7 +473,10 @@ export default function CartDrawer({ isOpen, onClose }) {
                 </div>
                 {orderTotals.hasDiscount && (
                   <div className="flex items-center justify-between text-sm font-medium text-emerald-700">
-                    <span>Desconto Parque Cecap (10%)</span>
+                    <span>
+                      Desconto {settings.discountNeighborhood} (
+                      {orderTotals.discountPercent}%)
+                    </span>
                     <span>- {formatCurrency(orderTotals.discountAmount)}</span>
                   </div>
                 )}
@@ -532,6 +539,8 @@ export default function CartDrawer({ isOpen, onClose }) {
         items={items}
         customerName={customerName}
         neighborhood={neighborhood}
+        discountNeighborhood={settings.discountNeighborhood || ''}
+        discountPercent={settings.discountPercent || 0}
         address={resolvedDeliveryAddress}
         onPixResult={(result) => {
           capturePaymentForWhatsApp({

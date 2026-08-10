@@ -1,9 +1,10 @@
 import { MessageCircle, Truck, Shield } from 'lucide-react'
-import { STORE_NAME, STORE_TAGLINE, WHATSAPP_NUMBER } from '../config/constants'
+import { useTenant } from '../context/TenantContext'
 import BrandIcon from './BrandIcon'
 
 export default function Footer() {
-  const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}`
+  const { tenant } = useTenant()
+  const whatsappLink = `https://wa.me/${tenant.whatsappNumber}`
 
   return (
     <footer className="mt-16 border-t border-emerald-100 bg-emerald-900 text-emerald-50">
@@ -12,9 +13,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2">
               <BrandIcon size="sm" />
-              <span className="text-lg font-bold">{STORE_NAME}</span>
+              <span className="text-lg font-bold">{tenant.name}</span>
             </div>
-            <p className="mt-3 text-sm text-emerald-200">{STORE_TAGLINE}</p>
+            <p className="mt-3 text-sm text-emerald-200">{tenant.tagline}</p>
           </div>
 
           <div>
@@ -54,7 +55,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-emerald-800 pt-6 text-center text-sm text-emerald-300">
-          © {new Date().getFullYear()} {STORE_NAME}. Todos os direitos reservados.
+          © {new Date().getFullYear()} {tenant.name}. Todos os direitos reservados.
         </div>
       </div>
     </footer>

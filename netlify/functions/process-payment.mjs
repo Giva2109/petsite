@@ -36,23 +36,36 @@ function normalizeNeighborhood(value = '') {
     .replace(/[\u0300-\u036f]/g, '')
 }
 
-function isParqueCecapNeighborhood(neighborhood) {
-  return normalizeNeighborhood(neighborhood) === 'parque cecap'
+function isEligibleNeighborhood(neighborhood, configuredNeighborhood = '') {
+  if (!configuredNeighborhood?.trim()) return false
+  return (
+    normalizeNeighborhood(neighborhood) ===
+    normalizeNeighborhood(configuredNeighborhood)
+  )
 }
 
 function roundMoney(value) {
   return Math.round(value * 100) / 100
 }
 
-function calculateExpectedTotal(items, neighborhood = '') {
+function calculateExpectedTotal(
+  items,
+  neighborhood = '',
+  discountSettings = {}
+) {
   const subtotal = calculateOrderTotal(items)
   if (subtotal == null) return null
 
-  if (!isParqueCecapNeighborhood(neighborhood)) {
+  const discountPercent = Number(discountSettings.discountPercent || 0)
+  const hasDiscount =
+    discountPercent > 0 &&
+    isEligibleNeighborhood(neighborhood, discountSettings.discountNeighborhood)
+
+  if (!hasDiscount) {
     return roundMoney(subtotal)
   }
 
-  const discount = roundMoney(subtotal * 0.1)
+  const discount = roundMoney(subtotal * (discountPercent / 100))
   return roundMoney(subtotal - discount)
 }
 
@@ -91,8 +104,15 @@ export const handler = async (event) => {
     return jsonResponse(400, { success: false, message: 'JSON inválido.' })
   }
 
-  const { formData, items = [], customerName = '', address = '', neighborhood = '' } =
-    payload
+  const {
+    formData,
+    items = [],
+    customerName = '',
+    address = '',
+    neighborhood = '',
+    discountNeighborhood = '',
+    discountPercent = 0,
+  } = payload
 
   if (!formData || formData.transaction_amount == null) {
     return jsonResponse(400, {
@@ -102,7 +122,10 @@ export const handler = async (event) => {
   }
 
   try {
-    const expectedTotal = calculateExpectedTotal(items, neighborhood)
+    const expectedTotal = calculateExpectedTotal(items, neighborhood, {
+      discountNeighborhood,
+      discountPercent,
+    })
     const amount = Number(formData.transaction_amount)
 
     if (expectedTotal != null && Math.abs(expectedTotal - amount) > 0.01) {

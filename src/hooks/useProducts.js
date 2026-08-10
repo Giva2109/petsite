@@ -1,12 +1,8 @@
 import { useMemo } from 'react'
-import productsData from '../data/products.json'
+import { useTenant } from '../context/TenantContext'
 import { buildWeightOptions } from '../utils/weight'
 import { matchesLifeStage } from '../utils/lifeStage'
 
-/**
- * Hook de produtos — lê catálogo estático (extraído do PDF PremieRpet 2026).
- * TODO: Substituir por fetch/axios para API (Java/Python) mantendo a mesma interface.
- */
 export function useProducts({
   category = 'todos',
   search = '',
@@ -14,20 +10,22 @@ export function useProducts({
   lifeStage = 'todos',
   weight = 'todos',
 } = {}) {
+  const { products: catalog, isLoading, error } = useTenant()
+
   const lines = useMemo(() => {
-    const unique = [...new Set(productsData.map((p) => p.line))].sort()
+    const unique = [...new Set(catalog.map((p) => p.line).filter(Boolean))].sort()
     return unique
-  }, [])
+  }, [catalog])
 
   const weightOptions = useMemo(
-    () => buildWeightOptions(productsData),
-    [],
+    () => buildWeightOptions(catalog),
+    [catalog]
   )
 
   const products = useMemo(() => {
     const query = search.trim().toLowerCase()
 
-    return productsData.filter((product) => {
+    return catalog.filter((product) => {
       const matchesCategory =
         category === 'todos' || product.category === category
 
@@ -41,20 +39,26 @@ export function useProducts({
       const matchesSearch =
         !query ||
         product.name.toLowerCase().includes(query) ||
-        product.brand.toLowerCase().includes(query) ||
-        product.line.toLowerCase().includes(query) ||
-        product.description.toLowerCase().includes(query)
+        product.brand?.toLowerCase().includes(query) ||
+        product.line?.toLowerCase().includes(query) ||
+        product.description?.toLowerCase().includes(query)
 
-      return matchesCategory && matchesLine && matchesLifeStageFilter && matchesWeight && matchesSearch
+      return (
+        matchesCategory &&
+        matchesLine &&
+        matchesLifeStageFilter &&
+        matchesWeight &&
+        matchesSearch
+      )
     })
-  }, [category, search, line, lifeStage, weight])
+  }, [catalog, category, search, line, lifeStage, weight])
 
   return {
     products,
     lines,
     weightOptions,
-    isLoading: false,
-    error: null,
+    isLoading,
+    error,
     total: products.length,
   }
 }

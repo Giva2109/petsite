@@ -1,4 +1,4 @@
-import { STORE_NAME } from '../config/constants'
+import { useTenant } from '../context/TenantContext'
 
 const SIZES = {
   sm: 'h-9 w-9',
@@ -6,10 +6,12 @@ const SIZES = {
 }
 
 export default function BrandIcon({ size = 'md', className = '' }) {
+  const { tenant } = useTenant()
+
   return (
     <img
-      src="/logo-icon.webp"
-      alt={`${STORE_NAME} logo`}
+      src={tenant.logoIconUrl || '/logo-icon.webp'}
+      alt={`${tenant.name} logo`}
       className={`shrink-0 rounded-xl object-contain ${SIZES[size]} ${className}`}
       decoding="async"
     />

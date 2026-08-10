@@ -7,6 +7,8 @@ export const WHATSAPP_NUMBER =
 
 export const STORE_NAME = 'UniPet'
 export const STORE_URL = 'https://unipet1.com'
+export const DEFAULT_TENANT_SLUG =
+  import.meta.env.VITE_TENANT_SLUG || 'unipet'
 export const STORE_TAGLINE =
   'Catálogo 2026 — rações e acessórios para cães e gatos'
 
