@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react'
 import { initMercadoPago, Payment } from '@mercadopago/sdk-react'
 import { X, Loader2 } from 'lucide-react'
-import { MERCADOPAGO_PUBLIC_KEY } from '../config/constants'
 import { processPayment } from '../utils/payment'
 
 let currentMercadoPagoPublicKey = null
 
 function ensureMercadoPagoInit(publicKey) {
-  const resolvedKey = publicKey || MERCADOPAGO_PUBLIC_KEY
-  if (!resolvedKey) return false
+  if (!publicKey) return false
 
-  if (currentMercadoPagoPublicKey !== resolvedKey) {
-    initMercadoPago(resolvedKey, { locale: 'pt-BR' })
-    currentMercadoPagoPublicKey = resolvedKey
+  if (currentMercadoPagoPublicKey !== publicKey) {
+    initMercadoPago(publicKey, { locale: 'pt-BR' })
+    currentMercadoPagoPublicKey = publicKey
   }
 
   return true
@@ -34,7 +32,7 @@ export default function PaymentCheckout({
 }) {
   const [isProcessing, setIsProcessing] = useState(false)
   const [submitError, setSubmitError] = useState('')
-  const resolvedPublicKey = mercadoPagoPublicKey || MERCADOPAGO_PUBLIC_KEY
+  const resolvedPublicKey = mercadoPagoPublicKey || ''
 
   useEffect(() => {
     if (isOpen) {

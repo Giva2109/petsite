@@ -1,5 +1,3 @@
-import { MERCADOPAGO_PUBLIC_KEY } from '../config/constants'
-
 /**
  * Verifica se todos os itens do carrinho têm preço definido para pagamento online.
  */
@@ -11,18 +9,12 @@ export function canPayOnline(items) {
   )
 }
 
-function resolveMercadoPagoPublicKey(settings = {}) {
-  return settings.mercadoPagoPublicKey || MERCADOPAGO_PUBLIC_KEY || ''
-}
-
 function hasMercadoPago(settings = {}) {
-  if (settings.mercadoPagoEnabled === true) return true
-  return Boolean(resolveMercadoPagoPublicKey(settings))
+  return settings.mercadoPagoEnabled === true
 }
 
 function hasStaticPix(settings = {}) {
-  if (settings.staticPixEnabled === true) return true
-  return Boolean(settings.pixKey && settings.pixKeyType)
+  return settings.staticPixEnabled === true
 }
 
 /**
