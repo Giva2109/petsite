@@ -569,9 +569,15 @@ export default function CartDrawer({ isOpen, onClose }) {
               </p>
             )}
 
-            <p className="mb-3 text-sm font-medium text-gray-700">
-              Como deseja finalizar?
-            </p>
+            {checkoutOptions.length > 1 ? (
+              <p className="mb-3 text-sm font-medium text-gray-700">
+                Como deseja pagar?
+              </p>
+            ) : (
+              <p className="mb-3 rounded-xl bg-gray-50 px-3 py-2 text-xs text-gray-600">
+                {checkoutOptions[0]?.hint}
+              </p>
+            )}
 
             <div className="space-y-2">
               {checkoutOptions.map((option) => (
@@ -580,14 +586,18 @@ export default function CartDrawer({ isOpen, onClose }) {
                     type="button"
                     onClick={() => handleCheckoutOption(option)}
                     disabled={isSavingOrder || isGeneratingStaticPix}
-                    className={`flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold text-white shadow transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${option.buttonClass}`}
+                    className={`flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-base font-bold text-white shadow-lg transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${option.buttonClass}`}
                   >
                     {renderCheckoutIcon(option.icon)}
                     {isSavingOrder || isGeneratingStaticPix
                       ? 'Processando...'
                       : option.label}
                   </button>
-                  <p className="mt-1 px-1 text-xs text-gray-500">{option.hint}</p>
+                  {checkoutOptions.length > 1 && (
+                    <p className="mt-1 px-1 text-xs text-gray-500">
+                      {option.hint}
+                    </p>
+                  )}
                 </div>
               ))}
             </div>

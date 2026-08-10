@@ -26,48 +26,60 @@ function hasStaticPix(settings = {}) {
 }
 
 /**
- * Retorna todas as formas de pagamento disponíveis para o carrinho atual.
+ * Retorna as formas de pagamento disponíveis.
+ * WhatsApp só aparece quando não há pagamento online configurado
+ * (comportamento da tela antiga).
  */
 export function getCheckoutOptions(items, settings = {}) {
   const options = []
   const pricedItems = canPayOnline(items)
+  const mercadoPagoAvailable = pricedItems && hasMercadoPago(settings)
+  const staticPixAvailable = pricedItems && hasStaticPix(settings)
+  const hasOnlinePayment = mercadoPagoAvailable || staticPixAvailable
 
-  if (pricedItems && hasMercadoPago(settings)) {
+  if (mercadoPagoAvailable) {
     options.push({
       id: 'mercadopago',
       mode: 'online',
       channel: 'MERCADOPAGO',
-      label: 'Pix ou cartão (Mercado Pago)',
-      hint: 'Pagamento automático. Após concluir, envie a confirmação pelo WhatsApp.',
+      label: staticPixAvailable
+        ? 'Pix ou cartão (Mercado Pago)'
+        : 'Finalizar pedido',
+      hint: 'Pix ou cartão via Mercado Pago. Após pagar, o WhatsApp abrirá para confirmar o pedido.',
       buttonClass:
         'bg-emerald-600 hover:bg-emerald-700 focus:ring-emerald-400',
       icon: 'card',
     })
   }
 
-  if (pricedItems && hasStaticPix(settings)) {
+  if (staticPixAvailable) {
     options.push({
       id: 'static_pix',
       mode: 'static_pix',
       channel: 'STATIC_PIX',
-      label: 'Pix (chave da loja)',
-      hint: 'Gere o QR Code Pix da loja e envie o comprovante pelo WhatsApp.',
-      buttonClass: 'bg-sky-600 hover:bg-sky-700 focus:ring-sky-400',
-      icon: 'pix',
+      label:
+        mercadoPagoAvailable ? 'Pix (chave da loja)' : 'Finalizar pedido',
+      hint: 'Gere o QR Code Pix e, após pagar, confirme o pedido pelo WhatsApp.',
+      buttonClass: mercadoPagoAvailable
+        ? 'bg-sky-600 hover:bg-sky-700 focus:ring-sky-400'
+        : 'bg-emerald-600 hover:bg-emerald-700 focus:ring-emerald-400',
+      icon: mercadoPagoAvailable ? 'pix' : 'card',
     })
   }
 
-  options.push({
-    id: 'whatsapp',
-    mode: 'whatsapp',
-    channel: 'WHATSAPP',
-    label: 'Solicitar pelo WhatsApp',
-    hint: pricedItems
-      ? 'Combine pagamento e entrega diretamente com a loja.'
-      : 'Alguns itens estão sob consulta. Enviaremos seu pedido para cotação.',
-    buttonClass: 'bg-green-600 hover:bg-green-700 focus:ring-green-400',
-    icon: 'whatsapp',
-  })
+  if (!hasOnlinePayment) {
+    options.push({
+      id: 'whatsapp',
+      mode: 'whatsapp',
+      channel: 'WHATSAPP',
+      label: pricedItems ? 'Finalizar pedido' : 'Solicitar pelo WhatsApp',
+      hint: pricedItems
+        ? 'Enviaremos seu pedido pelo WhatsApp da loja para confirmação e pagamento.'
+        : 'Alguns itens estão sob consulta. Enviaremos seu pedido para cotação.',
+      buttonClass: 'bg-green-600 hover:bg-green-700 focus:ring-green-400',
+      icon: 'whatsapp',
+    })
+  }
 
   return options
 }
@@ -77,8 +89,7 @@ export function getCheckoutOptions(items, settings = {}) {
  */
 export function getCheckoutAction(items, settings = {}) {
   const options = getCheckoutOptions(items, settings)
-  const primary =
-    options.find((option) => option.id !== 'whatsapp') || options[0]
+  const primary = options[0]
 
   return {
     mode: primary.mode,
