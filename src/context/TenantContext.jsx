@@ -42,6 +42,11 @@ const defaultTenant = {
 const defaultSettings = {
   discountNeighborhood: 'Parque Cecap',
   discountPercent: 10,
+  mercadoPagoPublicKey: null,
+  mercadoPagoEnabled: false,
+  pixKeyType: null,
+  pixKey: null,
+  staticPixEnabled: false,
 }
 
 export function TenantProvider({ tenantSlug, children }) {
@@ -75,6 +80,11 @@ export function TenantProvider({ tenantSlug, children }) {
       setSettings({
         discountNeighborhood: data.settings?.discountNeighborhood || null,
         discountPercent: Number(data.settings?.discountPercent || 0),
+        mercadoPagoPublicKey: data.settings?.mercadoPagoPublicKey || null,
+        mercadoPagoEnabled: Boolean(data.settings?.mercadoPagoEnabled),
+        pixKeyType: data.settings?.pixKeyType || null,
+        pixKey: data.settings?.pixKey || null,
+        staticPixEnabled: Boolean(data.settings?.staticPixEnabled),
       })
       setProducts(data.products.map(mapApiProduct))
       setSource('api')

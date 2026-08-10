@@ -7,6 +7,7 @@ import {
   MessageCircle,
   ShoppingCart,
   CreditCard,
+  QrCode,
 } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
 import { formatCurrency } from '../utils/currency'
@@ -14,12 +15,14 @@ import { openWhatsAppOrder, openWhatsAppPaymentConfirmation } from '../utils/wha
 import { saveOrder } from '../utils/ordersApi'
 import { createIdempotencyKey } from '../utils/idempotency'
 import { validateCheckoutFields, formatDeliveryAddress } from '../utils/checkoutForm'
-import { getCheckoutAction } from '../utils/checkoutFlow'
+import { getCheckoutOptions } from '../utils/checkoutFlow'
+import { buildStaticPixPayload } from '../utils/pixPayload'
 import { calculateOrderTotals } from '../utils/discount'
 import { useTenant } from '../context/TenantContext'
 import CheckoutAddressForm from './CheckoutAddressForm'
 import PaymentCheckout from './PaymentCheckout'
 import PixPaymentModal from './PixPaymentModal'
+import StaticPixModal from './StaticPixModal'
 import PaymentSuccess from './PaymentSuccess'
 
 const EMPTY_FIELD_ERRORS = {
@@ -52,6 +55,8 @@ export default function CartDrawer({ isOpen, onClose }) {
   const [isPaymentOpen, setIsPaymentOpen] = useState(false)
   const [isSavingOrder, setIsSavingOrder] = useState(false)
   const [pixResult, setPixResult] = useState(null)
+  const [staticPixResult, setStaticPixResult] = useState(null)
+  const [isGeneratingStaticPix, setIsGeneratingStaticPix] = useState(false)
   const [successResult, setSuccessResult] = useState(null)
   const [paymentError, setPaymentError] = useState('')
   const [checkoutError, setCheckoutError] = useState('')
@@ -60,7 +65,7 @@ export default function CartDrawer({ isOpen, onClose }) {
   const idempotencyKeyRef = useRef(null)
   const pendingWhatsAppRef = useRef(null)
 
-  const checkoutAction = getCheckoutAction(items)
+  const checkoutOptions = getCheckoutOptions(items, settings)
 
   const orderTotals = useMemo(
     () => calculateOrderTotals(totalPrice, neighborhood, settings),
@@ -174,6 +179,7 @@ export default function CartDrawer({ isOpen, onClose }) {
       address: saved.deliveryAddress,
       neighborhood: saved.neighborhood,
       settings,
+      whatsappNumber: tenant.whatsappNumber,
     })
 
     resetCheckoutForm()
@@ -191,15 +197,67 @@ export default function CartDrawer({ isOpen, onClose }) {
     setIsPaymentOpen(true)
   }
 
-  const handleFinalizeOrder = async () => {
+  const handleStaticPixCheckout = async () => {
+    if (checkoutInFlightRef.current) return
+    setPaymentError('')
+    setIsGeneratingStaticPix(true)
+
+    const saved = await persistOrder('STATIC_PIX')
+    if (!saved) {
+      setIsGeneratingStaticPix(false)
+      return
+    }
+
+    try {
+      const pix = await buildStaticPixPayload({
+        pixKeyType: settings.pixKeyType,
+        pixKey: settings.pixKey,
+        amount: orderTotals.total,
+        merchantName: tenant.name,
+      })
+
+      capturePaymentForWhatsApp({
+        paymentMethod: 'PIX (chave da loja — aguardando confirmação)',
+      })
+
+      setStaticPixResult({
+        pix,
+        amount: orderTotals.total,
+        pixKeyType: settings.pixKeyType,
+      })
+      setIsSavingOrder(false)
+      checkoutInFlightRef.current = false
+      idempotencyKeyRef.current = null
+    } catch (error) {
+      resetCheckoutSession()
+      setPaymentError(
+        error.message || 'Não foi possível gerar o Pix para esta loja.'
+      )
+    } finally {
+      setIsGeneratingStaticPix(false)
+    }
+  }
+
+  const handleCheckoutOption = async (option) => {
     if (items.length === 0 || checkoutInFlightRef.current) return
 
-    if (checkoutAction.mode === 'online') {
+    if (option.id === 'mercadopago') {
       await handleOpenPayment()
       return
     }
 
+    if (option.id === 'static_pix') {
+      await handleStaticPixCheckout()
+      return
+    }
+
     await handleWhatsAppCheckout()
+  }
+
+  const renderCheckoutIcon = (icon) => {
+    if (icon === 'card') return <CreditCard className="h-5 w-5" aria-hidden="true" />
+    if (icon === 'pix') return <QrCode className="h-5 w-5" aria-hidden="true" />
+    return <MessageCircle className="h-5 w-5" aria-hidden="true" />
   }
 
   const resolvedDeliveryAddress = sameDeliveryAddress
@@ -235,7 +293,10 @@ export default function CartDrawer({ isOpen, onClose }) {
   const finalizePostPayment = () => {
     const pending = pendingWhatsAppRef.current
     if (pending) {
-      openWhatsAppPaymentConfirmation(pending)
+      openWhatsAppPaymentConfirmation({
+        ...pending,
+        whatsappNumber: tenant.whatsappNumber,
+      })
       pendingWhatsAppRef.current = null
     }
     clearCart()
@@ -508,23 +569,28 @@ export default function CartDrawer({ isOpen, onClose }) {
               </p>
             )}
 
-            <p className="mb-3 rounded-xl bg-gray-50 px-3 py-2 text-xs text-gray-600">
-              {checkoutAction.hint}
+            <p className="mb-3 text-sm font-medium text-gray-700">
+              Como deseja finalizar?
             </p>
 
-            <button
-              type="button"
-              onClick={handleFinalizeOrder}
-              disabled={isSavingOrder}
-              className={`flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-base font-bold text-white shadow-lg transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${checkoutAction.buttonClass}`}
-            >
-              {checkoutAction.mode === 'online' ? (
-                <CreditCard className="h-5 w-5" aria-hidden="true" />
-              ) : (
-                <MessageCircle className="h-5 w-5" aria-hidden="true" />
-              )}
-              {isSavingOrder ? 'Salvando pedido...' : checkoutAction.label}
-            </button>
+            <div className="space-y-2">
+              {checkoutOptions.map((option) => (
+                <div key={option.id}>
+                  <button
+                    type="button"
+                    onClick={() => handleCheckoutOption(option)}
+                    disabled={isSavingOrder || isGeneratingStaticPix}
+                    className={`flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold text-white shadow transition focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 ${option.buttonClass}`}
+                  >
+                    {renderCheckoutIcon(option.icon)}
+                    {isSavingOrder || isGeneratingStaticPix
+                      ? 'Processando...'
+                      : option.label}
+                  </button>
+                  <p className="mt-1 px-1 text-xs text-gray-500">{option.hint}</p>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </aside>
@@ -539,8 +605,8 @@ export default function CartDrawer({ isOpen, onClose }) {
         items={items}
         customerName={customerName}
         neighborhood={neighborhood}
-        discountNeighborhood={settings.discountNeighborhood || ''}
-        discountPercent={settings.discountPercent || 0}
+        tenantSlug={tenant.slug}
+        mercadoPagoPublicKey={settings.mercadoPagoPublicKey || ''}
         address={resolvedDeliveryAddress}
         onPixResult={(result) => {
           capturePaymentForWhatsApp({
@@ -558,6 +624,22 @@ export default function CartDrawer({ isOpen, onClose }) {
         }}
         onError={(message) => setPaymentError(message)}
       />
+
+      {staticPixResult && (
+        <StaticPixModal
+          pix={staticPixResult.pix}
+          amount={staticPixResult.amount}
+          pixKeyType={staticPixResult.pixKeyType}
+          onClose={() => {
+            setStaticPixResult(null)
+            resetCheckoutSession()
+          }}
+          onConfirmPaid={() => {
+            setStaticPixResult(null)
+            finalizePostPayment()
+          }}
+        />
+      )}
 
       {pixResult && (
         <PixPaymentModal

@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
-import { useTenant } from '../../context/TenantContext'
 import ImageUploadField from '../../components/admin/ImageUploadField'
+import PaymentSettingsFields from '../../components/admin/PaymentSettingsFields'
 import { buildStoreUrl } from '../../utils/catalogApi'
 
 export default function AdminSettingsPage() {
   const { authorizedFetch, session } = useAuth()
-  const { reloadCatalog } = useTenant()
   const [form, setForm] = useState({
     name: '',
     whatsappNumber: '',
@@ -15,7 +14,12 @@ export default function AdminSettingsPage() {
     tagline: '',
     discountNeighborhood: '',
     discountPercent: 0,
+    mercadoPagoPublicKey: '',
+    mercadoPagoAccessToken: '',
+    pixKeyType: '',
+    pixKey: '',
   })
+  const [hasAccessToken, setHasAccessToken] = useState(false)
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
   const [isLoading, setIsLoading] = useState(true)
@@ -34,7 +38,12 @@ export default function AdminSettingsPage() {
           tagline: data.tenant.tagline || '',
           discountNeighborhood: data.settings.discountNeighborhood || '',
           discountPercent: Number(data.settings.discountPercent || 0),
+          mercadoPagoPublicKey: data.settings.mercadoPagoPublicKey || '',
+          mercadoPagoAccessToken: '',
+          pixKeyType: data.settings.pixKeyType || '',
+          pixKey: data.settings.pixKey || '',
         })
+        setHasAccessToken(Boolean(data.settings.mercadoPagoAccessTokenConfigured))
       } catch (err) {
         setError(err.message)
       } finally {
@@ -42,7 +51,7 @@ export default function AdminSettingsPage() {
       }
     }
     load()
-  }, [])
+  }, [authorizedFetch])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -50,20 +59,32 @@ export default function AdminSettingsPage() {
     setMessage('')
 
     try {
+      const body = {
+        name: form.name,
+        whatsappNumber: form.whatsappNumber,
+        logoUrl: form.logoUrl,
+        logoIconUrl: form.logoIconUrl,
+        tagline: form.tagline,
+        discountNeighborhood: form.discountNeighborhood,
+        discountPercent: Number(form.discountPercent || 0),
+        mercadoPagoPublicKey: form.mercadoPagoPublicKey || null,
+        pixKeyType: form.pixKeyType || null,
+        pixKey: form.pixKey || null,
+      }
+
+      if (form.mercadoPagoAccessToken.trim()) {
+        body.mercadoPagoAccessToken = form.mercadoPagoAccessToken.trim()
+      }
+
       await authorizedFetch('/admin/settings', {
         method: 'PUT',
-        body: {
-          name: form.name,
-          whatsappNumber: form.whatsappNumber,
-          logoUrl: form.logoUrl,
-          logoIconUrl: form.logoIconUrl,
-          tagline: form.tagline,
-          discountNeighborhood: form.discountNeighborhood,
-          discountPercent: Number(form.discountPercent || 0),
-        },
+        body,
       })
       setMessage('Configurações salvas com sucesso.')
-      await reloadCatalog()
+      if (form.mercadoPagoAccessToken.trim()) {
+        setHasAccessToken(true)
+        setForm((current) => ({ ...current, mercadoPagoAccessToken: '' }))
+      }
     } catch (err) {
       setError(err.message)
     }
@@ -77,7 +98,7 @@ export default function AdminSettingsPage() {
     <section className="max-w-2xl rounded-2xl bg-white p-6 shadow-sm">
       <h2 className="text-xl font-bold text-gray-900">Configurações da loja</h2>
       <p className="mt-1 text-sm text-gray-500">
-        Nome, logotipo, WhatsApp e desconto por bairro.
+        WhatsApp, pagamento, logotipo e desconto por bairro.
       </p>
 
       {session?.tenantSlug && (
@@ -103,13 +124,23 @@ export default function AdminSettingsPage() {
           required
         />
         <input
-          placeholder="WhatsApp (5511999999999)"
+          placeholder="WhatsApp para pedidos (5511999999999)"
           value={form.whatsappNumber}
           onChange={(e) =>
             setForm({ ...form, whatsappNumber: e.target.value })
           }
           className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
         />
+        <p className="text-xs text-gray-500">
+          Pedidos e confirmações de pagamento serão enviados para este número.
+        </p>
+
+        <PaymentSettingsFields
+          form={form}
+          setForm={setForm}
+          hasAccessToken={hasAccessToken}
+        />
+
         <ImageUploadField
           label="Logotipo principal"
           value={form.logoUrl}

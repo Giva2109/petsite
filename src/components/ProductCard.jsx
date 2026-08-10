@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { Minus, Plus, ShoppingBag, MessageCircle } from 'lucide-react'
 import { formatCurrency } from '../utils/currency'
 import { openWhatsAppAvailability } from '../utils/whatsapp'
+import { useTenant } from '../context/TenantContext'
 
 export default function ProductCard({ product, onAddToCart }) {
+  const { tenant } = useTenant()
   const [quantity, setQuantity] = useState(1)
   const [imageError, setImageError] = useState(false)
 
@@ -31,7 +33,10 @@ export default function ProductCard({ product, onAddToCart }) {
   }
 
   const handleAvailability = () => {
-    openWhatsAppAvailability({ product })
+    openWhatsAppAvailability({
+      product,
+      whatsappNumber: tenant.whatsappNumber,
+    })
   }
 
   return (

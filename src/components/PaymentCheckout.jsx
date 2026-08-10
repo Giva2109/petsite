@@ -4,13 +4,18 @@ import { X, Loader2 } from 'lucide-react'
 import { MERCADOPAGO_PUBLIC_KEY } from '../config/constants'
 import { processPayment } from '../utils/payment'
 
-let mercadoPagoInitialized = false
+let currentMercadoPagoPublicKey = null
 
-function ensureMercadoPagoInit() {
-  if (!mercadoPagoInitialized && MERCADOPAGO_PUBLIC_KEY) {
-    initMercadoPago(MERCADOPAGO_PUBLIC_KEY, { locale: 'pt-BR' })
-    mercadoPagoInitialized = true
+function ensureMercadoPagoInit(publicKey) {
+  const resolvedKey = publicKey || MERCADOPAGO_PUBLIC_KEY
+  if (!resolvedKey) return false
+
+  if (currentMercadoPagoPublicKey !== resolvedKey) {
+    initMercadoPago(resolvedKey, { locale: 'pt-BR' })
+    currentMercadoPagoPublicKey = resolvedKey
   }
+
+  return true
 }
 
 export default function PaymentCheckout({
@@ -21,18 +26,19 @@ export default function PaymentCheckout({
   customerName,
   address,
   neighborhood = '',
-  discountNeighborhood = '',
-  discountPercent = 0,
+  tenantSlug,
+  mercadoPagoPublicKey = '',
   onPixResult,
   onCardApproved,
   onError,
 }) {
   const [isProcessing, setIsProcessing] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const resolvedPublicKey = mercadoPagoPublicKey || MERCADOPAGO_PUBLIC_KEY
 
   useEffect(() => {
     if (isOpen) {
-      ensureMercadoPagoInit()
+      ensureMercadoPagoInit(resolvedPublicKey)
       document.body.style.overflow = 'hidden'
       setSubmitError('')
     } else {
@@ -41,17 +47,17 @@ export default function PaymentCheckout({
     return () => {
       document.body.style.overflow = ''
     }
-  }, [isOpen])
+  }, [isOpen, resolvedPublicKey])
 
   if (!isOpen) return null
 
-  if (!MERCADOPAGO_PUBLIC_KEY) {
+  if (!resolvedPublicKey) {
     return (
       <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4">
         <div className="max-w-md rounded-2xl bg-white p-6 shadow-2xl">
           <p className="text-sm text-red-600">
-            Configure a variável <code>VITE_MERCADOPAGO_PUBLIC_KEY</code> para
-            habilitar pagamentos online.
+            Pagamento online não configurado para esta loja. Configure as chaves
+            do Mercado Pago no painel administrativo.
           </p>
           <button
             type="button"
@@ -70,13 +76,12 @@ export default function PaymentCheckout({
     setSubmitError('')
     try {
       const result = await processPayment({
+        tenantSlug,
         formData,
         items,
         customerName,
         address,
         neighborhood,
-        discountNeighborhood,
-        discountPercent,
       })
 
       if (result.pix) {
@@ -150,7 +155,7 @@ export default function PaymentCheckout({
           )}
 
           <Payment
-            key={`payment-${Number(amount)}`}
+            key={`payment-${resolvedPublicKey}-${Number(amount)}`}
             initialization={{
               amount: Number(amount),
             }}

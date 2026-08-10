@@ -2,6 +2,11 @@ import { WHATSAPP_NUMBER } from '../config/constants'
 import { formatCurrency } from './currency'
 import { calculateOrderTotals } from './discount'
 
+function normalizeWhatsAppNumber(value) {
+  const digits = String(value || WHATSAPP_NUMBER).replace(/\D/g, '')
+  return digits || WHATSAPP_NUMBER
+}
+
 function formatOrderTotalLines({ items, neighborhood = '', settings = {} }) {
   const hasUnknownPrice = items.some(({ product }) => product.price == null)
 
@@ -83,16 +88,17 @@ function hasUnknownPrice(items) {
 /**
  * Gera o link wa.me com a mensagem codificada.
  */
-export function buildWhatsAppLink(message) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
+export function buildWhatsAppLink(message, whatsappNumber) {
+  const number = normalizeWhatsAppNumber(whatsappNumber)
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
 }
 
 /**
  * Abre o WhatsApp com o pedido formatado.
  */
-export function openWhatsAppOrder(orderData) {
+export function openWhatsAppOrder({ whatsappNumber, ...orderData }) {
   const message = buildOrderMessage(orderData)
-  const link = buildWhatsAppLink(message)
+  const link = buildWhatsAppLink(message, whatsappNumber)
   window.open(link, '_blank', 'noopener,noreferrer')
 }
 
@@ -150,9 +156,9 @@ ${totalLines}`
   return message
 }
 
-export function openWhatsAppPaymentConfirmation(orderData) {
+export function openWhatsAppPaymentConfirmation({ whatsappNumber, ...orderData }) {
   const message = buildPaymentConfirmationMessage(orderData)
-  const link = buildWhatsAppLink(message)
+  const link = buildWhatsAppLink(message, whatsappNumber)
   window.open(link, '_blank', 'noopener,noreferrer')
 }
 
@@ -181,8 +187,8 @@ export function buildAvailabilityMessage({ product, customerName = '' }) {
   return message
 }
 
-export function openWhatsAppAvailability({ product, customerName = '' }) {
+export function openWhatsAppAvailability({ product, customerName = '', whatsappNumber }) {
   const message = buildAvailabilityMessage({ product, customerName })
-  const link = buildWhatsAppLink(message)
+  const link = buildWhatsAppLink(message, whatsappNumber)
   window.open(link, '_blank', 'noopener,noreferrer')
 }

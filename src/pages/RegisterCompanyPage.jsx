@@ -2,12 +2,17 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { buildStoreUrl } from '../utils/catalogApi'
 import { normalizeSlug, registerCompany } from '../utils/registerApi'
+import PaymentSettingsFields from '../components/admin/PaymentSettingsFields'
 
 const EMPTY_FORM = {
   slug: '',
   companyName: '',
   domain: '',
   whatsappNumber: '',
+  mercadoPagoPublicKey: '',
+  mercadoPagoAccessToken: '',
+  pixKeyType: '',
+  pixKey: '',
   adminName: '',
   adminEmail: '',
   adminPassword: '',
@@ -42,6 +47,10 @@ export default function RegisterCompanyPage() {
         companyName: form.companyName,
         domain: form.domain || null,
         whatsappNumber: form.whatsappNumber || null,
+        mercadoPagoPublicKey: form.mercadoPagoPublicKey || null,
+        mercadoPagoAccessToken: form.mercadoPagoAccessToken || null,
+        pixKeyType: form.pixKeyType || null,
+        pixKey: form.pixKey || null,
         adminName: form.adminName,
         adminEmail: form.adminEmail,
         adminPassword: form.adminPassword,
@@ -107,13 +116,23 @@ export default function RegisterCompanyPage() {
               className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
             />
             <input
-              placeholder="WhatsApp (opcional, 5511999999999)"
+              placeholder="WhatsApp para pedidos (5511999999999)"
               value={form.whatsappNumber}
               onChange={(e) =>
                 setForm({ ...form, whatsappNumber: e.target.value })
               }
               className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
             />
+            <p className="text-xs text-gray-500">
+              Número que receberá pedidos e confirmações de pagamento.
+            </p>
+          </section>
+
+          <section className="space-y-3">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
+              Pagamento (opcional)
+            </h2>
+            <PaymentSettingsFields form={form} setForm={setForm} />
           </section>
 
           <section className="space-y-3">
