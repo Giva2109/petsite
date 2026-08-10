@@ -44,7 +44,7 @@ const defaultSettings = {
   discountPercent: 10,
 }
 
-export function TenantProvider({ children }) {
+export function TenantProvider({ tenantSlug, children }) {
   const [tenant, setTenant] = useState(defaultTenant)
   const [settings, setSettings] = useState(defaultSettings)
   const [products, setProducts] = useState(productsFallback)
@@ -60,7 +60,7 @@ export function TenantProvider({ children }) {
       const host =
         typeof window !== 'undefined' ? window.location.hostname : null
       const data = await fetchCatalog({
-        slug: DEFAULT_TENANT_SLUG,
+        slug: tenantSlug || null,
         host,
       })
 
@@ -80,14 +80,17 @@ export function TenantProvider({ children }) {
       setSource('api')
     } catch (err) {
       setError(err.message)
-      setTenant(defaultTenant)
+      setTenant({
+        ...defaultTenant,
+        slug: tenantSlug || DEFAULT_TENANT_SLUG,
+      })
       setSettings(defaultSettings)
       setProducts(productsFallback)
       setSource('fallback')
     } finally {
       setIsLoading(false)
     }
-  }, [])
+  }, [tenantSlug])
 
   useEffect(() => {
     loadCatalog()

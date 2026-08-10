@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { DEFAULT_TENANT_SLUG } from '../../config/constants'
 
@@ -7,8 +7,10 @@ export default function AdminLoginPage() {
   const { login, isAuthenticated } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
-  const [tenantSlug, setTenantSlug] = useState(DEFAULT_TENANT_SLUG)
-  const [email, setEmail] = useState('')
+  const [tenantSlug, setTenantSlug] = useState(
+    location.state?.tenantSlug || DEFAULT_TENANT_SLUG
+  )
+  const [email, setEmail] = useState(location.state?.email || '')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -96,8 +98,29 @@ export default function AdminLoginPage() {
           {isSubmitting ? 'Entrando...' : 'Entrar'}
         </button>
 
-        <p className="mt-4 text-center text-xs text-gray-500">
-          Primeiro acesso padrão: admin@unipet1.com / UniPet@2026
+        {location.state?.storeUrl && (
+          <p className="mt-4 rounded-xl bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
+            Sua loja:{' '}
+            <a
+              href={location.state.storeUrl}
+              className="font-semibold underline"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {location.state.storeUrl}
+            </a>
+          </p>
+        )}
+
+        <p className="mt-4 text-center text-sm text-gray-500">
+          Ainda não tem loja?{' '}
+          <Link to="/cadastro" className="font-semibold text-emerald-700">
+            Cadastrar empresa
+          </Link>
+        </p>
+
+        <p className="mt-2 text-center text-xs text-gray-400">
+          Primeiro acesso UniPet: admin@unipet1.com / UniPet@2026
         </p>
       </form>
     </div>

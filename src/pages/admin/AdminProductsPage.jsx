@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { formatCurrency } from '../../utils/currency'
+import ImageUploadField from '../../components/admin/ImageUploadField'
 
 const EMPTY_PRODUCT = {
   name: '',
@@ -17,7 +18,7 @@ const EMPTY_PRODUCT = {
 }
 
 export default function AdminProductsPage() {
-  const { authorizedFetch } = useAuth()
+  const { authorizedFetch, session } = useAuth()
   const [products, setProducts] = useState([])
   const [form, setForm] = useState(EMPTY_PRODUCT)
   const [editingId, setEditingId] = useState(null)
@@ -224,11 +225,14 @@ export default function AdminProductsPage() {
             onChange={(e) => setForm({ ...form, weight: e.target.value })}
             className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
           />
-          <input
-            placeholder="URL da imagem"
+          <ImageUploadField
+            label="Foto do produto"
             value={form.image}
-            onChange={(e) => setForm({ ...form, image: e.target.value })}
-            className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
+            onChange={(image) => setForm({ ...form, image })}
+            token={session?.token}
+            folder="products"
+            category={form.category}
+            hint="A imagem é ajustada automaticamente para o layout da loja (quadrada, object-contain)."
           />
           <textarea
             placeholder="Descrição"

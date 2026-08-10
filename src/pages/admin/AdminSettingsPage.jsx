@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useTenant } from '../../context/TenantContext'
+import ImageUploadField from '../../components/admin/ImageUploadField'
+import { buildStoreUrl } from '../../utils/catalogApi'
 
 export default function AdminSettingsPage() {
-  const { authorizedFetch } = useAuth()
+  const { authorizedFetch, session } = useAuth()
   const { reloadCatalog } = useTenant()
   const [form, setForm] = useState({
     name: '',
@@ -78,6 +80,20 @@ export default function AdminSettingsPage() {
         Nome, logotipo, WhatsApp e desconto por bairro.
       </p>
 
+      {session?.tenantSlug && (
+        <div className="mt-4 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+          <p className="font-semibold">URL pública da sua loja</p>
+          <a
+            href={buildStoreUrl(session.tenantSlug)}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-1 block break-all text-emerald-700 underline"
+          >
+            {buildStoreUrl(session.tenantSlug)}
+          </a>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <input
           placeholder="Nome da loja"
@@ -94,17 +110,21 @@ export default function AdminSettingsPage() {
           }
           className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
         />
-        <input
-          placeholder="URL do logotipo principal (/logo.webp)"
+        <ImageUploadField
+          label="Logotipo principal"
           value={form.logoUrl}
-          onChange={(e) => setForm({ ...form, logoUrl: e.target.value })}
-          className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
+          onChange={(logoUrl) => setForm({ ...form, logoUrl })}
+          token={session?.token}
+          folder="logos"
+          hint="Recomendado: imagem horizontal ou quadrada."
         />
-        <input
-          placeholder="URL do ícone (/logo-icon.webp)"
+        <ImageUploadField
+          label="Ícone da loja"
           value={form.logoIconUrl}
-          onChange={(e) => setForm({ ...form, logoIconUrl: e.target.value })}
-          className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
+          onChange={(logoIconUrl) => setForm({ ...form, logoIconUrl })}
+          token={session?.token}
+          folder="logos"
+          hint="Usado no cabeçalho. Prefira formato quadrado."
         />
         <textarea
           placeholder="Slogan da loja"
