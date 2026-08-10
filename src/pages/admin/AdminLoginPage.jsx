@@ -1,23 +1,19 @@
 import { useState } from 'react'
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { DEFAULT_TENANT_SLUG } from '../../config/constants'
+import { buildStoreUrl } from '../../utils/catalogApi'
 
 export default function AdminLoginPage() {
-  const { login, isAuthenticated } = useAuth()
+  const { login, logout, isAuthenticated, session } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const [tenantSlug, setTenantSlug] = useState(
-    location.state?.tenantSlug || DEFAULT_TENANT_SLUG
+    location.state?.tenantSlug || ''
   )
   const [email, setEmail] = useState(location.state?.email || '')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  if (isAuthenticated) {
-    return <Navigate to="/admin/products" replace />
-  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -35,6 +31,56 @@ export default function AdminLoginPage() {
     }
   }
 
+  const handleSwitchAccount = () => {
+    logout()
+    setPassword('')
+    setError('')
+  }
+
+  if (isAuthenticated) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-emerald-50 to-amber-50 px-4">
+        <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
+          <h1 className="text-2xl font-bold text-gray-900">Sessão ativa</h1>
+          <p className="mt-2 text-sm text-gray-500">
+            Você já está logado na loja{' '}
+            <span className="font-semibold text-emerald-700">
+              {session.tenantSlug}
+            </span>
+            {session.email ? ` (${session.email})` : ''}.
+          </p>
+          <p className="mt-2 text-sm text-gray-500">
+            Por isso os produtos exibidos são dessa loja. Para entrar em outra,
+            saia primeiro.
+          </p>
+
+          <div className="mt-6 space-y-3">
+            <button
+              type="button"
+              onClick={() => navigate('/admin/products', { replace: true })}
+              className="w-full rounded-xl bg-emerald-600 py-3 font-semibold text-white hover:bg-emerald-700"
+            >
+              Continuar no painel
+            </button>
+            <button
+              type="button"
+              onClick={handleSwitchAccount}
+              className="w-full rounded-xl border border-gray-200 py-3 font-semibold text-gray-700 hover:bg-gray-50"
+            >
+              Sair e entrar com outra loja
+            </button>
+            <a
+              href={buildStoreUrl(session.tenantSlug)}
+              className="block text-center text-sm font-medium text-emerald-700 underline"
+            >
+              Ver loja pública
+            </a>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-emerald-50 to-amber-50 px-4">
       <form
@@ -43,17 +89,19 @@ export default function AdminLoginPage() {
       >
         <h1 className="text-2xl font-bold text-gray-900">Entrar no painel</h1>
         <p className="mt-2 text-sm text-gray-500">
-          Gerencie produtos, preços, estoque e identidade da loja.
+          Use o <strong>slug</strong> da sua loja (ex: petgiva). Cada loja tem
+          produtos e admin separados.
         </p>
 
         <div className="mt-6 space-y-4">
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700">
-              Loja (slug)
+              Loja (slug) *
             </label>
             <input
               value={tenantSlug}
-              onChange={(e) => setTenantSlug(e.target.value)}
+              onChange={(e) => setTenantSlug(e.target.value.trim().toLowerCase())}
+              placeholder="ex: petgiva"
               className="w-full rounded-xl border border-gray-200 px-3 py-2.5"
               required
             />
@@ -117,10 +165,6 @@ export default function AdminLoginPage() {
           <Link to="/cadastro" className="font-semibold text-emerald-700">
             Cadastrar empresa
           </Link>
-        </p>
-
-        <p className="mt-2 text-center text-xs text-gray-400">
-          Primeiro acesso UniPet: admin@unipet1.com / UniPet@2026
         </p>
       </form>
     </div>

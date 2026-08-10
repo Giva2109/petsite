@@ -126,7 +126,8 @@ export default function AdminProductsPage() {
       <section className="rounded-2xl bg-white p-6 shadow-sm">
         <h2 className="text-xl font-bold text-gray-900">Produtos</h2>
         <p className="mt-1 text-sm text-gray-500">
-          {products.length} itens cadastrados
+          {products.length} itens na loja{' '}
+          <span className="font-semibold text-emerald-700">{session?.tenantSlug}</span>
         </p>
 
         {isLoading ? (
