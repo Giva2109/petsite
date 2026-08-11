@@ -2,6 +2,7 @@ import { Search, ShoppingCart } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useTenant } from '../context/TenantContext'
 import CategoryFilter from './CategoryFilter'
+import AccessoryTypeFilter from './AccessoryTypeFilter'
 import LineFilter from './LineFilter'
 import LifeStageFilter from './LifeStageFilter'
 import WeightFilter from './WeightFilter'
@@ -12,6 +13,9 @@ export default function Header({
   onSearchChange,
   category,
   onCategoryChange,
+  accessoryType,
+  accessoryTypes,
+  onAccessoryTypeChange,
   line,
   lines,
   onLineChange,
@@ -75,15 +79,25 @@ export default function Header({
             onCategoryChange={onCategoryChange}
           />
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end sm:gap-2">
-            <LineFilter
-              lines={lines}
-              activeLine={line}
-              onLineChange={onLineChange}
-            />
-            <LifeStageFilter
-              activeLifeStage={lifeStage}
-              onLifeStageChange={onLifeStageChange}
-            />
+            {category === 'acessorios' ? (
+              <AccessoryTypeFilter
+                activeType={accessoryType}
+                onTypeChange={onAccessoryTypeChange}
+                types={accessoryTypes}
+              />
+            ) : (
+              <>
+                <LineFilter
+                  lines={lines}
+                  activeLine={line}
+                  onLineChange={onLineChange}
+                />
+                <LifeStageFilter
+                  activeLifeStage={lifeStage}
+                  onLifeStageChange={onLifeStageChange}
+                />
+              </>
+            )}
             <WeightFilter
               weightOptions={weightOptions}
               activeWeight={weight}

@@ -14,14 +14,16 @@ import { useTenant } from '../context/TenantContext'
 export default function StorePage() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('todos')
+  const [accessoryType, setAccessoryType] = useState('todos')
   const [line, setLine] = useState('todas')
   const [lifeStage, setLifeStage] = useState('todos')
   const [weight, setWeight] = useState('todos')
   const [isCartOpen, setIsCartOpen] = useState(false)
   const { isLoading, error } = useTenant()
 
-  const { products, lines, weightOptions, total } = useProducts({
+  const { products, lines, accessoryTypes, weightOptions, total } = useProducts({
     category,
+    accessoryType,
     search,
     line,
     lifeStage,
@@ -39,8 +41,16 @@ export default function StorePage() {
     hasPrev,
   } = usePagination(products, {
     pageSize: PRODUCTS_PER_PAGE,
-    resetDeps: [category, search, line, lifeStage, weight],
+    resetDeps: [category, accessoryType, search, line, lifeStage, weight],
   })
+
+  const handleCategoryChange = (nextCategory) => {
+    setCategory(nextCategory)
+    setAccessoryType('todos')
+    setLine('todas')
+    setLifeStage('todos')
+    setWeight('todos')
+  }
 
   const handleAddToCart = (product, quantity) => {
     addItem(product, quantity)
@@ -53,7 +63,10 @@ export default function StorePage() {
         search={search}
         onSearchChange={setSearch}
         category={category}
-        onCategoryChange={setCategory}
+        onCategoryChange={handleCategoryChange}
+        accessoryType={accessoryType}
+        accessoryTypes={accessoryTypes}
+        onAccessoryTypeChange={setAccessoryType}
         line={line}
         lines={lines}
         onLineChange={setLine}
@@ -84,7 +97,7 @@ export default function StorePage() {
           <div className="mb-6 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="text-2xl font-bold text-gray-900">
-                Catálogo Completo
+                {category === 'acessorios' ? 'Acessórios' : 'Catálogo Completo'}
               </h2>
               <p className="mt-1 text-sm text-gray-500">
                 {total}{' '}

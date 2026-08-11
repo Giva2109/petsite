@@ -53,7 +53,7 @@ export default function ImageUploadField({
         ) : (
           <div className="flex h-full flex-col items-center justify-center gap-2 p-4 text-center text-emerald-700">
             <span className="text-4xl" aria-hidden="true">
-              {category === 'gatos' ? '🐈' : '🐕'}
+              {category === 'gatos' ? '🐈' : category === 'acessorios' ? '🪣' : '🐕'}
             </span>
             <p className="text-xs font-medium text-gray-500">
               {value && previewError ? 'Não foi possível carregar' : 'Sem imagem'}

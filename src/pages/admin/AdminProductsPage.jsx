@@ -189,6 +189,7 @@ export default function AdminProductsPage() {
           >
             <option value="caes">Cães</option>
             <option value="gatos">Gatos</option>
+            <option value="acessorios">Acessórios</option>
           </select>
           <input
             placeholder="Marca"

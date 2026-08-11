@@ -39,6 +39,15 @@ export default function ProductCard({ product, onAddToCart }) {
     })
   }
 
+  const categoryEmoji =
+    product.category === 'caes'
+      ? '🐕'
+      : product.category === 'gatos'
+        ? '🐈'
+        : product.category === 'acessorios'
+          ? '🪣'
+          : '🐾'
+
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:shadow-lg">
       <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-amber-50 to-emerald-50 p-2">
@@ -54,7 +63,7 @@ export default function ProductCard({ product, onAddToCart }) {
         ) : (
           <div className="flex h-full flex-col items-center justify-center gap-2 p-4 text-center text-emerald-700">
             <span className="text-5xl" aria-hidden="true">
-              {product.category === 'caes' ? '🐕' : '🐈'}
+              {categoryEmoji}
             </span>
             <p className="text-sm font-medium">Imagem em breve</p>
           </div>
@@ -73,7 +82,9 @@ export default function ProductCard({ product, onAddToCart }) {
 
       <div className="flex flex-1 flex-col p-4">
         <p className="text-xs font-medium uppercase tracking-wide text-emerald-600">
-          {product.line || product.brand}
+          {product.category === 'acessorios'
+            ? product.line || 'Acessórios'
+            : product.line || product.brand}
         </p>
         <h3 className="mt-1 text-base font-bold leading-snug text-gray-900 sm:text-lg">
           {product.name}

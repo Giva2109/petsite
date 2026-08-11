@@ -2,6 +2,7 @@ const CATEGORIES = [
   { id: 'todos', label: 'Todos', emoji: '🐾' },
   { id: 'caes', label: 'Cães', emoji: '🐕' },
   { id: 'gatos', label: 'Gatos', emoji: '🐈' },
+  { id: 'acessorios', label: 'Acessórios', emoji: '🛍️' },
 ]
 
 export default function CategoryFilter({ activeCategory, onCategoryChange }) {
