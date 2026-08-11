@@ -1,0 +1,224 @@
+Updated rows: 64
+Changed names: 38
+
+CURATED | Golden - Adultos - Porte Grande - Sabor Frango e Arroz
+  /assets/products/catalog/page-11-img-02.webp -> /assets/products/catalog/page-11-img-04.webp
+
+FIX | Golden - Adultos - Porte Médio - Sabor Frango e Arroz score=128
+  /assets/products/catalog/page-09-img-06.webp -> /assets/products/catalog/page-09-img-05.webp
+  profile={'stage': 'ADULTOS', 'porte': 'MEDIO', 'flags': set(), 'flavor': {'ARROZ', 'FRANGO'}, 'name_n': 'GOLDEN ADULTOS PORTE MEDIO SABOR FRANGO E ARROZ'}
+  img_stage=ADULTOS porte=MEDIO flags={'MEGA'} sabor=FRANGO flavor={'FRANGO'}
+  near=CÃES ADULTOS PORTE MÉDIO 3kg, 15kg, 20kg
+
+FIX | Golden - Adultos - Porte Médio - Sabor Salmão e Arroz; Peru e score=128
+  /assets/products/catalog/page-10-img-02.webp -> /assets/products/catalog/page-10-img-01.webp
+  profile={'stage': 'ADULTOS', 'porte': 'MEDIO', 'flags': set(), 'flavor': {'SALMAO', 'PERU', 'ARROZ'}, 'name_n': 'GOLDEN ADULTOS PORTE MEDIO SABOR SALMAO E ARROZ; PERU E'}
+  img_stage=ADULTOS porte=MEDIO flags={'MEGA'} sabor=SALMAO flavor={'SALMAO'}
+  near=CÃES ADULTOS PORTE MÉDIO 3kg, 15kg GOLDEN SENIOR CÃES
+
+FIX | Golden - Adultos - Porte Pequeno - Sabor Banana, Aveia e Mel score=136
+  /assets/products/catalog/page-15-img-02.webp -> /assets/products/catalog/page-15-img-01.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': set(), 'flavor': {'BANANA', 'MEL', 'AVEIA'}, 'name_n': 'GOLDEN ADULTOS PORTE PEQUENO SABOR BANANA, AVEIA E MEL'}
+  img_stage=ADULTOS porte=PEQUENO flags=set() sabor=BANANA, AVEIA flavor={'BANANA', 'AVEIA'}
+  near=CÃES ADULTOS CÃES ADULTOS PORTE PEQUENO Sabor: Original Auxilia na saúde Sabor excepcional Com antioxidantes 350g e 750g CÃES ADULTOS PORTE PEQUENO Sabor: Maçã
+
+FIX | Golden - Adultos - Porte Pequeno - Sabor Carne, Espinafre e Cenoura score=128
+  /assets/products/catalog/page-12-img-02.webp -> /assets/products/catalog/page-12-img-03.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': set(), 'flavor': {'ESPINAFRE', 'CARNE', 'CENOURA'}, 'name_n': 'GOLDEN ADULTOS PORTE PEQUENO SABOR CARNE, ESPINAFRE E CENOURA'}
+  img_stage=ADULTOS porte=PEQUENO flags=set() sabor=FRANGO, ESPINAFRE SUPORTE AS DEFESAS BALANCEADO E ENRIQUECIDO MINERAIS SABOR EXCEPCIONAL NUTRITIVO, COM MOLHO INGREDIENTES SELECIONADOS flavor={'ESPINAFRE', 'FRANGO'}
+  near=CÃES ADULTOS Porte Pequeno Sabor: Frango, Espinafre Suporte às defesas Balanceado e enriquecido minerais. Sabor excepcional Nutritivo, com molho 85g ingredientes selecionados. Naturalmente saudável Se
+
+FIX | Golden - Adultos - Porte Pequeno - Sabor Frango e Arroz; Carne e score=128
+  /assets/products/catalog/page-09-img-02.webp -> /assets/products/catalog/page-09-img-01.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': set(), 'flavor': {'ARROZ', 'CARNE', 'FRANGO'}, 'name_n': 'GOLDEN ADULTOS PORTE PEQUENO SABOR FRANGO E ARROZ; CARNE E'}
+  img_stage=ADULTOS porte=PEQUENO flags={'MEGA'} sabor=FRANGO flavor={'FRANGO'}
+  near=CÃES ADULTOS PORTE PEQUENO 1kg, 3kg, 10,1kg, 15kg
+
+FIX | Golden - Adultos - Porte Pequeno - Sabor Original score=128
+  /assets/products/catalog/page-15-img-01.webp -> /assets/products/catalog/page-15-img-02.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': set(), 'flavor': {'ORIGINAL'}, 'name_n': 'GOLDEN ADULTOS PORTE PEQUENO SABOR ORIGINAL'}
+  img_stage=ADULTOS porte=PEQUENO flags=set() sabor=MEL SABOR ORIGINAL AUXILIA NA flavor={'ORIGINAL', 'MEL'}
+  near=CÃES ADULTOS PORTE PEQUENO Sabor: Banana, Auxilia na saúde Sabor excepcional Com antioxidantes 350g CÃES ADULTOS PORTE PEQUENO Sabor: Salmão
+
+FIX | Golden - Adultos - Porte Pequeno - Sabor Salmão e Quinoa score=128
+  /assets/products/catalog/page-15-img-02.webp -> /assets/products/catalog/page-15-img-04.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': set(), 'flavor': {'SALMAO', 'QUINOA'}, 'name_n': 'GOLDEN ADULTOS PORTE PEQUENO SABOR SALMAO E QUINOA'}
+  img_stage=ADULTOS porte=PEQUENO flags=set() sabor=SALMAO AUXILIA NA flavor={'SALMAO'}
+  near=Com antioxidantes 350g CÃES ADULTOS PORTE PEQUENO Sabor: Salmão Auxilia na saúde Sabor excepcional 350g Com antioxidantes CÃES ADULTOS
+
+FIX | Golden - Adultos - Sabor Frango e Carne score=98
+  /assets/products/catalog/page-07-img-01.webp -> /assets/products/catalog/page-07-img-02.webp
+  profile={'stage': 'ADULTOS', 'porte': None, 'flags': set(), 'flavor': {'CARNE', 'FRANGO'}, 'name_n': 'GOLDEN ADULTOS SABOR FRANGO E CARNE'}
+  img_stage=ADULTOS porte=PEQUENO flags={'SPECIAL'} sabor=FRANGO flavor={'FRANGO'}
+  near=GOLDEN SPECIAL CÃES ADULTOS CÃES ADULTOS PORTE PEQUENO Sabor: Frango e Carne Blend de proteínas Máxima satisfação paladar. Maior rendimento Ingredientes de Saúde e vitalidade Alimento de alta em vitam
+
+FIX | Golden - Filhotes - Porte Médio - Sabor Carne e Arroz score=128
+  /assets/products/catalog/page-08-img-02.webp -> /assets/products/catalog/page-08-img-04.webp
+  profile={'stage': 'FILHOTES', 'porte': 'MEDIO', 'flags': set(), 'flavor': {'ARROZ', 'CARNE'}, 'name_n': 'GOLDEN FILHOTES PORTE MEDIO SABOR CARNE E ARROZ'}
+  img_stage=FILHOTES porte=MEDIO flags=set() sabor=CARNE E flavor={'CARNE'}
+  near=GRANDE CÃES FILHOTES Até 12 meses Sabor: Carne e Intestino saudável Combinação de digestibilidade Saúde oral Auxilia a redução formação de tártaro Crescimento saudável Feito com DHA qualidade elevada.
+
+FIX | Golden - Filhotes - Porte Médio - Sabor Frango e Arroz score=128
+  /assets/products/catalog/page-08-img-01.webp -> /assets/products/catalog/page-08-img-03.webp
+  profile={'stage': 'FILHOTES', 'porte': 'MEDIO', 'flags': set(), 'flavor': {'ARROZ', 'FRANGO'}, 'name_n': 'GOLDEN FILHOTES PORTE MEDIO SABOR FRANGO E ARROZ'}
+  img_stage=FILHOTES porte=MEDIO flags=set() sabor=FRANGO flavor={'FRANGO'}
+  near=CÃES FILHOTES PORTE MÉDIO CÃES FILHOTES Até 12 meses Sabor: Frango Intestino saudável Combinação de digestibilidade Saúde oral Auxilia a redução formação de tártaro Crescimento Feito com DHA qualidade
+
+FIX | Golden - Light - Sabor Frango e Arroz score=133
+  /assets/products/catalog/page-11-img-03.webp -> /assets/products/catalog/page-11-img-05.webp
+  profile={'stage': 'LIGHT', 'porte': None, 'flags': {'LIGHT'}, 'flavor': {'ARROZ', 'FRANGO'}, 'name_n': 'GOLDEN LIGHT SABOR FRANGO E ARROZ'}
+  img_stage=LIGHT porte=None flags={'LIGHT'} sabor=FRANGO flavor={'FRANGO'}
+  near=15kg GOLDEN LIGHT CÃES CÃES ADULTOS PEQUENO A partir de 12 meses Sabor: Frango Intestino saudável Combinação digestibilidade Saúde oral Auxilia a redução formação do Emagrecimento Com L-carnitina de c
+
+CURATED | Golden Gatos - Adultos - Sabor Frango
+  /assets/products/catalog/page-18-img-01.webp -> /assets/products/catalog/page-18-img-02.webp
+
+FIX | Golden Gatos - Castrados - Sabor Frango score=98
+  /assets/products/catalog/page-19-img-03.webp -> /assets/products/catalog/page-19-img-01.webp
+  profile={'stage': 'CASTRADOS', 'porte': None, 'flags': set(), 'flavor': {'FRANGO'}, 'name_n': 'GOLDEN GATOS CASTRADOS SABOR FRANGO'}
+  img_stage=CASTRADOS porte=None flags=set() sabor=FRANGO flavor={'FRANGO'}
+  near=GATOS CASTRADOS 1kg, 3kg, 10,1kg 1kg, 3kg, 10,1kg
+
+FIX | Golden Gourmet Gatos - Adultos - Sabor Carne e Abóbora score=98
+  /assets/products/catalog/page-20-img-03.webp -> /assets/products/catalog/page-20-img-05.webp
+  profile={'stage': 'ADULTOS', 'porte': None, 'flags': {'GOURMET'}, 'flavor': {'CARNE', 'ABOBORA'}, 'name_n': 'GOLDEN GOURMET GATOS ADULTOS SABOR CARNE E ABOBORA'}
+  img_stage=ADULTOS porte=None flags=set() sabor=CARNE flavor={'CARNE'}
+  near=GATOS ADULTOS Sabor: Carne e Abóbora Equilíbrio de nutrientes castrado Enriquecido com L-carnitina, minerais. Sistema urinário saudável Contribui para a ingestão Naturalmente saudável Sem conservantes
+
+FIX | Golden Gourmet Gatos - Adultos - Sabor Frango e Abóbora score=98
+  /assets/products/catalog/page-20-img-02.webp -> /assets/products/catalog/page-20-img-03.webp
+  profile={'stage': 'ADULTOS', 'porte': None, 'flags': {'GOURMET'}, 'flavor': {'FRANGO', 'ABOBORA'}, 'name_n': 'GOLDEN GOURMET GATOS ADULTOS SABOR FRANGO E ABOBORA'}
+  img_stage=ADULTOS porte=None flags=set() sabor=FRANGO flavor={'FRANGO'}
+  near=GATOS ADULTOS Sabor: Frango e Abóbora Suporte às defesas naturais Balanceado e enriquecido minerais. Sistema urinário saudável Contribui para a ingestão Naturalmente saudável Sem conservantes, sem aro
+
+FIX | Golden Seleção Natural Cães - Adultos - Porte Pequeno - Sabor Frango e Arroz score=128
+  /assets/products/catalog/page-22-img-01.webp -> /assets/products/catalog/page-22-img-03.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': set(), 'flavor': {'ARROZ', 'FRANGO'}, 'name_n': 'GOLDEN SELECAO NATURAL CAES ADULTOS PORTE PEQUENO SABOR FRANGO E ARROZ'}
+  img_stage=ADULTOS porte=PEQUENO flags={'MEGA'} sabor=FRANGO PELE NUTRIDA EQUILIBRIO DE flavor={'FRANGO'}
+  near=CÃES ADULTOS PORTE PEQUENO CÃES ADULTOS PORTE PEQUENO A partir de 12 Sabor: Frango Pele nutrida Equilíbrio de Intestino saudável Combinação alta digestibilidade naturais. 1kg, 3kg e 10,1kg
+
+FIX | Golden Seleção Natural Gatos - Adultos - Sabor Frango e Arroz score=98
+  /assets/products/catalog/page-25-img-01.webp -> /assets/products/catalog/page-25-img-02.webp
+  profile={'stage': 'ADULTOS', 'porte': None, 'flags': set(), 'flavor': {'ARROZ', 'FRANGO'}, 'name_n': 'GOLDEN SELECAO NATURAL GATOS ADULTOS SABOR FRANGO E ARROZ'}
+  img_stage=ADULTOS porte=None flags=set() sabor=FRANGO E flavor={'FRANGO'}
+  near=1kg, 3kg, 10,1kg GATOS ADULTOS GATOS ADULTOS A partir de 12 meses Sabor: Frango e Intestino saudável Combinação de ingredientes alta digestibilidade Sabor inigualável Máxima satisfação Trato urinário 
+
+FIX | Golden Seleção Natural Gatos - Castrados - Sabor Frango com score=98
+  /assets/products/catalog/page-25-img-02.webp -> /assets/products/catalog/page-25-img-03.webp
+  profile={'stage': 'CASTRADOS', 'porte': None, 'flags': set(), 'flavor': {'FRANGO'}, 'name_n': 'GOLDEN SELECAO NATURAL GATOS CASTRADOS SABOR FRANGO COM'}
+  img_stage=CASTRADOS porte=None flags=set() sabor=FRANGO COM SABOR FRANGO COM ABOBORA flavor={'FRANGO', 'ABOBORA'}
+  near=1kg, 3kg, 10,1kg GATOS CASTRADOS GATOS CASTRADOS A partir dos 6 meses Sabor: Frango Abóbora e Alecrim Controle do Ganho carnitina e teores gorduras. Nutrientes importantes Ingredientes ricos Trato uri
+
+FIX | Nattu Cães - Adultos - Sabor Frango, Mandioca score=106
+  /assets/products/catalog/page-48-img-01.webp -> /assets/products/catalog/page-48-img-03.webp
+  profile={'stage': 'ADULTOS', 'porte': None, 'flags': set(), 'flavor': {'MANDIOCA', 'FRANGO'}, 'name_n': 'NATTU CAES ADULTOS SABOR FRANGO, MANDIOCA'}
+  img_stage=ADULTOS porte=None flags={'MEGA'} sabor=FRANGO, MANDIOCA, BETERRABA, LINHACA flavor={'MANDIOCA', 'FRANGO'}
+  near=1kg, 2,5kg CÃES ADULTOS CÃES ADULTOS PEQUENO A partir de 12 meses Sabor: Frango, Mandioca, Beterraba, Linhaça Intestino saudável Combinação de digestibilidade, Pele nutrida e pelagem Equilíbrio de ôme
+
+FIX | Nattu Cães - Castrados - Sabor Frango, mandioca score=106
+  /assets/products/catalog/page-51-img-03.webp -> /assets/products/catalog/page-51-img-02.webp
+  profile={'stage': 'CASTRADOS', 'porte': None, 'flags': set(), 'flavor': {'MANDIOCA', 'FRANGO'}, 'name_n': 'NATTU CAES CASTRADOS SABOR FRANGO, MANDIOCA'}
+  img_stage=CASTRADOS porte=None flags=set() sabor=FRANGO, ABOBORA, BROCOLIS, SABOR FRANGO, MANDIOCA, QUINOA E BLUEBERRY BETERRABA, LINHACA E CRANBERRY AUXILIA NO CONTROLE DO PESO AUXILIA NO CONTROLE DO PESO ALIMENTO COM TEORES MODERADOS DE CALORIAS flavor={'QUINOA', 'MANDIOCA', 'FRANGO', 'ABOBORA'}
+  near=GATOS CASTRADOS GATOS CASTRADOS A partir de 6 meses Sabor: Frango, quinoa e blueberry Auxilia no Alimento com gorduras, Saúde intestinal Combinação fibras naturais Redução do 1,5kg e 7,5 kg Método SSR
+
+FIX | Nattu Gatos - Castrados - Sabor Frango, Abóbora, Brócolis e score=106
+  /assets/products/catalog/page-53-img-01.webp -> /assets/products/catalog/page-53-img-02.webp
+  profile={'stage': 'CASTRADOS', 'porte': None, 'flags': set(), 'flavor': {'FRANGO', 'ABOBORA'}, 'name_n': 'NATTU GATOS CASTRADOS SABOR FRANGO, ABOBORA, BROCOLIS E'}
+  img_stage=CASTRADOS porte=None flags=set() sabor=FRANGO, ABOBORA, QUINOA SAUDAVEL flavor={'QUINOA', 'FRANGO', 'ABOBORA'}
+  near=GATOS CASTRADOS A partir 12 meses Sabor: Frango, Abóbora, Quinoa SAUDÁVEL Sem corantes, conservantes e aromatizantes. DELICIOSO Preparado com 70g grãos selecionados, irresistível. NUTRITIVO Rico em pr
+
+FIX | PremieR Cookie - Filhotes - Porte Pequeno - Sabor Coco e Aveia score=136
+  /assets/products/catalog/page-41-img-02.webp -> /assets/products/catalog/page-41-img-04.webp
+  profile={'stage': 'FILHOTES', 'porte': 'PEQUENO', 'flags': {'COOKIE'}, 'flavor': {'COCO', 'AVEIA'}, 'name_n': 'PREMIER COOKIE FILHOTES PORTE PEQUENO SABOR COCO E AVEIA'}
+  img_stage=FILHOTES porte=PEQUENO flags=set() sabor=COCO E AVEIA SABOR COCO flavor={'COCO', 'AVEIA'}
+  near=250g FILHOTES Até 12 meses Sabor: Coco e Aveia 250g
+
+FIX | PremieR Cookie - Filhotes - Porte Pequeno - Sabor Coco e aveia score=136
+  /assets/products/catalog/page-41-img-02.webp -> /assets/products/catalog/page-41-img-04.webp
+  profile={'stage': 'FILHOTES', 'porte': 'PEQUENO', 'flags': {'COOKIE'}, 'flavor': {'COCO', 'AVEIA'}, 'name_n': 'PREMIER COOKIE FILHOTES PORTE PEQUENO SABOR COCO E AVEIA'}
+  img_stage=FILHOTES porte=PEQUENO flags=set() sabor=COCO E AVEIA SABOR COCO flavor={'COCO', 'AVEIA'}
+  near=250g FILHOTES Até 12 meses Sabor: Coco e Aveia 250g
+
+FIX | PremieR Cookie - Filhotes - Porte Pequeno - Sabor Frutas Vermelhas e Aveia score=128
+  /assets/products/catalog/page-41-img-01.webp -> /assets/products/catalog/page-41-img-02.webp
+  profile={'stage': 'FILHOTES', 'porte': 'PEQUENO', 'flags': {'COOKIE'}, 'flavor': {'MEL', 'AVEIA'}, 'name_n': 'PREMIER COOKIE FILHOTES PORTE PEQUENO SABOR FRUTAS VERMELHAS E AVEIA'}
+  img_stage=FILHOTES porte=PEQUENO flags=set() sabor=FRUTAS VERMELHAS FILHOTES ATE 12 MESES SABOR COCO flavor={'MEL', 'COCO'}
+  near=250g FILHOTES Até 12 meses Sabor: Frutas Vermelhas 250g FILHOTES Até 12 meses Sabor: Coco e Aveia
+
+FIX | PremieR Cookie - Filhotes - Porte Pequeno - Sabor Frutas vermelhas e aveia score=128
+  /assets/products/catalog/page-41-img-01.webp -> /assets/products/catalog/page-41-img-02.webp
+  profile={'stage': 'FILHOTES', 'porte': 'PEQUENO', 'flags': {'COOKIE'}, 'flavor': {'MEL', 'AVEIA'}, 'name_n': 'PREMIER COOKIE FILHOTES PORTE PEQUENO SABOR FRUTAS VERMELHAS E AVEIA'}
+  img_stage=FILHOTES porte=PEQUENO flags=set() sabor=FRUTAS VERMELHAS FILHOTES ATE 12 MESES SABOR COCO flavor={'MEL', 'COCO'}
+  near=250g FILHOTES Até 12 meses Sabor: Frutas Vermelhas 250g FILHOTES Até 12 meses Sabor: Coco e Aveia
+
+FIX | PremieR Formula Cães - Adultos - Porte Grande - Sabor Frango e Mandioca Sabores: Frango e Mandioca score=128
+  /assets/products/catalog/page-28-img-01.webp -> /assets/products/catalog/page-28-img-03.webp
+  profile={'stage': 'ADULTOS', 'porte': 'GRANDE', 'flags': set(), 'flavor': {'MANDIOCA', 'FRANGO'}, 'name_n': 'PREMIER FORMULA CAES ADULTOS PORTE GRANDE SABOR FRANGO E MANDIOCA SABORES FRANGO E MANDIOCA'}
+  img_stage=ADULTOS porte=GRANDE flags={'LIGHT'} sabor=FRANGO flavor={'FRANGO'}
+  near=* Até 18 meses para gigante. 15kg CÃES ADULTOS A partir de 15 meses* Sabor: Frango e Mandioca Auxilia no emagrecimento manutenção do peso Contém L-carnitina e reduzidos de gorduras Rico em B-glucanos 
+
+FIX | PremieR Formula Cães - Light - Porte Grande - Sabor Frango e Mandioca score=53
+  /assets/products/catalog/page-28-img-01.webp -> /assets/products/catalog/page-28-img-02.webp
+  profile={'stage': 'LIGHT', 'porte': 'GRANDE', 'flags': {'LIGHT'}, 'flavor': {'MANDIOCA', 'FRANGO'}, 'name_n': 'PREMIER FORMULA CAES LIGHT PORTE GRANDE SABOR FRANGO E MANDIOCA'}
+  img_stage=FILHOTES porte=GRANDE flags={'MEGA', 'LIGHT'} sabor=FRANGO flavor={'FRANGO'}
+  near=CÃES DE PORTE GRANDE E CÃES FILHOTES Até 15 meses* Sabor: Frango e Mandioca Crescimento equilibrado Harmonia entre ósseo e muscular. Blend de nutracêuticos Com EPA, DHA, condroitina glicosamina. * Até
+
+FIX | PremieR Formula Cães - Light - Porte Grande - Sabor Frango e Mandioca; Cordeiro score=53
+  /assets/products/catalog/page-28-img-01.webp -> /assets/products/catalog/page-28-img-02.webp
+  profile={'stage': 'LIGHT', 'porte': 'GRANDE', 'flags': {'LIGHT'}, 'flavor': {'MANDIOCA', 'FRANGO', 'CORDEIRO'}, 'name_n': 'PREMIER FORMULA CAES LIGHT PORTE GRANDE SABOR FRANGO E MANDIOCA; CORDEIRO'}
+  img_stage=FILHOTES porte=GRANDE flags={'MEGA', 'LIGHT'} sabor=FRANGO flavor={'FRANGO'}
+  near=CÃES DE PORTE GRANDE E CÃES FILHOTES Até 15 meses* Sabor: Frango e Mandioca Crescimento equilibrado Harmonia entre ósseo e muscular. Blend de nutracêuticos Com EPA, DHA, condroitina glicosamina. * Até
+
+FIX | PremieR Formula Gatos - Castrados - Sabor Frango score=98
+  /assets/products/catalog/page-29-img-01.webp -> /assets/products/catalog/page-29-img-04.webp
+  profile={'stage': 'CASTRADOS', 'porte': None, 'flags': set(), 'flavor': {'FRANGO'}, 'name_n': 'PREMIER FORMULA GATOS CASTRADOS SABOR FRANGO'}
+  img_stage=CASTRADOS porte=None flags=set() sabor=FRANGO SALMAO CONTROLE NATURAL DO PESO CALORIAS E GORDURAS REDUZIDAS COM L CARNITINA, IDEAL PARA GATOS flavor={'SALMAO', 'FRANGO'}
+  near=1,5 kg e 7,5kg 1,5kg, 7,5kg 1,5kg, 7,5kg
+
+FIX | PremieR Gourmet - Adultos - Porte Médio - Sabor Peito de Frango, Batata Doce e Brócolis score=128
+  /assets/products/catalog/page-39-img-03.webp -> /assets/products/catalog/page-39-img-05.webp
+  profile={'stage': 'ADULTOS', 'porte': 'MEDIO', 'flags': {'GOURMET'}, 'flavor': {'FRANGO', 'BATATA'}, 'name_n': 'PREMIER GOURMET ADULTOS PORTE MEDIO SABOR PEITO DE FRANGO, BATATA DOCE E BROCOLIS'}
+  img_stage=ADULTOS porte=MEDIO flags=set() sabor=PEITO DE FRANGO flavor={'FRANGO'}
+  near=Rico em proteínas, essenciais. 85g ENRIQUECIDO Com vitaminas. ADULTOS PORTE Sabor: Peito de Frango, NOBRE Peito de Frango selecionados. NUTRITIVO Rico em proteínas, essenciais. ENRIQUECIDO Com vitamin
+
+FIX | PremieR Gourmet - Adultos - Porte Pequeno - Sabor Carne, Batata Doce e Brócolis score=136
+  /assets/products/catalog/page-39-img-01.webp -> /assets/products/catalog/page-39-img-03.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': {'GOURMET'}, 'flavor': {'CARNE', 'BATATA'}, 'name_n': 'PREMIER GOURMET ADULTOS PORTE PEQUENO SABOR CARNE, BATATA DOCE E BROCOLIS'}
+  img_stage=ADULTOS porte=PEQUENO flags=set() sabor=CARNE, BATATA DOCE flavor={'CARNE', 'BATATA'}
+  near=Rico em proteínas, essenciais. ENRIQUECIDO Com vitaminas. 85g ADULTOS PORTE Sabor: Carne, Batata NOBRE Peito de Frango selecionados. NUTRITIVO Rico em proteínas, essenciais. 85g ENRIQUECIDO Com vitami
+
+FIX | PremieR Gourmet - Adultos - Porte Pequeno - Sabor Salmão score=128
+  /assets/products/catalog/page-39-img-02.webp -> /assets/products/catalog/page-39-img-04.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': {'GOURMET'}, 'flavor': {'SALMAO'}, 'name_n': 'PREMIER GOURMET ADULTOS PORTE PEQUENO SABOR SALMAO'}
+  img_stage=ADULTOS porte=PEQUENO flags=set() sabor=BROCOLIS SABOR SALMAO flavor={'SALMAO'}
+  near=Rico em proteínas, essenciais. ENRIQUECIDO Com vitaminas. 85g ADULTOS PORTE Sabor: Salmão NOBRE Peito de Frango selecionados. NUTRITIVO Rico em proteínas, essenciais. ENRIQUECIDO Com vitaminas. 85g GR
+
+FIX | PremieR Seleção Natural - Adultos - Porte Médio - Sabor Frango score=128
+  /assets/products/catalog/page-44-img-01.webp -> /assets/products/catalog/page-44-img-03.webp
+  profile={'stage': 'ADULTOS', 'porte': 'MEDIO', 'flags': set(), 'flavor': {'FRANGO'}, 'name_n': 'PREMIER SELECAO NATURAL ADULTOS PORTE MEDIO SABOR FRANGO'}
+  img_stage=ADULTOS porte=MEDIO flags={'MEGA', 'SPECIAL'} sabor=FRANGO SABOR FRANGO flavor={'FRANGO'}
+  near=CÃES ADULTOS A partir de 12 meses Sabor: Frango Pelagem bonita ideal de ácidos e 6. Complexo de vegetais Contém vegetais selecionados como e sais minerais saudável. 2,5kg, 12kg CÃES ADULTOS A partir d
+
+FIX | PremieR Seleção Natural - Adultos - Porte Pequeno - Sabor Frango score=128
+  /assets/products/catalog/page-44-img-03.webp -> /assets/products/catalog/page-44-img-01.webp
+  profile={'stage': 'ADULTOS', 'porte': 'PEQUENO', 'flags': set(), 'flavor': {'FRANGO'}, 'name_n': 'PREMIER SELECAO NATURAL ADULTOS PORTE PEQUENO SABOR FRANGO'}
+  img_stage=ADULTOS porte=PEQUENO flags={'SPECIAL'} sabor=FRANGO COM CHIA E QUINOA INGREDIENTES RICOS EM ANTIOXIDANTES QUE AUXILIAM NO COMBATE AOS RADICAIS LIVRES COMPLEXO DE VEGETAIS CONTEM VEGETAIS ESPECIALMENTE SELECIONADOS COMO FONTES NATURAIS DE FIBRAS E SAIS MINERAIS QUE NUTREM DE MANEIRA SAUDAVEL , CAES PORTE MEDIO E GRANDE flavor={'QUINOA', 'FRANGO'}
+  near=CÃES PORTE PEQUENO CÃES ADULTOS A partir de 12 meses Sabor: Frango com Ingredientes ricos Que auxiliam no Complexo de vegetais Contém vegetais selecionados como e sais minerais saudável. 1kg , 2,5kg C
+
+FIX | PremieR Seleção Natural - Adultos - Sabor Frango e batata doce score=106
+  /assets/products/catalog/page-44-img-03.webp -> /assets/products/catalog/page-44-img-05.webp
+  profile={'stage': 'ADULTOS', 'porte': None, 'flags': set(), 'flavor': {'FRANGO', 'BATATA'}, 'name_n': 'PREMIER SELECAO NATURAL ADULTOS SABOR FRANGO E BATATA DOCE'}
+  img_stage=ADULTOS porte=None flags={'SPECIAL'} sabor=FRANGO E BATATA DOCE SABOR FRANGO E BATATA DOCE INGREDIENTES QUE AUXILIAM NO CONTROLE INGREDIENTES QUE AUXILIAM NO CONTROLE GLICEMICO GLICEMICO IMPORTANTE PARA UMA VIDA SAUDAVEL IMPORTANTE PARA UMA VIDA SAUDAVEL COMPLEXO DE VEGETAIS COMPLEXO DE VEGETAIS CONTEM VEGETAIS ESPECIALMENTE CONTEM VEGETAIS ESPECIALMENTE SELECIONADOS COMO FONTES NATURAIS DE SELECIONADOS COMO FONTES NATURAIS DE FIBRAS E SAIS MINERAIS QUE NUTREM DE FIBRAS E SAIS MINERAIS QUE NUTREM DE MANEIRA SAUDAVEL MANEIRA SAUDAVEL , 44 flavor={'FRANGO', 'BATATA'}
+  near=saudável. 2,5kg, 12kg CÃES ADULTOS A partir de 12 meses Sabor: Frango e batata Ingredientes que glicêmico Importante para Complexo de Contém vegetais selecionados ﬁbras e sais maneira saudável. 12kg 4
+
+FIX | PremieR Seleção Natural - Castrados - Sabor Frango score=98
+  /assets/products/catalog/page-45-img-01.webp -> /assets/products/catalog/page-45-img-02.webp
+  profile={'stage': 'CASTRADOS', 'porte': None, 'flags': set(), 'flavor': {'FRANGO'}, 'name_n': 'PREMIER SELECAO NATURAL CASTRADOS SABOR FRANGO'}
+  img_stage=CASTRADOS porte=None flags={'MEGA', 'SPECIAL'} sabor=FRANGO SABOR FRANGO flavor={'FRANGO'}
+  near=CASTRADOS GATOS ADULTOS A partir de 12 meses Sabor: Frango Pelagem bonita zinco e ácidos ômega 3 e 6. Complexo de Contém vegetais selecionados ﬁbras e sais maneira saudável. Trato urinário Controle do
+
+FIX | Vitta Natural - Castrados - Sabor Frango e Arroz score=98
+  /assets/products/catalog/page-05-img-03.webp -> /assets/products/catalog/page-05-img-05.webp
+  profile={'stage': 'CASTRADOS', 'porte': None, 'flags': set(), 'flavor': {'ARROZ', 'FRANGO'}, 'name_n': 'VITTA NATURAL CASTRADOS SABOR FRANGO E ARROZ'}
+  img_stage=CASTRADOS porte=None flags=set() sabor=FRANGO flavor={'FRANGO'}
+  near=15kg GATOS CASTRADOS GATOS CASTRADOS Sabor: Frango e Arroz MÉTODO SSR – Minerais balanceados pH urinário. CONTROLE DO PESO Reduzido em gorduras SEM CORANTES ARTIFICIAIS Formulado com SAÚDE INTESTINAL 

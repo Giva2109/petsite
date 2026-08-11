@@ -148,27 +148,8 @@ def main():
                 size_samples.append(Image.open(out_path).size)
             page_images_cache[page_num] = paths
 
-    updated = 0
-    for page_num, page_products in by_page.items():
-        images = page_images_cache.get(page_num, [])
-        if not images:
-            continue
-
-        unique_names = []
-        seen_names = set()
-        for product in sorted(page_products, key=lambda p: p["id"]):
-            if product["name"] not in seen_names:
-                seen_names.add(product["name"])
-                unique_names.append(product["name"])
-
-        name_to_image = {}
-        for i, name in enumerate(unique_names):
-            name_to_image[name] = images[0] if len(images) == 1 else images[i % len(images)]
-
-        for product in page_products:
-            product["image"] = name_to_image.get(product["name"], images[0])
-            updated += 1
-
+    # Salva caminhos extraídos e remapeia por layout/texto do PDF
+    # (NÃO usar índice i%n — isso cruzava Adultos/Filhotes e sabores).
     with open(PRODUCTS_PATH, "w", encoding="utf-8") as f:
         json.dump(products, f, ensure_ascii=False, indent=2)
 
@@ -176,11 +157,16 @@ def main():
     avg_w = sum(s[0] for s in size_samples) // max(len(size_samples), 1)
     avg_h = sum(s[1] for s in size_samples) // max(len(size_samples), 1)
 
-    print(f"OK: {updated} produtos atualizados")
+    print(f"OK: imagens extraídas")
     print(f"DPI: {RENDER_DPI} | Max lado: {MAX_LONG_EDGE}px | WebP q={WEBP_QUALITY}")
     print(f"Arquivos WebP: {webp_count}")
     print(f"Resolucao media: {avg_w}x{avg_h}px")
     print(f"Pasta: {OUT_DIR}")
+    print("Remapeando produtos <-> imagens por layout do PDF...")
+
+    from remap_product_images import main as remap_main
+
+    remap_main()
 
 
 if __name__ == "__main__":
