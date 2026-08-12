@@ -14,10 +14,12 @@ import { formatCurrency } from '../utils/currency'
 import { openWhatsAppOrder, openWhatsAppPaymentConfirmation } from '../utils/whatsapp'
 import { saveOrder } from '../utils/ordersApi'
 import { createIdempotencyKey } from '../utils/idempotency'
-import { validateCheckoutFields, formatDeliveryAddress } from '../utils/checkoutForm'
+import { validateCheckoutFields, formatDeliveryAddress, normalizePhone } from '../utils/checkoutForm'
+import { formatCepDisplay } from '../utils/viaCep'
 import { getCheckoutOptions } from '../utils/checkoutFlow'
 import { buildStaticPixPayload } from '../utils/pixPayload'
 import { calculateOrderTotals } from '../utils/discount'
+import { lookupCustomerByPhone } from '../utils/customersApi'
 import { useTenant } from '../context/TenantContext'
 import CheckoutAddressForm from './CheckoutAddressForm'
 import PaymentCheckout from './PaymentCheckout'
@@ -61,9 +63,12 @@ export default function CartDrawer({ isOpen, onClose }) {
   const [paymentError, setPaymentError] = useState('')
   const [checkoutError, setCheckoutError] = useState('')
   const [fieldErrors, setFieldErrors] = useState(EMPTY_FIELD_ERRORS)
+  const [customerLookupStatus, setCustomerLookupStatus] = useState('')
+  const [isLookingUpCustomer, setIsLookingUpCustomer] = useState(false)
   const checkoutInFlightRef = useRef(false)
   const idempotencyKeyRef = useRef(null)
   const pendingWhatsAppRef = useRef(null)
+  const phoneLookupRequestRef = useRef(0)
 
   const checkoutOptions = getCheckoutOptions(items, settings)
 
@@ -92,6 +97,52 @@ export default function CartDrawer({ isOpen, onClose }) {
     }
     return () => window.removeEventListener('keydown', handleEscape)
   }, [isOpen, onClose])
+
+  useEffect(() => {
+    const digits = normalizePhone(phone)
+    if (digits.length < 10 || digits.length > 15 || !tenant?.slug) {
+      setCustomerLookupStatus('')
+      setIsLookingUpCustomer(false)
+      return undefined
+    }
+
+    const requestId = ++phoneLookupRequestRef.current
+    const timer = window.setTimeout(async () => {
+      setIsLookingUpCustomer(true)
+      try {
+        const result = await lookupCustomerByPhone(tenant.slug, digits)
+        if (requestId !== phoneLookupRequestRef.current) return
+
+        if (!result?.found) {
+          setCustomerLookupStatus('')
+          return
+        }
+
+        setCustomerName(result.customerName || '')
+        setZipCode(formatCepDisplay(result.zipCode || ''))
+        setStreet(result.street || '')
+        setStreetNumber(result.streetNumber || '')
+        setComplement(result.complement || '')
+        setCity(result.city || '')
+        setState(result.state || '')
+        setNeighborhood(result.neighborhood || '')
+        setFieldErrors(EMPTY_FIELD_ERRORS)
+        setCustomerLookupStatus('Cliente encontrado — dados preenchidos')
+      } catch {
+        if (requestId === phoneLookupRequestRef.current) {
+          setCustomerLookupStatus('')
+        }
+      } finally {
+        if (requestId === phoneLookupRequestRef.current) {
+          setIsLookingUpCustomer(false)
+        }
+      }
+    }, 400)
+
+    return () => {
+      window.clearTimeout(timer)
+    }
+  }, [phone, tenant?.slug])
 
   const clearFieldError = (field) => {
     if (fieldErrors[field]) {
@@ -317,6 +368,9 @@ export default function CartDrawer({ isOpen, onClose }) {
     setDeliveryAddress('')
     setFieldErrors(EMPTY_FIELD_ERRORS)
     setCheckoutError('')
+    setCustomerLookupStatus('')
+    setIsLookingUpCustomer(false)
+    phoneLookupRequestRef.current += 1
   }
 
   return (
@@ -438,6 +492,44 @@ export default function CartDrawer({ isOpen, onClose }) {
             <div className="mt-6 space-y-3">
               <div>
                 <label
+                  htmlFor="phone"
+                  className="mb-1 block text-sm font-medium text-gray-700"
+                >
+                  Telefone / WhatsApp <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  inputMode="tel"
+                  autoComplete="tel"
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value)
+                    clearFieldError('phone')
+                    setCustomerLookupStatus('')
+                  }}
+                  placeholder="(11) 99999-9999"
+                  required
+                  aria-invalid={Boolean(fieldErrors.phone)}
+                  className={`w-full rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
+                    fieldErrors.phone
+                      ? 'border-red-300 focus:border-red-400 focus:ring-red-200'
+                      : 'border-gray-200 focus:border-emerald-400 focus:ring-emerald-200'
+                  }`}
+                />
+                {fieldErrors.phone && (
+                  <p className="mt-1 text-xs text-red-600">{fieldErrors.phone}</p>
+                )}
+                {isLookingUpCustomer && !fieldErrors.phone && (
+                  <p className="mt-1 text-xs text-gray-500">Buscando cadastro...</p>
+                )}
+                {customerLookupStatus && !fieldErrors.phone && (
+                  <p className="mt-1 text-xs text-emerald-700">{customerLookupStatus}</p>
+                )}
+              </div>
+
+              <div>
+                <label
                   htmlFor="customer-name"
                   className="mb-1 block text-sm font-medium text-gray-700"
                 >
@@ -464,37 +556,6 @@ export default function CartDrawer({ isOpen, onClose }) {
                   <p className="mt-1 text-xs text-red-600">
                     {fieldErrors.customerName}
                   </p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="mb-1 block text-sm font-medium text-gray-700"
-                >
-                  Telefone / WhatsApp <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
-                  value={phone}
-                  onChange={(e) => {
-                    setPhone(e.target.value)
-                    clearFieldError('phone')
-                  }}
-                  placeholder="(11) 99999-9999"
-                  required
-                  aria-invalid={Boolean(fieldErrors.phone)}
-                  className={`w-full rounded-xl border px-3 py-2.5 text-base focus:outline-none focus:ring-2 ${
-                    fieldErrors.phone
-                      ? 'border-red-300 focus:border-red-400 focus:ring-red-200'
-                      : 'border-gray-200 focus:border-emerald-400 focus:ring-emerald-200'
-                  }`}
-                />
-                {fieldErrors.phone && (
-                  <p className="mt-1 text-xs text-red-600">{fieldErrors.phone}</p>
                 )}
               </div>
 
