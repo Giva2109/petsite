@@ -87,9 +87,10 @@ export async function saveOrder(orderData) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     })
-  } catch {
+  } catch (error) {
+    const detail = error instanceof Error && error.message ? ` (${error.message})` : ''
     throw new Error(
-      'Não foi possível conectar à API. Verifique se VITE_API_URL está configurada no Netlify.'
+      `Não foi possível conectar à API em ${url}.${detail} Se o problema continuar, a API pode estar fora do ar.`
     )
   }
 
