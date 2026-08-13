@@ -4,7 +4,7 @@ export default function AccessoryTypeFilter({
   types = [],
 }) {
   return (
-    <div>
+    <div className="min-w-0 flex-1 sm:flex-none">
       <label htmlFor="accessory-type-filter" className="sr-only">
         Tipo de acessório
       </label>
@@ -12,7 +12,7 @@ export default function AccessoryTypeFilter({
         id="accessory-type-filter"
         value={activeType}
         onChange={(e) => onTypeChange(e.target.value)}
-        className="w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm font-medium text-gray-800 focus:border-emerald-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:w-auto"
+        className="filter-select w-full min-w-0 rounded-lg border border-gray-200 bg-gray-50 px-1 py-2 text-[10px] font-medium leading-tight text-gray-800 focus:border-emerald-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-200 sm:w-auto sm:rounded-xl sm:px-3 sm:py-2.5 sm:text-sm"
       >
         <option value="todos">Todos os acessórios</option>
         {types.map((type) => (

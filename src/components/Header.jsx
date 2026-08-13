@@ -31,7 +31,7 @@ export default function Header({
 
   return (
     <header className="sticky top-0 z-40 border-b border-emerald-100 bg-white/95 shadow-sm backdrop-blur-md">
-      <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-2 py-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-3">
           <Link to="/" className="flex shrink-0 items-center gap-2">
             <BrandIcon size="md" />
@@ -78,7 +78,7 @@ export default function Header({
             activeCategory={category}
             onCategoryChange={onCategoryChange}
           />
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end sm:gap-2">
+          <div className="flex w-full flex-row items-stretch gap-1 sm:w-auto sm:items-center sm:justify-end sm:gap-2">
             {category === 'acessorios' ? (
               <AccessoryTypeFilter
                 activeType={accessoryType}
