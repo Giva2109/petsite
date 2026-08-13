@@ -34,11 +34,11 @@ PDF_PAGES: dict[str, int] = {
     "sensitive": 17,
 }
 
-# Página 4 (infográfico): embalagem roxa "Clássica" grãos pequenos perfumada
+# Página 4 (infográfico): recorte apertado só da embalagem roxa (Clássica grãos pequenos)
 MANUAL_CROPS: dict[str, tuple[int, tuple[float, float, float, float]]] = {
     "classica-graos-pequenos-perfumada": (
         4,
-        (129.6, 489.6, 176.4, 608.4),
+        (125.5, 536.5, 149.8, 576.0),
     ),
 }
 
@@ -124,8 +124,13 @@ def extract_manual_crop(
     doc: fitz.Document, slug: str, page_num: int, bbox: tuple[float, float, float, float]
 ) -> tuple[int, int]:
     page = doc[page_num - 1]
-    expanded = expand_bbox(bbox, page.rect, padding=4)
-    img = render_crop(page, expanded, dpi=MANUAL_RENDER_DPI)
+    img = render_crop(page, bbox, dpi=MANUAL_RENDER_DPI)
+    # Upscale to the same long-edge as as demais embalagens do catálogo
+    w, h = img.size
+    long_edge = max(w, h)
+    if long_edge < MAX_LONG_EDGE:
+        scale = MAX_LONG_EDGE / long_edge
+        img = img.resize((int(w * scale), int(h * scale)), Image.Resampling.LANCZOS)
     return save_webp(img, OUT_DIR / f"{slug}.webp")
 
 
