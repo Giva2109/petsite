@@ -9,7 +9,6 @@ import { useProducts } from '../hooks/useProducts'
 import { usePagination } from '../hooks/usePagination'
 import HeroBanner from '../components/HeroBanner'
 import { PRODUCTS_PER_PAGE } from '../config/constants'
-import { useTenant } from '../context/TenantContext'
 
 export default function StorePage() {
   const [search, setSearch] = useState('')
@@ -19,7 +18,6 @@ export default function StorePage() {
   const [lifeStage, setLifeStage] = useState('todos')
   const [weight, setWeight] = useState('todos')
   const [isCartOpen, setIsCartOpen] = useState(false)
-  const { isLoading, error } = useTenant()
 
   const { products, lines, accessoryTypes, weightOptions, total } = useProducts({
     category,
@@ -80,17 +78,6 @@ export default function StorePage() {
       />
 
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
-        {isLoading && (
-          <p className="mb-4 rounded-xl bg-white px-4 py-3 text-sm text-gray-600 shadow-sm">
-            Carregando catálogo...
-          </p>
-        )}
-        {error && (
-          <p className="mb-4 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-800">
-            Catálogo local em uso (API indisponível).
-          </p>
-        )}
-
         <HeroBanner />
 
         <section aria-label="Catálogo de produtos">

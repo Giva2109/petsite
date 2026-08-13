@@ -89,6 +89,7 @@ export function TenantProvider({ tenantSlug, children }) {
       setProducts(data.products.map(mapApiProduct))
       setSource('api')
     } catch (err) {
+      console.warn('Catálogo da API indisponível; usando dados locais.', err)
       setError(err.message)
       setTenant({
         ...defaultTenant,
