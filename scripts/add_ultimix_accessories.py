@@ -31,16 +31,16 @@ QUALITY = 88
 CATALOG = [
     (4, "escova-secadora", "Escova Secadora",
      "Escova Secadora Pet Portatil Profissional 2 Em 1 Banho E Tosa Cachorro e Gato",
-     48.99),
+     64.00),
     (6, "bebedouro-pet", "Bebedouro Pet",
      "Bebedouro Pet Inteligente Fonte de Água Automático Com Filtro",
-     58.99),
+     68.00),
     (7, "garrafa-bebedouro", "Garrafa Bebedouro",
      "Garrafa Bebedouro Pet Portátil 2 em 1 Água e Ração",
-     25.99),
+     35.00),
     (9, "luvas-removedoras-pelos", "Luvas Removedoras de Pelos",
      "Luvas Removedoras de Pelos Dupla Face para Pets, Roupas e Sofás",
-     4.99),
+     15.00),
 ]
 
 
