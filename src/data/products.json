@@ -2772,5 +2772,61 @@
     "weight": "3kg",
     "catalogPage": null,
     "stock": null
+  },
+  {
+    "id": 213,
+    "name": "Escova Secadora",
+    "category": "acessorios",
+    "brand": "Ultimix",
+    "line": "Escova Secadora",
+    "price": 48.99,
+    "originalPrice": null,
+    "image": "/assets/products/accessories/ultimix/escova-secadora.webp",
+    "description": "Escova Secadora Pet Portatil Profissional 2 Em 1 Banho E Tosa Cachorro e Gato",
+    "weight": null,
+    "catalogPage": null,
+    "stock": null
+  },
+  {
+    "id": 214,
+    "name": "Bebedouro Pet",
+    "category": "acessorios",
+    "brand": "Ultimix",
+    "line": "Bebedouro Pet",
+    "price": 58.99,
+    "originalPrice": null,
+    "image": "/assets/products/accessories/ultimix/bebedouro-pet.webp",
+    "description": "Bebedouro Pet Inteligente Fonte de Água Automático Com Filtro",
+    "weight": null,
+    "catalogPage": null,
+    "stock": null
+  },
+  {
+    "id": 215,
+    "name": "Garrafa Bebedouro",
+    "category": "acessorios",
+    "brand": "Ultimix",
+    "line": "Garrafa Bebedouro",
+    "price": 25.99,
+    "originalPrice": null,
+    "image": "/assets/products/accessories/ultimix/garrafa-bebedouro.webp",
+    "description": "Garrafa Bebedouro Pet Portátil 2 em 1 Água e Ração",
+    "weight": null,
+    "catalogPage": null,
+    "stock": null
+  },
+  {
+    "id": 216,
+    "name": "Luvas Removedoras de Pelos",
+    "category": "acessorios",
+    "brand": "Ultimix",
+    "line": "Luvas Removedoras de Pelos",
+    "price": 4.99,
+    "originalPrice": null,
+    "image": "/assets/products/accessories/ultimix/luvas-removedoras-pelos.webp",
+    "description": "Luvas Removedoras de Pelos Dupla Face para Pets, Roupas e Sofás",
+    "weight": null,
+    "catalogPage": null,
+    "stock": null
   }
 ]

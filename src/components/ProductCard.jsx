@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Minus, Plus, ShoppingBag, MessageCircle } from 'lucide-react'
 import { formatCurrency } from '../utils/currency'
 import { openWhatsAppAvailability } from '../utils/whatsapp'
-import { useTenant } from '../context/TenantContext'
+import { getAccessoryTypeEmoji } from '../config/accessories'
 
 export default function ProductCard({ product, onAddToCart }) {
   const { tenant } = useTenant()
@@ -45,7 +45,7 @@ export default function ProductCard({ product, onAddToCart }) {
       : product.category === 'gatos'
         ? '🐈'
         : product.category === 'acessorios'
-          ? '🪣'
+          ? getAccessoryTypeEmoji(product.line)
           : '🐾'
 
   return (
@@ -75,9 +75,11 @@ export default function ProductCard({ product, onAddToCart }) {
           </span>
         )}
 
-        <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-gray-700 shadow">
-          {product.weight}
-        </span>
+        {product.weight && (
+          <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-gray-700 shadow">
+            {product.weight}
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-4">
