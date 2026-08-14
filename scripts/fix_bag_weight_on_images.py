@@ -134,10 +134,21 @@ def sample_colors(arr: np.ndarray, box) -> tuple[tuple[int, int, int], tuple[int
     return fg, bg
 
 
-def patch_weight(src: Path, dest: Path, box, new_label: str) -> None:
+def patch_weight(
+    src: Path,
+    dest: Path,
+    box,
+    new_label: str,
+    force_fg: tuple[int, int, int] | None = None,
+    force_bg: tuple[int, int, int] | None = None,
+) -> None:
     img = Image.open(src).convert("RGB")
     arr = np.array(img)
     fg, bg = sample_colors(arr, box)
+    if force_fg is not None:
+        fg = force_fg
+    if force_bg is not None:
+        bg = force_bg
     poly = np.array(box, dtype=np.int32)
     mask = np.zeros(arr.shape[:2], np.uint8)
     cv2.fillConvexPoly(mask, poly, 255)

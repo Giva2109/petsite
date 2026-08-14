@@ -60,12 +60,18 @@ UPDATE products SET
     WHEN 101 THEN '/assets/products/catalog/page-48-img-01-w1kg.webp'
     WHEN 103 THEN '/assets/products/catalog/page-49-img-05-w2p5kg.webp'
     WHEN 105 THEN '/assets/products/catalog/page-51-img-02-w1p5kg.webp'
+    WHEN 127 THEN '/assets/products/catalog/page-41-img-02-w50g.webp'
+    WHEN 128 THEN '/assets/products/catalog/page-41-img-02-w50g.webp'
+    WHEN 129 THEN '/assets/products/catalog/page-41-img-03-w40g.webp'
     WHEN 131 THEN '/assets/products/catalog/page-27-img-04-w2p5kg.webp'
     WHEN 133 THEN '/assets/products/catalog/page-27-img-04-w2p5kg.webp'
     WHEN 137 THEN '/assets/products/catalog/page-29-img-03-w1p5kg.webp'
     WHEN 139 THEN '/assets/products/catalog/page-29-img-04-w1p5kg.webp'
+    WHEN 142 THEN '/assets/products/catalog/page-30-img-01-w70g.webp'
     WHEN 145 THEN '/assets/products/catalog/page-33-img-01-w1p5kg.webp'
     WHEN 147 THEN '/assets/products/catalog/page-33-img-01-w1p5kg.webp'
+    WHEN 148 THEN '/assets/products/catalog/page-33-img-01-w500g.webp'
+    WHEN 162 THEN '/assets/products/catalog/page-46-img-01-w70g.webp'
     WHEN 188 THEN '/assets/products/catalog/page-04-img-01-w15kg.webp'
     WHEN 189 THEN '/assets/products/catalog/page-04-img-01-w3kg.webp'
     WHEN 191 THEN '/assets/products/catalog/page-04-img-01-w3kg.webp'
@@ -73,4 +79,4 @@ UPDATE products SET
   END,
   updated_at = NOW()
 WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
-  AND external_id IN (3, 4, 5, 11, 13, 14, 25, 26, 27, 29, 30, 31, 32, 33, 35, 36, 38, 44, 45, 46, 47, 48, 50, 51, 53, 56, 57, 59, 60, 65, 67, 68, 69, 70, 73, 74, 75, 77, 78, 79, 80, 82, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 97, 98, 99, 101, 103, 105, 131, 133, 137, 139, 145, 147, 188, 189, 191, 192);
+  AND external_id IN (3, 4, 5, 11, 13, 14, 25, 26, 27, 29, 30, 31, 32, 33, 35, 36, 38, 44, 45, 46, 47, 48, 50, 51, 53, 56, 57, 59, 60, 65, 67, 68, 69, 70, 73, 74, 75, 77, 78, 79, 80, 82, 84, 85, 86, 87, 88, 90, 91, 92, 93, 94, 95, 97, 98, 99, 101, 103, 105, 127, 128, 129, 131, 133, 137, 139, 142, 145, 147, 148, 162, 188, 189, 191, 192);
