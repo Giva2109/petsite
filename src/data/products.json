@@ -33,7 +33,7 @@
     "line": "Golden",
     "price": 223.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-09-img-05.webp",
+    "image": "/assets/products/catalog/page-09-img-05-w20kg.webp",
     "description": "Linha Golden. Adultos. Sabor Frango e Arroz.",
     "weight": "20kg",
     "catalogPage": 9
@@ -46,7 +46,7 @@
     "line": "Golden",
     "price": 58.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-09-img-05.webp",
+    "image": "/assets/products/catalog/page-09-img-05-w3kg.webp",
     "description": "Linha Golden. Adultos. Sabor Frango e Arroz.",
     "weight": "3kg",
     "catalogPage": 9
@@ -59,7 +59,7 @@
     "line": "Golden",
     "price": 188.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-10-img-01.webp",
+    "image": "/assets/products/catalog/page-10-img-01-w15kg.webp",
     "description": "Linha Golden. Adultos. Sabor Salmão e Arroz; Peru e.",
     "weight": "15kg",
     "catalogPage": 10
@@ -137,7 +137,7 @@
     "line": "Golden",
     "price": 179.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-09-img-01.webp",
+    "image": "/assets/products/catalog/page-09-img-01-w10p1kg.webp",
     "description": "Linha Golden. Adultos. Sabor Frango e Arroz; Carne e.",
     "weight": "10.1kg",
     "catalogPage": 9
@@ -163,7 +163,7 @@
     "line": "Golden",
     "price": 22.5,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-09-img-01.webp",
+    "image": "/assets/products/catalog/page-09-img-01-w1kg.webp",
     "description": "Linha Golden. Adultos. Sabor Frango e Arroz; Carne e.",
     "weight": "1kg",
     "catalogPage": 9
@@ -176,7 +176,7 @@
     "line": "Golden",
     "price": 58.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-09-img-01.webp",
+    "image": "/assets/products/catalog/page-09-img-01-w3kg.webp",
     "description": "Linha Golden. Adultos. Sabor Frango e Arroz; Carne e.",
     "weight": "3kg",
     "catalogPage": 9
@@ -319,7 +319,7 @@
     "line": "Golden",
     "price": 23.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-04.webp",
+    "image": "/assets/products/catalog/page-08-img-04-w1kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Carne e Arroz.",
     "weight": "1kg",
     "catalogPage": 8
@@ -332,7 +332,7 @@
     "line": "Golden",
     "price": null,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-04.webp",
+    "image": "/assets/products/catalog/page-08-img-04-w20kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Carne e Arroz.",
     "weight": "20kg",
     "catalogPage": 8
@@ -345,7 +345,7 @@
     "line": "Golden",
     "price": 61.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-04.webp",
+    "image": "/assets/products/catalog/page-08-img-04-w3kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Carne e Arroz.",
     "weight": "3kg",
     "catalogPage": 8
@@ -371,7 +371,7 @@
     "line": "Golden",
     "price": 23.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-03.webp",
+    "image": "/assets/products/catalog/page-08-img-03-w1kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Frango e Arroz.",
     "weight": "1kg",
     "catalogPage": 8
@@ -384,7 +384,7 @@
     "line": "Golden",
     "price": 235.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-03.webp",
+    "image": "/assets/products/catalog/page-08-img-03-w20kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Frango e Arroz.",
     "weight": "20kg",
     "catalogPage": 8
@@ -397,7 +397,7 @@
     "line": "Golden",
     "price": 61.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-03.webp",
+    "image": "/assets/products/catalog/page-08-img-03-w3kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Frango e Arroz.",
     "weight": "3kg",
     "catalogPage": 8
@@ -410,7 +410,7 @@
     "line": "Golden",
     "price": 144.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-02.webp",
+    "image": "/assets/products/catalog/page-08-img-02-w10p1kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Carne e Arroz.",
     "weight": "10.1kg",
     "catalogPage": 8
@@ -423,7 +423,7 @@
     "line": "Golden",
     "price": 23.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-02.webp",
+    "image": "/assets/products/catalog/page-08-img-02-w1kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Carne e Arroz.",
     "weight": "1kg",
     "catalogPage": 8
@@ -449,7 +449,7 @@
     "line": "Golden",
     "price": 144.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-01.webp",
+    "image": "/assets/products/catalog/page-08-img-01-w10p1kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Frango e Arroz.",
     "weight": "10.1kg",
     "catalogPage": 8
@@ -462,7 +462,7 @@
     "line": "Golden",
     "price": 23.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-08-img-01.webp",
+    "image": "/assets/products/catalog/page-08-img-01-w1kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Frango e Arroz.",
     "weight": "1kg",
     "catalogPage": 8
@@ -488,7 +488,7 @@
     "line": "Golden",
     "price": 184.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-07-img-01.webp",
+    "image": "/assets/products/catalog/page-07-img-01-w15kg.webp",
     "description": "Linha Golden. Filhotes. Sabor Frango e Carne.",
     "weight": "15kg",
     "catalogPage": 7
@@ -566,7 +566,7 @@
     "line": "Golden",
     "price": 186.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-11-img-05.webp",
+    "image": "/assets/products/catalog/page-11-img-05-w15kg.webp",
     "description": "Linha Golden. Light. Sabor Frango e Arroz.",
     "weight": "15kg",
     "catalogPage": 11
@@ -579,7 +579,7 @@
     "line": "Golden",
     "price": 59.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-10-img-04.webp",
+    "image": "/assets/products/catalog/page-10-img-04-w3kg.webp",
     "description": "Linha Golden. Senior. Sabor Frango e Arroz; Carne e.",
     "weight": "3kg",
     "catalogPage": 10
@@ -592,7 +592,7 @@
     "line": "Golden",
     "price": 186.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-10-img-03.webp",
+    "image": "/assets/products/catalog/page-10-img-03-w15kg.webp",
     "description": "Linha Golden. Senior. Sabor Frango e Arroz.",
     "weight": "15kg",
     "catalogPage": 10
@@ -605,7 +605,7 @@
     "line": "Golden Gatos",
     "price": 154.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-18-img-02.webp",
+    "image": "/assets/products/catalog/page-18-img-02-w10p1kg.webp",
     "description": "Linha Golden Gatos. Adultos. Sabor Frango.",
     "weight": "10.1kg",
     "catalogPage": 18
@@ -618,7 +618,7 @@
     "line": "Golden Gatos",
     "price": 29.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-18-img-02.webp",
+    "image": "/assets/products/catalog/page-18-img-02-w1kg.webp",
     "description": "Linha Golden Gatos. Adultos. Sabor Frango.",
     "weight": "1kg",
     "catalogPage": 18
@@ -644,7 +644,7 @@
     "line": "Golden Gatos",
     "price": 164.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-19-img-01.webp",
+    "image": "/assets/products/catalog/page-19-img-01-w10p1kg.webp",
     "description": "Linha Golden Gatos. Castrados. Sabor Frango.",
     "weight": "10.1kg",
     "catalogPage": 19
@@ -657,7 +657,7 @@
     "line": "Golden Gatos",
     "price": 32.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-19-img-01.webp",
+    "image": "/assets/products/catalog/page-19-img-01-w1kg.webp",
     "description": "Linha Golden Gatos. Castrados. Sabor Frango.",
     "weight": "1kg",
     "catalogPage": 19
@@ -683,7 +683,7 @@
     "line": "Golden Gatos",
     "price": 164.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-17-img-02.webp",
+    "image": "/assets/products/catalog/page-17-img-02-w10p1kg.webp",
     "description": "Linha Golden Gatos. Castrados. Sabor Frango e Carne.",
     "weight": "10.1kg",
     "catalogPage": 17
@@ -722,7 +722,7 @@
     "line": "Golden Gatos",
     "price": 177.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-18-img-01.webp",
+    "image": "/assets/products/catalog/page-18-img-01-w10p1kg.webp",
     "description": "Linha Golden Gatos. Filhotes. Sabor Frango.",
     "weight": "10.1kg",
     "catalogPage": 18
@@ -735,7 +735,7 @@
     "line": "Golden Gatos",
     "price": 31.5,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-18-img-01.webp",
+    "image": "/assets/products/catalog/page-18-img-01-w1kg.webp",
     "description": "Linha Golden Gatos. Filhotes. Sabor Frango.",
     "weight": "1kg",
     "catalogPage": 18
@@ -761,7 +761,7 @@
     "line": "Golden Gatos",
     "price": 33.5,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-19-img-03.webp",
+    "image": "/assets/products/catalog/page-19-img-03-w1kg.webp",
     "description": "Linha Golden Gatos. Senior. Sabor Frango.",
     "weight": "1kg",
     "catalogPage": 19
@@ -774,7 +774,7 @@
     "line": "Golden Gatos",
     "price": 76.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-19-img-03.webp",
+    "image": "/assets/products/catalog/page-19-img-03-w3kg.webp",
     "description": "Linha Golden Gatos. Senior. Sabor Frango.",
     "weight": "3kg",
     "catalogPage": 19
@@ -839,7 +839,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 359.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-23-img-01.webp",
+    "image": "/assets/products/catalog/page-23-img-01-w10p1kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Adultos. Sabor Frango.",
     "weight": "10.1kg",
     "catalogPage": 23
@@ -865,7 +865,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 65.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-22-img-04.webp",
+    "image": "/assets/products/catalog/page-22-img-04-w3kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Adultos. Sabor Frango com Abóbora e Alecrim.",
     "weight": "3kg",
     "catalogPage": 22
@@ -878,7 +878,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 24.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-22-img-03.webp",
+    "image": "/assets/products/catalog/page-22-img-03-w1kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Adultos. Sabor Frango e Arroz.",
     "weight": "1kg",
     "catalogPage": 22
@@ -891,7 +891,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 179.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-23-img-01.webp",
+    "image": "/assets/products/catalog/page-23-img-01-w12kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Adultos. Sabor Frango.",
     "weight": "12kg",
     "catalogPage": 23
@@ -904,7 +904,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 359.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-23-img-01.webp",
+    "image": "/assets/products/catalog/page-23-img-01-w10p1kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Adultos. Sabor Frango.",
     "weight": "10.1kg",
     "catalogPage": 23
@@ -943,7 +943,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 23.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-22-img-01.webp",
+    "image": "/assets/products/catalog/page-22-img-01-w1kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Filhotes. Sabor Frango e Arroz.",
     "weight": "1kg",
     "catalogPage": 22
@@ -956,7 +956,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 69.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-22-img-01.webp",
+    "image": "/assets/products/catalog/page-22-img-01-w3kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Filhotes. Sabor Frango e Arroz.",
     "weight": "3kg",
     "catalogPage": 22
@@ -969,7 +969,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 23.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-22-img-01.webp",
+    "image": "/assets/products/catalog/page-22-img-01-w1kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Filhotes. Sabor Frango e Arroz.",
     "weight": "1kg",
     "catalogPage": 22
@@ -995,7 +995,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 69.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-24-img-01.webp",
+    "image": "/assets/products/catalog/page-24-img-01-w3kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Senior. Sabor Frango e Arroz.",
     "weight": "3kg",
     "catalogPage": 24
@@ -1008,7 +1008,7 @@
     "line": "Golden Seleção Natural Cães",
     "price": 184.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-24-img-01.webp",
+    "image": "/assets/products/catalog/page-24-img-01-w12kg.webp",
     "description": "Linha Golden Seleção Natural Cães. Senior. Sabor Frango e Arroz.",
     "weight": "12kg",
     "catalogPage": 24
@@ -1021,7 +1021,7 @@
     "line": "Golden Seleção Natural Gatos",
     "price": 184.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-25-img-02.webp",
+    "image": "/assets/products/catalog/page-25-img-02-w10p1kg.webp",
     "description": "Linha Golden Seleção Natural Gatos. Adultos. Sabor Frango e Arroz.",
     "weight": "10.1kg",
     "catalogPage": 25
@@ -1034,7 +1034,7 @@
     "line": "Golden Seleção Natural Gatos",
     "price": 29.5,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-25-img-02.webp",
+    "image": "/assets/products/catalog/page-25-img-02-w1kg.webp",
     "description": "Linha Golden Seleção Natural Gatos. Adultos. Sabor Frango e Arroz.",
     "weight": "1kg",
     "catalogPage": 25
@@ -1060,7 +1060,7 @@
     "line": "Golden Seleção Natural Gatos",
     "price": null,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-25-img-03.webp",
+    "image": "/assets/products/catalog/page-25-img-03-w1kg.webp",
     "description": "Linha Golden Seleção Natural Gatos. Castrados. Sabor Frango com.",
     "weight": "1kg",
     "catalogPage": 25
@@ -1086,7 +1086,7 @@
     "line": "Golden Seleção Natural Gatos",
     "price": 31.5,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-25-img-01.webp",
+    "image": "/assets/products/catalog/page-25-img-01-w1kg.webp",
     "description": "Linha Golden Seleção Natural Gatos. Filhotes. Sabor Frango e Arroz.",
     "weight": "1kg",
     "catalogPage": 25
@@ -1099,7 +1099,7 @@
     "line": "Golden Seleção Natural Gatos",
     "price": 81.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-25-img-01.webp",
+    "image": "/assets/products/catalog/page-25-img-01-w3kg.webp",
     "description": "Linha Golden Seleção Natural Gatos. Filhotes. Sabor Frango e Arroz.",
     "weight": "3kg",
     "catalogPage": 25
@@ -1112,7 +1112,7 @@
     "line": "Nattu Cães",
     "price": 241.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-48-img-03.webp",
+    "image": "/assets/products/catalog/page-48-img-03-w10p1kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, Mandioca.",
     "weight": "10.1kg",
     "catalogPage": 48
@@ -1125,7 +1125,7 @@
     "line": "Nattu Cães",
     "price": 274.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-48-img-03.webp",
+    "image": "/assets/products/catalog/page-48-img-03-w12kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, Mandioca.",
     "weight": "12kg",
     "catalogPage": 48
@@ -1138,7 +1138,7 @@
     "line": "Nattu Cães",
     "price": 45.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-48-img-03.webp",
+    "image": "/assets/products/catalog/page-48-img-03-w1kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, Mandioca.",
     "weight": "1kg",
     "catalogPage": 48
@@ -1164,7 +1164,7 @@
     "line": "Nattu Cães",
     "price": 45.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-48-img-03.webp",
+    "image": "/assets/products/catalog/page-48-img-03-w1kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, Mandioca.",
     "weight": "1kg",
     "catalogPage": 48
@@ -1177,7 +1177,7 @@
     "line": "Nattu Cães",
     "price": 274.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-49-img-01.webp",
+    "image": "/assets/products/catalog/page-49-img-01-w12kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, abóbora, brócolis, quinoa e blueberry.",
     "weight": "12kg",
     "catalogPage": 49
@@ -1190,7 +1190,7 @@
     "line": "Nattu Cães",
     "price": 274.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-49-img-01.webp",
+    "image": "/assets/products/catalog/page-49-img-01-w12kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, abóbora, brócolis, quinoa e.",
     "weight": "12kg",
     "catalogPage": 49
@@ -1203,7 +1203,7 @@
     "line": "Nattu Cães",
     "price": 241.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-49-img-01.webp",
+    "image": "/assets/products/catalog/page-49-img-01-w10p1kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, mandioquinha.",
     "weight": "10.1kg",
     "catalogPage": 49
@@ -1216,7 +1216,7 @@
     "line": "Nattu Cães",
     "price": 274.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-49-img-01.webp",
+    "image": "/assets/products/catalog/page-49-img-01-w12kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, mandioquinha.",
     "weight": "12kg",
     "catalogPage": 49
@@ -1229,7 +1229,7 @@
     "line": "Nattu Cães",
     "price": 45.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-49-img-01.webp",
+    "image": "/assets/products/catalog/page-49-img-01-w1kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, mandioquinha.",
     "weight": "1kg",
     "catalogPage": 49
@@ -1255,7 +1255,7 @@
     "line": "Nattu Cães",
     "price": 45.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-49-img-01.webp",
+    "image": "/assets/products/catalog/page-49-img-01-w1kg.webp",
     "description": "Linha Nattu Cães. Adultos. Sabor Frango, mandioquinha.",
     "weight": "1kg",
     "catalogPage": 49
@@ -1268,7 +1268,7 @@
     "line": "Nattu Cães",
     "price": 241.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-48-img-01.webp",
+    "image": "/assets/products/catalog/page-48-img-01-w10p1kg.webp",
     "description": "Linha Nattu Cães. Filhotes. Sabor Frango, mandioca.",
     "weight": "10.1kg",
     "catalogPage": 48
@@ -1281,7 +1281,7 @@
     "line": "Nattu Cães",
     "price": 47.5,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-48-img-01.webp",
+    "image": "/assets/products/catalog/page-48-img-01-w1kg.webp",
     "description": "Linha Nattu Cães. Filhotes. Sabor Frango, mandioca.",
     "weight": "1kg",
     "catalogPage": 48
@@ -1307,7 +1307,7 @@
     "line": "Nattu Cães",
     "price": 47.5,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-48-img-01.webp",
+    "image": "/assets/products/catalog/page-48-img-01-w1kg.webp",
     "description": "Linha Nattu Cães. Filhotes. Sabor Frango, mandioca.",
     "weight": "1kg",
     "catalogPage": 48
@@ -1333,7 +1333,7 @@
     "line": "Nattu Cães",
     "price": 114.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-49-img-05.webp",
+    "image": "/assets/products/catalog/page-49-img-05-w2p5kg.webp",
     "description": "Linha Nattu Cães. Grain Free. Sabor Frango, batata-doce, ervilha, blueberry e.",
     "weight": "2.5kg",
     "catalogPage": 49
@@ -1359,7 +1359,7 @@
     "line": "Nattu Cães",
     "price": null,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-51-img-02.webp",
+    "image": "/assets/products/catalog/page-51-img-02-w1p5kg.webp",
     "description": "Linha Nattu Cães. Castrados. Sabor Frango, abóbora, brócolis.",
     "weight": "1.5kg",
     "catalogPage": 51
@@ -1710,7 +1710,7 @@
     "line": "PremieR Formula Cães",
     "price": 84.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-27-img-04.webp",
+    "image": "/assets/products/catalog/page-27-img-04-w2p5kg.webp",
     "description": "Linha PremieR Formula Cães. Adultos. Sabor Frango e Mandioca.",
     "weight": "2.5kg",
     "catalogPage": 27
@@ -1736,7 +1736,7 @@
     "line": "PremieR Formula Cães",
     "price": 84.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-27-img-04.webp",
+    "image": "/assets/products/catalog/page-27-img-04-w2p5kg.webp",
     "description": "Linha PremieR Formula Cães. Adultos. Sabor Frango e mandioca.",
     "weight": "2.5kg",
     "catalogPage": 27
@@ -1788,7 +1788,7 @@
     "line": "PremieR Formula Gatos",
     "price": null,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-29-img-03.webp",
+    "image": "/assets/products/catalog/page-29-img-03-w1p5kg.webp",
     "description": "Linha PremieR Formula Gatos. Adultos. Sabor Frango.",
     "weight": "1.5kg",
     "catalogPage": 29
@@ -1814,7 +1814,7 @@
     "line": "PremieR Formula Gatos",
     "price": 76.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-29-img-04.webp",
+    "image": "/assets/products/catalog/page-29-img-04-w1p5kg.webp",
     "description": "Linha PremieR Formula Gatos. Castrados. Sabor Frango.",
     "weight": "1.5kg",
     "catalogPage": 29
@@ -1892,7 +1892,7 @@
     "line": "PremieR Gatos",
     "price": 82.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-33-img-01.webp",
+    "image": "/assets/products/catalog/page-33-img-01-w1p5kg.webp",
     "description": "Linha PremieR Gatos. Adultos. Sabor Frango.",
     "weight": "1.5kg",
     "catalogPage": 33
@@ -1918,7 +1918,7 @@
     "line": "PremieR Gatos",
     "price": 89.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-33-img-01.webp",
+    "image": "/assets/products/catalog/page-33-img-01-w1p5kg.webp",
     "description": "Linha PremieR Gatos. Filhotes. Sabor Frango.",
     "weight": "1.5kg",
     "catalogPage": 33
@@ -2451,7 +2451,7 @@
     "line": "Vitta Natural",
     "price": 158.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-04-img-01.webp",
+    "image": "/assets/products/catalog/page-04-img-01-w15kg.webp",
     "description": "Linha Vitta Natural. Filhotes. Sabor Frango e Arroz.",
     "weight": "15kg",
     "catalogPage": 4
@@ -2464,7 +2464,7 @@
     "line": "Vitta Natural",
     "price": 51.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-04-img-01.webp",
+    "image": "/assets/products/catalog/page-04-img-01-w3kg.webp",
     "description": "Linha Vitta Natural. Filhotes. Sabor Frango e Arroz.",
     "weight": "3kg",
     "catalogPage": 4
@@ -2490,7 +2490,7 @@
     "line": "Vitta Natural",
     "price": 51.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-04-img-01.webp",
+    "image": "/assets/products/catalog/page-04-img-01-w3kg.webp",
     "description": "Linha Vitta Natural. Filhotes. Sabor Frango e Arroz.",
     "weight": "3kg",
     "catalogPage": 4
@@ -2503,7 +2503,7 @@
     "line": "Vitta Natural",
     "price": 158.9,
     "originalPrice": null,
-    "image": "/assets/products/catalog/page-04-img-01.webp",
+    "image": "/assets/products/catalog/page-04-img-01-w15kg.webp",
     "description": "Linha Vitta Natural. Filhotes. Sabor Frango e Arroz.",
     "weight": "15kg",
     "catalogPage": 4
