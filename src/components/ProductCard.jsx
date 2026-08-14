@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Minus, Plus, ShoppingBag, MessageCircle } from 'lucide-react'
 import { formatCurrency } from '../utils/currency'
 import { openWhatsAppAvailability } from '../utils/whatsapp'
+import { useTenant } from '../context/TenantContext'
 import { getAccessoryTypeEmoji } from '../config/accessories'
 
 export default function ProductCard({ product, onAddToCart }) {
