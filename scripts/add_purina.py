@@ -37,7 +37,20 @@ CROPS = {
     "catchow-adult-carne": (21, 137.8, 230.3, 242.6, 335.2),
     "dogchow-adult-med-grande": (23, 249.9, 524.2, 356.6, 632.4),
     "friskies-mix-carnes": (27, 173.6, 239.9, 286.7, 352.9),
+    "proplan-cat-kitten": (7, 108.0, 157.7, 203.7, 248.8),
+    "proplan-adult-mini": (8, 400.1, 256.8, 500.1, 356.4),
+    "catchow-kitten": (21, 28.0, 232.0, 130.0, 335.2),
+    "dogchow-puppy-med": (23, 243.7, 207.4, 362.7, 326.4),
+    "friskies-granja": (27, 101.3, 534.3, 215.3, 648.3),
 }
+
+NEW_SLUGS = (
+    "proplan-cat-kitten",
+    "proplan-adult-mini",
+    "catchow-kitten",
+    "dogchow-puppy-med",
+    "friskies-granja",
+)
 
 
 def expand(bbox, page_rect, pad=PAD_PT):
@@ -94,13 +107,15 @@ def optimize(img: Image.Image) -> Image.Image:
     return img
 
 
-def extract_images() -> dict[str, str]:
+def extract_images(slugs: tuple[str, ...] | None = None) -> dict[str, str]:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     doc = fitz.open(PDF_PATH)
     mapping: dict[str, str] = {}
-    for slug, (page_num, x0, y0, x1, y1) in CROPS.items():
+    items = CROPS.items() if slugs is None else ((s, CROPS[s]) for s in slugs)
+    for slug, (page_num, x0, y0, x1, y1) in items:
         page = doc[page_num - 1]
-        bbox = expand((x0, y0, x1, y1), page.rect)
+        pad = 2 if slug == "catchow-kitten" else PAD_PT
+        bbox = expand((x0, y0, x1, y1), page.rect, pad=pad)
         rendered = render_crop(page, bbox)
         embedded = best_embedded(page, bbox)
         if embedded and (embedded.size[0] * embedded.size[1] > rendered.size[0] * rendered.size[1] * 1.2):
@@ -142,7 +157,7 @@ def build_catalog(images: dict[str, str]) -> list[dict]:
             name="Purina Pro Plan - Gatos Adultos - Sabor Frango e Arroz - Embalagem 1kg",
             category="gatos",
             line=line,
-            price=55.15,
+            price=71.70,
             image=images["proplan-cat-adult-frango"],
             description="Linha Purina. Pro Plan. Gatos Adultos. Sabor Frango e Arroz.",
             weight="1kg",
@@ -152,7 +167,7 @@ def build_catalog(images: dict[str, str]) -> list[dict]:
             name="Purina Pro Plan - Cães Filhotes - Porte Mini e Pequeno - Sabor Frango - Embalagem 1kg",
             category="caes",
             line=line,
-            price=40.87,
+            price=53.13,
             image=images["proplan-puppy-mini"],
             description="Linha Purina. Pro Plan. Cães Filhotes. Porte Mini e Pequeno. Sabor Frango.",
             weight="1kg",
@@ -162,7 +177,7 @@ def build_catalog(images: dict[str, str]) -> list[dict]:
             name="Purina Cat Chow - Gatos Adultos - Sabor Carne - Embalagem 10.1kg",
             category="gatos",
             line=line,
-            price=146.21,
+            price=190.07,
             image=images["catchow-adult-carne"],
             description="Linha Purina. Cat Chow. Gatos Adultos. Sabor Carne.",
             weight="10.1kg",
@@ -172,7 +187,7 @@ def build_catalog(images: dict[str, str]) -> list[dict]:
             name="Purina Dog Chow - Cães Adultos - Porte Médio e Grande - Sabor Carne, Frango e Arroz - Embalagem 15kg",
             category="caes",
             line=line,
-            price=130.77,
+            price=170.00,
             image=images["dogchow-adult-med-grande"],
             description="Linha Purina. Dog Chow. Cães Adultos. Porte Médio e Grande. Sabor Carne, Frango e Arroz.",
             weight="15kg",
@@ -182,7 +197,7 @@ def build_catalog(images: dict[str, str]) -> list[dict]:
             name="Purina Friskies - Gatos Adultos - Sabor Mix de Carnes - Embalagem 10.1kg",
             category="gatos",
             line=line,
-            price=141.43,
+            price=183.86,
             image=images["friskies-mix-carnes"],
             description="Linha Purina. Friskies. Gatos Adultos. Sabor Mix de Carnes.",
             weight="10.1kg",
@@ -199,12 +214,72 @@ def sql_literal(value) -> str:
     return str(value)
 
 
+def build_new_batch(images: dict[str, str]) -> list[dict]:
+    line = "Purina"
+    return [
+        sku(
+            name="Purina Pro Plan - Gatos Filhotes - Sabor Frango - Embalagem 1kg",
+            category="gatos",
+            line=line,
+            price=75.24,
+            image=images["proplan-cat-kitten"],
+            description="Linha Purina. Pro Plan. Gatos Filhotes. Sabor Frango.",
+            weight="1kg",
+            catalogPage=7,
+        ),
+        sku(
+            name="Purina Pro Plan - Cães Adultos - Porte Mini e Pequeno - Sabor Frango - Embalagem 1kg",
+            category="caes",
+            line=line,
+            price=50.65,
+            image=images["proplan-adult-mini"],
+            description="Linha Purina. Pro Plan. Cães Adultos. Porte Mini e Pequeno. Sabor Frango.",
+            weight="1kg",
+            catalogPage=8,
+        ),
+        sku(
+            name="Purina Cat Chow - Gatos Filhotes - Sabor Frango e Leite - Embalagem 10.1kg",
+            category="gatos",
+            line=line,
+            price=199.58,
+            image=images["catchow-kitten"],
+            description="Linha Purina. Cat Chow. Gatos Filhotes. Sabor Frango e Leite.",
+            weight="10.1kg",
+            catalogPage=21,
+        ),
+        sku(
+            name="Purina Dog Chow - Cães Filhotes - Porte Médio e Grande - Sabor Carne, Frango, Frutas e Leite - Embalagem 15kg",
+            category="caes",
+            line=line,
+            price=183.66,
+            image=images["dogchow-puppy-med"],
+            description="Linha Purina. Dog Chow. Cães Filhotes. Porte Médio e Grande. Sabor Carne, Frango, Frutas e Leite.",
+            weight="15kg",
+            catalogPage=23,
+        ),
+        sku(
+            name="Purina Friskies - Gatos Adultos - Sabor Delícias da Granja - Embalagem 10.1kg",
+            category="gatos",
+            line=line,
+            price=183.86,
+            image=images["friskies-granja"],
+            description="Linha Purina. Friskies. Gatos Adultos. Sabor Delícias da Granja.",
+            weight="10.1kg",
+            catalogPage=27,
+        ),
+    ]
+
+
 def add_products(new_products: list[dict]) -> list[dict]:
     products = json.loads(PRODUCTS_PATH.read_text(encoding="utf-8"))
-    products = [p for p in products if p.get("line") != "Purina"]
+    existing = {(p.get("name"), p.get("weight"), p.get("line")) for p in products}
     next_id = max(p["id"] for p in products) + 1
     inserted: list[dict] = []
     for item in new_products:
+        key = (item["name"], item["weight"], item["line"])
+        if key in existing:
+            print("skip existing", key)
+            continue
         item = {"id": next_id, **item}
         products.append(item)
         inserted.append(item)
@@ -215,9 +290,13 @@ def add_products(new_products: list[dict]) -> list[dict]:
     if SEED_PATH.parent.exists():
         SEED_PATH.write_text(payload, encoding="utf-8")
 
-    sql = ["-- Insere 5 produtos Purina de teste (catálogo + tabela 16-07)", "BEGIN;"]
+    if not inserted:
+        print("Nenhum SKU novo")
+        return inserted
+
+    blocks = ["-- Insere mais 5 produtos Purina (catálogo + tabela 16-07 + 30%)", "BEGIN;"]
     for p in inserted:
-        sql.append(
+        blocks.append(
             f"""
 INSERT INTO products (
   tenant_id, external_id, name, category, brand, line, price, image,
@@ -235,13 +314,24 @@ WHERE NOT EXISTS (
     AND COALESCE(line, '') = {sql_literal(p['line'])}
 );""".strip()
         )
-    sql.append("COMMIT;")
-    SQL_PATH.write_text("\n".join(sql) + "\n", encoding="utf-8")
-    print(f"Added {len(inserted)} SKUs -> {SQL_PATH}")
+    ids = ", ".join(str(p["id"]) for p in inserted)
+    blocks.append("UPDATE products SET")
+    blocks.append("  price = CASE external_id")
+    for p in inserted:
+        blocks.append(f"    WHEN {p['id']} THEN {p['price']:.2f}")
+    blocks.append("  END,")
+    blocks.append("  updated_at = NOW()")
+    blocks.append(f"WHERE tenant_id = {sql_literal(TENANT_ID)}")
+    blocks.append("  AND line = 'Purina'")
+    blocks.append(f"  AND external_id IN ({ids});")
+    blocks.append("COMMIT;")
+    extra_sql = Path(__file__).parent / "insert_purina_batch2.sql"
+    extra_sql.write_text("\n".join(blocks) + "\n", encoding="utf-8")
+    print(f"Added {len(inserted)} SKUs -> {extra_sql}")
     return inserted
 
 
 if __name__ == "__main__":
-    images = extract_images()
-    catalog = build_catalog(images)
+    images = extract_images(NEW_SLUGS)
+    catalog = build_new_batch(images)
     add_products(catalog)
