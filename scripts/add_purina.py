@@ -47,14 +47,24 @@ CROPS = {
     "catchow-adult-peixe": (21, 255.6, 236.6, 349.5, 330.5),
     "dogchow-adult-mini": (23, 109.6, 524.2, 217.8, 632.1),
     "friskies-mar": (27, 446.1, 237.9, 559.1, 350.9),
+    "proplan-cat-sterilized": (7, 250.2, 403.1, 345.3, 498.2),
+    "proplan-puppy-grande": (8, 228.0, 248.0, 350.0, 368.0),
+    "catchow-cast-frango": (21, 360.0, 231.6, 466.2, 337.8),
+    "dogchow-puppy-mini": (23, 108.7, 206.9, 229.3, 324.8),
+    "friskies-megamix": (27, 310.3, 237.2, 424.0, 350.8),
+    "proplan-cat-urinary": (7, 107.6, 402.0, 202.8, 497.2),
+    "proplan-reduced-mini": (8, 400.6, 530.9, 501.1, 631.4),
+    "catchow-cast-peixe": (21, 472.4, 230.8, 579.4, 337.8),
+    "dogchow-7plus": (23, 400.1, 524.2, 476.3, 633.1),
+    "friskies-kitten": (27, 36.3, 239.3, 151.2, 354.2),
 }
 
 NEW_SLUGS = (
-    "proplan-cat-7plus",
-    "proplan-adult-grande",
-    "catchow-adult-peixe",
-    "dogchow-adult-mini",
-    "friskies-mar",
+    "proplan-cat-urinary",
+    "proplan-reduced-mini",
+    "catchow-cast-peixe",
+    "dogchow-7plus",
+    "friskies-kitten",
 )
 
 
@@ -119,7 +129,7 @@ def extract_images(slugs: tuple[str, ...] | None = None) -> dict[str, str]:
     items = CROPS.items() if slugs is None else ((s, CROPS[s]) for s in slugs)
     for slug, (page_num, x0, y0, x1, y1) in items:
         page = doc[page_num - 1]
-        pad = 2 if slug == "catchow-kitten" else PAD_PT
+        pad = 2 if slug.startswith("catchow-") else PAD_PT
         bbox = expand((x0, y0, x1, y1), page.rect, pad=pad)
         rendered = render_crop(page, bbox)
         embedded = best_embedded(page, bbox)
@@ -223,52 +233,52 @@ def build_new_batch(images: dict[str, str]) -> list[dict]:
     line = "Purina"
     return [
         sku(
-            name="Purina Pro Plan - Gatos Adultos 7+ - Sabor Frango - Embalagem 1kg",
+            name="Purina Pro Plan - Gatos Adultos - Trato Urinário - Sabor Frango - Embalagem 1kg",
             category="gatos",
             line=line,
-            price=71.70,
-            image=images["proplan-cat-7plus"],
-            description="Linha Purina. Pro Plan. Gatos Adultos 7+. Sabor Frango.",
+            price=78.39,
+            image=images["proplan-cat-urinary"],
+            description="Linha Purina. Pro Plan. Gatos Adultos. Trato Urinário. Sabor Frango.",
             weight="1kg",
             catalogPage=7,
         ),
         sku(
-            name="Purina Pro Plan - Cães Adultos - Porte Grande - Sabor Frango - Embalagem 2.5kg",
+            name="Purina Pro Plan - Cães Adultos - Porte Mini e Pequeno - Caloria Reduzida - Embalagem 1kg",
             category="caes",
             line=line,
-            price=113.87,
-            image=images["proplan-adult-grande"],
-            description="Linha Purina. Pro Plan. Cães Adultos. Porte Grande. Sabor Frango.",
-            weight="2.5kg",
+            price=55.67,
+            image=images["proplan-reduced-mini"],
+            description="Linha Purina. Pro Plan. Cães Adultos. Porte Mini e Pequeno. Caloria Reduzida.",
+            weight="1kg",
             catalogPage=8,
         ),
         sku(
-            name="Purina Cat Chow - Gatos Adultos - Sabor Peixe - Embalagem 10.1kg",
+            name="Purina Cat Chow - Gatos Castrados - Sabor Peixe - Embalagem 10.1kg",
             category="gatos",
             line=line,
             price=190.07,
-            image=images["catchow-adult-peixe"],
-            description="Linha Purina. Cat Chow. Gatos Adultos. Sabor Peixe.",
+            image=images["catchow-cast-peixe"],
+            description="Linha Purina. Cat Chow. Gatos Castrados. Sabor Peixe.",
             weight="10.1kg",
             catalogPage=21,
         ),
         sku(
-            name="Purina Dog Chow - Cães Adultos - Porte Mini e Pequeno - Sabor Carne e Frango - Embalagem 15kg",
+            name="Purina Dog Chow - Cães Adultos 7+ - Todos os Tamanhos - Sabor Carne e Frango - Embalagem 15kg",
             category="caes",
             line=line,
-            price=170.00,
-            image=images["dogchow-adult-mini"],
-            description="Linha Purina. Dog Chow. Cães Adultos. Porte Mini e Pequeno. Sabor Carne e Frango.",
+            price=178.41,
+            image=images["dogchow-7plus"],
+            description="Linha Purina. Dog Chow. Cães Adultos 7+. Todos os Tamanhos. Sabor Carne e Frango.",
             weight="15kg",
             catalogPage=23,
         ),
         sku(
-            name="Purina Friskies - Gatos Adultos - Sabor Mar de Sabores - Embalagem 10.1kg",
+            name="Purina Friskies - Gatos Filhotes - Sabor Frango, Leite e Cenoura - Embalagem 10.1kg",
             category="gatos",
             line=line,
-            price=183.86,
-            image=images["friskies-mar"],
-            description="Linha Purina. Friskies. Gatos Adultos. Sabor Mar de Sabores.",
+            price=193.05,
+            image=images["friskies-kitten"],
+            description="Linha Purina. Friskies. Gatos Filhotes. Sabor Frango, Leite e Cenoura.",
             weight="10.1kg",
             catalogPage=27,
         ),
@@ -330,7 +340,7 @@ WHERE NOT EXISTS (
     blocks.append("  AND line = 'Purina'")
     blocks.append(f"  AND external_id IN ({ids});")
     blocks.append("COMMIT;")
-    extra_sql = Path(__file__).parent / "insert_purina_batch3.sql"
+    extra_sql = Path(__file__).parent / "insert_purina_batch5.sql"
     extra_sql.write_text("\n".join(blocks) + "\n", encoding="utf-8")
     print(f"Added {len(inserted)} SKUs -> {extra_sql}")
     return inserted

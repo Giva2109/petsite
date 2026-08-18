@@ -225,6 +225,156 @@ WHERE NOT EXISTS (
     AND COALESCE(weight, '') = '10.1kg'
     AND COALESCE(line, '') = 'Purina'
 );
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 264, 'Purina Pro Plan - Gatos Castrados - Sabor Salmão - Embalagem 1kg',
+       'gatos', 'UniPet', 'Purina',
+       71.70, '/assets/products/catalog/purina-proplan-cat-sterilized.webp', 'Linha Purina. Pro Plan. Gatos Castrados. Sabor Salmão.',
+       '1kg', 7, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Pro Plan - Gatos Castrados - Sabor Salmão - Embalagem 1kg'
+    AND COALESCE(weight, '') = '1kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 265, 'Purina Pro Plan - Cães Filhotes - Porte Médio e Grande - Sabor Frango - Embalagem 2.5kg',
+       'caes', 'UniPet', 'Purina',
+       119.57, '/assets/products/catalog/purina-proplan-puppy-grande.webp', 'Linha Purina. Pro Plan. Cães Filhotes. Porte Médio e Grande. Sabor Frango.',
+       '2.5kg', 8, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Pro Plan - Cães Filhotes - Porte Médio e Grande - Sabor Frango - Embalagem 2.5kg'
+    AND COALESCE(weight, '') = '2.5kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 266, 'Purina Cat Chow - Gatos Castrados - Sabor Frango - Embalagem 10.1kg',
+       'gatos', 'UniPet', 'Purina',
+       190.07, '/assets/products/catalog/purina-catchow-cast-frango.webp', 'Linha Purina. Cat Chow. Gatos Castrados. Sabor Frango.',
+       '10.1kg', 21, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Cat Chow - Gatos Castrados - Sabor Frango - Embalagem 10.1kg'
+    AND COALESCE(weight, '') = '10.1kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 267, 'Purina Dog Chow - Cães Filhotes - Porte Mini e Pequeno - Sabor Carne, Frango, Frutas e Leite - Embalagem 15kg',
+       'caes', 'UniPet', 'Purina',
+       183.66, '/assets/products/catalog/purina-dogchow-puppy-mini.webp', 'Linha Purina. Dog Chow. Cães Filhotes. Porte Mini e Pequeno. Sabor Carne, Frango, Frutas e Leite.',
+       '15kg', 23, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Dog Chow - Cães Filhotes - Porte Mini e Pequeno - Sabor Carne, Frango, Frutas e Leite - Embalagem 15kg'
+    AND COALESCE(weight, '') = '15kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 268, 'Purina Friskies - Gatos Adultos - Sabor Megamix - Embalagem 10.1kg',
+       'gatos', 'UniPet', 'Purina',
+       183.86, '/assets/products/catalog/purina-friskies-megamix.webp', 'Linha Purina. Friskies. Gatos Adultos. Sabor Megamix.',
+       '10.1kg', 27, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Friskies - Gatos Adultos - Sabor Megamix - Embalagem 10.1kg'
+    AND COALESCE(weight, '') = '10.1kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 269, 'Purina Pro Plan - Gatos Adultos - Trato Urinário - Sabor Frango - Embalagem 1kg',
+       'gatos', 'UniPet', 'Purina',
+       78.39, '/assets/products/catalog/purina-proplan-cat-urinary.webp', 'Linha Purina. Pro Plan. Gatos Adultos. Trato Urinário. Sabor Frango.',
+       '1kg', 7, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Pro Plan - Gatos Adultos - Trato Urinário - Sabor Frango - Embalagem 1kg'
+    AND COALESCE(weight, '') = '1kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 270, 'Purina Pro Plan - Cães Adultos - Porte Mini e Pequeno - Caloria Reduzida - Embalagem 1kg',
+       'caes', 'UniPet', 'Purina',
+       55.67, '/assets/products/catalog/purina-proplan-reduced-mini.webp', 'Linha Purina. Pro Plan. Cães Adultos. Porte Mini e Pequeno. Caloria Reduzida.',
+       '1kg', 8, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Pro Plan - Cães Adultos - Porte Mini e Pequeno - Caloria Reduzida - Embalagem 1kg'
+    AND COALESCE(weight, '') = '1kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 271, 'Purina Cat Chow - Gatos Castrados - Sabor Peixe - Embalagem 10.1kg',
+       'gatos', 'UniPet', 'Purina',
+       190.07, '/assets/products/catalog/purina-catchow-cast-peixe.webp', 'Linha Purina. Cat Chow. Gatos Castrados. Sabor Peixe.',
+       '10.1kg', 21, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Cat Chow - Gatos Castrados - Sabor Peixe - Embalagem 10.1kg'
+    AND COALESCE(weight, '') = '10.1kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 272, 'Purina Dog Chow - Cães Adultos 7+ - Todos os Tamanhos - Sabor Carne e Frango - Embalagem 15kg',
+       'caes', 'UniPet', 'Purina',
+       178.41, '/assets/products/catalog/purina-dogchow-7plus.webp', 'Linha Purina. Dog Chow. Cães Adultos 7+. Todos os Tamanhos. Sabor Carne e Frango.',
+       '15kg', 23, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Dog Chow - Cães Adultos 7+ - Todos os Tamanhos - Sabor Carne e Frango - Embalagem 15kg'
+    AND COALESCE(weight, '') = '15kg'
+    AND COALESCE(line, '') = 'Purina'
+);
+INSERT INTO products (
+  tenant_id, external_id, name, category, brand, line, price, image,
+  description, weight, catalog_page, active
+)
+SELECT 'a0000000-0000-4000-8000-000000000001', 273, 'Purina Friskies - Gatos Filhotes - Sabor Frango, Leite e Cenoura - Embalagem 10.1kg',
+       'gatos', 'UniPet', 'Purina',
+       193.05, '/assets/products/catalog/purina-friskies-kitten.webp', 'Linha Purina. Friskies. Gatos Filhotes. Sabor Frango, Leite e Cenoura.',
+       '10.1kg', 27, TRUE
+WHERE NOT EXISTS (
+  SELECT 1 FROM products
+  WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
+    AND name = 'Purina Friskies - Gatos Filhotes - Sabor Frango, Leite e Cenoura - Embalagem 10.1kg'
+    AND COALESCE(weight, '') = '10.1kg'
+    AND COALESCE(line, '') = 'Purina'
+);
 -- Se os SKUs já existirem, aplica os preços com +30% sobre a tabela 16-07.
 UPDATE products SET
   price = CASE external_id
@@ -243,9 +393,19 @@ UPDATE products SET
     WHEN 261 THEN 190.07
     WHEN 262 THEN 170.00
     WHEN 263 THEN 183.86
+    WHEN 264 THEN 71.70
+    WHEN 265 THEN 119.57
+    WHEN 266 THEN 190.07
+    WHEN 267 THEN 183.66
+    WHEN 268 THEN 183.86
+    WHEN 269 THEN 78.39
+    WHEN 270 THEN 55.67
+    WHEN 271 THEN 190.07
+    WHEN 272 THEN 178.41
+    WHEN 273 THEN 193.05
   END,
   updated_at = NOW()
 WHERE tenant_id = 'a0000000-0000-4000-8000-000000000001'
   AND line = 'Purina'
-  AND external_id IN (249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263);
+  AND external_id IN (249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273);
 COMMIT;
