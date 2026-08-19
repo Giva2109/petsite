@@ -55,6 +55,11 @@ export default function StorePage() {
     setIsCartOpen(true)
   }
 
+  const handlePageChange = (nextPage) => {
+    setPage(nextPage)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-amber-50/50 via-white to-emerald-50/30">
       <Header
@@ -109,7 +114,7 @@ export default function StorePage() {
             totalPages={totalPages}
             totalItems={total}
             pageSize={pageSize}
-            onPageChange={setPage}
+            onPageChange={handlePageChange}
             hasPrev={hasPrev}
             hasNext={hasNext}
           />
