@@ -62,14 +62,19 @@ CROPS = {
     "catchow-sachet-kitten": (21, 146.1, 469.8, 231.6, 552.2),
     "dogchow-papita": (23, 413.0, 219.1, 465.5, 314.3),
     "friskies-mix-cast": (27, 240.9, 531.9, 354.0, 645.0),
+    "proplan-sachet-adult-frango": (7, 192.5, 625.9, 266.2, 732.0),
+    "proplan-activemind": (9, 437.6, 268.8, 538.6, 369.8),
+    "catchow-sachet-adult-carne": (21, 258.6, 646.0, 344.0, 727.9),
+    "dogchow-oral-mini": (25, 56.7, 457.5, 136.0, 552.0),
+    "friskies-petisco-frango": (29, 157.6, 266.5, 217.0, 363.6),
 }
 
 NEW_SLUGS = (
-    "proplan-cat-liveclear",
-    "proplan-reduced-med",
-    "catchow-sachet-kitten",
-    "dogchow-papita",
-    "friskies-mix-cast",
+    "proplan-sachet-adult-frango",
+    "proplan-activemind",
+    "catchow-sachet-adult-carne",
+    "dogchow-oral-mini",
+    "friskies-petisco-frango",
 )
 
 
@@ -238,54 +243,54 @@ def build_new_batch(images: dict[str, str]) -> list[dict]:
     line = "Purina"
     return [
         sku(
-            name="Purina Pro Plan - Gatos Adultos - LiveClear Redução de Alérgenos - Embalagem 1kg",
+            name="Purina Pro Plan - Gatos Adultos - Sachê Frango ao Molho - Embalagem 15x85g",
             category="gatos",
             line=line,
-            price=107.13,
-            image=images["proplan-cat-liveclear"],
-            description="Linha Purina. Pro Plan. Gatos Adultos. LiveClear. Redução de Alérgenos.",
-            weight="1kg",
+            price=107.25,
+            image=images["proplan-sachet-adult-frango"],
+            description="Linha Purina. Pro Plan. Gatos Adultos. Sachê Frango ao Molho.",
+            weight="15x85g",
             catalogPage=7,
         ),
         sku(
-            name="Purina Pro Plan - Cães Adultos - Porte Médio e Grande - Caloria Reduzida - Embalagem 2.5kg",
+            name="Purina Pro Plan - Cães Adultos 7+ - Mente Ativa - Sabor Frango - Embalagem 1kg",
             category="caes",
             line=line,
-            price=124.75,
-            image=images["proplan-reduced-med"],
-            description="Linha Purina. Pro Plan. Cães Adultos. Porte Médio e Grande. Caloria Reduzida.",
-            weight="2.5kg",
+            price=63.26,
+            image=images["proplan-activemind"],
+            description="Linha Purina. Pro Plan. Cães Adultos 7+. Mente Ativa. Sabor Frango.",
+            weight="1kg",
             catalogPage=9,
         ),
         sku(
-            name="Purina Cat Chow - Gatos Filhotes - Sachê Frango ao Molho - Embalagem 15x85g",
+            name="Purina Cat Chow - Gatos Adultos - Sachê Carne ao Molho - Embalagem 15x85g",
             category="gatos",
             line=line,
             price=62.01,
-            image=images["catchow-sachet-kitten"],
-            description="Linha Purina. Cat Chow. Gatos Filhotes. Sachê Frango ao Molho.",
+            image=images["catchow-sachet-adult-carne"],
+            description="Linha Purina. Cat Chow. Gatos Adultos. Sachê Carne ao Molho.",
             weight="15x85g",
             catalogPage=21,
         ),
         sku(
-            name="Purina Dog Chow - Cães Filhotes - Papita - Todos os Tamanhos - Sabor Carne, Frango, Arroz, Milho e Leite - Embalagem 20kg",
+            name="Purina Dog Chow - Cães Adultos - Porte Mini e Pequeno - Saúde Oral - Embalagem 20x45g",
             category="caes",
             line=line,
-            price=275.98,
-            image=images["dogchow-papita"],
-            description="Linha Purina. Dog Chow. Cães Filhotes. Papita. Todos os Tamanhos. Sabor Carne, Frango, Arroz, Milho e Leite.",
-            weight="20kg",
-            catalogPage=23,
+            price=198.90,
+            image=images["dogchow-oral-mini"],
+            description="Linha Purina. Dog Chow. Cães Adultos. Porte Mini e Pequeno. Saúde Oral.",
+            weight="20x45g",
+            catalogPage=25,
         ),
         sku(
-            name="Purina Friskies - Gatos Castrados - Sabor Mix de Carnes - Embalagem 1kg",
+            name="Purina Friskies - Gatos Adultos - Petiscos Sabor Frango - Embalagem 15x40g",
             category="gatos",
             line=line,
-            price=24.87,
-            image=images["friskies-mix-cast"],
-            description="Linha Purina. Friskies. Gatos Castrados. Sabor Mix de Carnes.",
-            weight="1kg",
-            catalogPage=27,
+            price=103.55,
+            image=images["friskies-petisco-frango"],
+            description="Linha Purina. Friskies. Gatos Adultos. Petiscos Sabor Frango.",
+            weight="15x40g",
+            catalogPage=29,
         ),
     ]
 
@@ -345,7 +350,7 @@ WHERE NOT EXISTS (
     blocks.append("  AND line = 'Purina'")
     blocks.append(f"  AND external_id IN ({ids});")
     blocks.append("COMMIT;")
-    extra_sql = Path(__file__).parent / "insert_purina_batch6.sql"
+    extra_sql = Path(__file__).parent / "insert_purina_batch7.sql"
     extra_sql.write_text("\n".join(blocks) + "\n", encoding="utf-8")
     print(f"Added {len(inserted)} SKUs -> {extra_sql}")
     return inserted
