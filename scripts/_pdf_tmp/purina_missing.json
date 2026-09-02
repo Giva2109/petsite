@@ -1,0 +1,1442 @@
+[
+  {
+    "code": 709,
+    "desc": "ALPO ADULTOS - 18KG",
+    "price": 156.88,
+    "suggested": {
+      "slug": "purina-alpo-adultos-18kg",
+      "catalogPage": 31,
+      "category": "caes",
+      "weight": "18kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 725,
+    "desc": "CAT CHOW ADULTOS CASTRADOS FRANGO - 2,7KG",
+    "price": 49.8,
+    "suggested": {
+      "slug": "purina-catchow-adultos-castrados-frango-2-7kg",
+      "catalogPage": 21,
+      "category": "gatos",
+      "weight": "2.7kg"
+    },
+    "best_partial_score": 0.477
+  },
+  {
+    "code": 727,
+    "desc": "CAT CHOW ADULTOS CASTRADOS PEIXE - 1KG",
+    "price": 23.95,
+    "suggested": {
+      "slug": "purina-catchow-adultos-castrados-peixe-1kg",
+      "catalogPage": 21,
+      "category": "gatos",
+      "weight": "1kg"
+    },
+    "best_partial_score": 0.48
+  },
+  {
+    "code": 728,
+    "desc": "CAT CHOW ADULTOS CASTRADOS PEIXE - 2,7KG",
+    "price": 49.8,
+    "suggested": {
+      "slug": "purina-catchow-adultos-castrados-peixe-2-7kg",
+      "catalogPage": 21,
+      "category": "gatos",
+      "weight": "2.7kg"
+    },
+    "best_partial_score": 0.477
+  },
+  {
+    "code": 738,
+    "desc": "DENTALIFE CAES RACAS GRANDES 7X196G",
+    "price": 141.75,
+    "suggested": {
+      "slug": "purina-dentalife-caes-racas-grandes-7x196g",
+      "catalogPage": 15,
+      "category": "caes",
+      "weight": "7x196g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 739,
+    "desc": "DENTALIFE CAES RACAS MEDIAS 7X119G",
+    "price": 107.73,
+    "suggested": {
+      "slug": "purina-dentalife-caes-racas-medias-7x119g",
+      "catalogPage": 15,
+      "category": "caes",
+      "weight": "7x119g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 740,
+    "desc": "DENTALIFE CAES RACAS PEQUENAS 7X42G",
+    "price": 84.7,
+    "suggested": {
+      "slug": "purina-dentalife-caes-racas-pequenas-7x42g",
+      "catalogPage": 15,
+      "category": "caes",
+      "weight": "7x42g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 741,
+    "desc": "DENTALIFE GATOS 12X40G",
+    "price": 85.92,
+    "suggested": {
+      "slug": "purina-dentalife-gatos-12x40g",
+      "catalogPage": 15,
+      "category": "gatos",
+      "weight": "12x40g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 743,
+    "desc": "DOG CHOW SACHET ADULTOS MINIS & PEQUENOS 15X100G - FRANGO",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-sachet-adultos-minis-pequenos-15x100g-frango",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x100g"
+    },
+    "best_partial_score": 0.423
+  },
+  {
+    "code": 744,
+    "desc": "DOG CHOW SACHET ADULTOS 15X100G - CARNE",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-sachet-adultos-15x100g-carne",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x100g"
+    },
+    "best_partial_score": 0.372
+  },
+  {
+    "code": 745,
+    "desc": "DOG CHOW SACHET ADULTOS 15X100G - CORDEIRO",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-sachet-adultos-15x100g-cordeiro",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x100g"
+    },
+    "best_partial_score": 0.224
+  },
+  {
+    "code": 746,
+    "desc": "DOG CHOW SACHET ADULTOS 15X100G - FRANGO",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-sachet-adultos-15x100g-frango",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x100g"
+    },
+    "best_partial_score": 0.374
+  },
+  {
+    "code": 747,
+    "desc": "DOG CHOW BISCOITO FILHOTES FRANGO E LEITE - 300G",
+    "price": 13.66,
+    "suggested": {
+      "slug": "purina-dogchow-biscoito-filhotes-frango-e-leite-300g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "300g"
+    },
+    "best_partial_score": 0.323
+  },
+  {
+    "code": 748,
+    "desc": "DOG CHOW BISCOITO ADULTO MÉDIOS & GRANDES FRANGO - 500G",
+    "price": 17.16,
+    "suggested": {
+      "slug": "purina-dogchow-biscoito-adulto-medios-grandes-frango-500g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "500g"
+    },
+    "best_partial_score": 0.37
+  },
+  {
+    "code": 750,
+    "desc": "DOG CHOW SACHE FILHOTES FRANGO 15X100G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-sache-filhotes-frango-15x100g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x100g"
+    },
+    "best_partial_score": 0.317
+  },
+  {
+    "code": 751,
+    "desc": "DOG CHOW ORAL MÉDIOS & GRANDES - 20X80G",
+    "price": 176.0,
+    "suggested": {
+      "slug": "purina-dogchow-oral-medios-grandes-20x80g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "20x80g"
+    },
+    "best_partial_score": 0.252
+  },
+  {
+    "code": 752,
+    "desc": "DOG CHOW ORAL MÉDIOS & GRANDES - 12X 200G",
+    "price": 196.68,
+    "suggested": {
+      "slug": "purina-dogchow-oral-medios-grandes-12x-200g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "12x200g"
+    },
+    "best_partial_score": 0.252
+  },
+  {
+    "code": 753,
+    "desc": "DOG CHOW ORAL MINI & PEQ. - 20X105G",
+    "price": 242.0,
+    "suggested": {
+      "slug": "purina-dogchow-oral-mini-peq-20x105g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "20x105g"
+    },
+    "best_partial_score": 0.461
+  },
+  {
+    "code": 756,
+    "desc": "DOG CHOW BISCOITO ADULTOS MINI& PEQ FRANGO - 500G",
+    "price": 17.16,
+    "suggested": {
+      "slug": "purina-dogchow-biscoito-adultos-mini-peq-frango-500g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "500g"
+    },
+    "best_partial_score": 0.42
+  },
+  {
+    "code": 772,
+    "desc": "DOGUITOS BIFINHO CARNE - 20X65G",
+    "price": 115.2,
+    "suggested": {
+      "slug": "purina-doguitos-bifinho-carne-20x65g",
+      "catalogPage": 19,
+      "category": "caes",
+      "weight": "20x65g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 773,
+    "desc": "DOGUITOS BIFINHO FRANGO - 20X65G",
+    "price": 115.2,
+    "suggested": {
+      "slug": "purina-doguitos-bifinho-frango-20x65g",
+      "catalogPage": 19,
+      "category": "caes",
+      "weight": "20x65g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 774,
+    "desc": "DOGUITOS BIFINHO LINGUICINHA - 20X45G",
+    "price": 115.2,
+    "suggested": {
+      "slug": "purina-doguitos-bifinho-linguicinha-20x45g",
+      "catalogPage": 19,
+      "category": "caes",
+      "weight": "20x45g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 775,
+    "desc": "FANCY FEAST CASSEROLE ATUM E SALMAO - 15X85G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-casserole-atum-e-salmao-15x85g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 776,
+    "desc": "FANCY FEAST CASSEROLE FRANGO E PERU - 15X85G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-casserole-frango-e-peru-15x85g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 777,
+    "desc": "FANCY FEAST DEMI GLACE CARNE - 15X85G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-demi-glace-carne-15x85g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 778,
+    "desc": "FANCY FEAST DEMI GLACE FRANGO - 15X85G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-demi-glace-frango-15x85g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 779,
+    "desc": "FANCY FEAST GOULASH ATUM - 15X85G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-goulash-atum-15x85g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 780,
+    "desc": "FANCY FEAST GOULASH PERU - 15X85G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-goulash-peru-15x85g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 781,
+    "desc": "FANCY FEAST PETIT FILET CARNE - 15X85G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-petit-filet-carne-15x85g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 782,
+    "desc": "FANCY FEAST PETIT FILET SALMAO - 15X85G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-petit-filet-salmao-15x85g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 783,
+    "desc": "FRISKIES SACHET ATUM AO MOLHO - 15X85G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-atum-ao-molho-15x85g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.13
+  },
+  {
+    "code": 784,
+    "desc": "FRISKIES SACHET CARNE AO MOLHO - 15X85G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-carne-ao-molho-15x85g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.26
+  },
+  {
+    "code": 785,
+    "desc": "FRISKIES SACHET CORDEIRO AO MOLHO - 15X85G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-cordeiro-ao-molho-15x85g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.145
+  },
+  {
+    "code": 786,
+    "desc": "FRISKIES DELICIAS DA GRANJA FRANGO - 3KG",
+    "price": 45.63,
+    "suggested": {
+      "slug": "purina-friskies-delicias-da-granja-frango-3kg",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "3kg"
+    },
+    "best_partial_score": 0.33
+  },
+  {
+    "code": 792,
+    "desc": "FRISKIES SACHET FILHOTES CARNE AO MOLHO - 15X85G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-filhotes-carne-ao-molho-15x85g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.269
+  },
+  {
+    "code": 793,
+    "desc": "FRISKIES SACHET FRANGO AO MOLHO - 15X85G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-frango-ao-molho-15x85g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.316
+  },
+  {
+    "code": 797,
+    "desc": "FRISKIES MAR DE SABORES - 3KG",
+    "price": 45.63,
+    "suggested": {
+      "slug": "purina-friskies-mar-de-sabores-3kg",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "3kg"
+    },
+    "best_partial_score": 0.422
+  },
+  {
+    "code": 811,
+    "desc": "FRISKIES SACHET PEIXE BRANCO AO MOLHO - 15X85G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-peixe-branco-ao-molho-15x85g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.146
+  },
+  {
+    "code": 812,
+    "desc": "FRISKIES SACHET PERU AO MOLHO - 15X85G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-peru-ao-molho-15x85g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.145
+  },
+  {
+    "code": 816,
+    "desc": "FRISKIES PETISCOS SALMÃO - 15X80G",
+    "price": 137.25,
+    "suggested": {
+      "slug": "purina-friskies-petiscos-salmao-15x80g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x80g"
+    },
+    "best_partial_score": 0.239
+  },
+  {
+    "code": 817,
+    "desc": "FRISKIES SACHET SALMAO AO MOLHO - 15X85G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-salmao-ao-molho-15x85g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.129
+  },
+  {
+    "code": 820,
+    "desc": "GATSY CARNE - 20KG",
+    "price": 224.9,
+    "suggested": {
+      "slug": "purina-gatsy-carne-20kg",
+      "catalogPage": 31,
+      "category": "gatos",
+      "weight": "20kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 826,
+    "desc": "ONE DOG SACHET MULTI PROTEINAS - 15X85G",
+    "price": 60.45,
+    "suggested": {
+      "slug": "purina-purinaone-one-dog-sachet-multi-proteinas-15x85g",
+      "catalogPage": 11,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 827,
+    "desc": "ONE DOG SACHET SUPER FOODS - 15X85G",
+    "price": 60.45,
+    "suggested": {
+      "slug": "purina-purinaone-one-dog-sachet-super-foods-15x85g",
+      "catalogPage": 11,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 829,
+    "desc": "ONE CAT SACHET MULTI PROTEINAS - 15X85G",
+    "price": 70.8,
+    "suggested": {
+      "slug": "purina-purinaone-one-cat-sachet-multi-proteinas-15x85g",
+      "catalogPage": 11,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 832,
+    "desc": "ONE DOG SACHET SUPER NUTRIENTES - 15X85G",
+    "price": 60.45,
+    "suggested": {
+      "slug": "purina-purinaone-one-dog-sachet-super-nutrientes-15x85g",
+      "catalogPage": 11,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 843,
+    "desc": "ONE CAT SACHET SUPER FOODS - 15X85G",
+    "price": 70.8,
+    "suggested": {
+      "slug": "purina-purinaone-one-cat-sachet-super-foods-15x85g",
+      "catalogPage": 11,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 844,
+    "desc": "ONE CAT SACHET SUPER NUTRIENTES - 15X85G",
+    "price": 70.8,
+    "suggested": {
+      "slug": "purina-purinaone-one-cat-sachet-super-nutrientes-15x85g",
+      "catalogPage": 11,
+      "category": "gatos",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 845,
+    "desc": "PPVD CANINE NC NEUROCARE - 2KG",
+    "price": 130.59,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-canine-nc-neurocare-2kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "2kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 846,
+    "desc": "PPVD CANINE NC NEUROCARE - 7,5KG",
+    "price": 405.65,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-canine-nc-neurocare-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 847,
+    "desc": "PPVD CANINE OM OBESIDADE - 2KG",
+    "price": 100.52,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-canine-om-obesidade-2kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "2kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 848,
+    "desc": "PPVD CANINE OM OBESIDADE - 7,5KG",
+    "price": 347.39,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-canine-om-obesidade-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 849,
+    "desc": "PPVD CANINE UR TRATO URINARIO - 2KG",
+    "price": 100.52,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-canine-ur-trato-urinario-2kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "2kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 850,
+    "desc": "PPVD CANINE UR TRATO URINARIO - 7,5KG",
+    "price": 347.39,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-canine-ur-trato-urinario-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 851,
+    "desc": "PPVD FELINE UR TRATO URINARIO - 1,5KG",
+    "price": 116.71,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-feline-ur-trato-urinario-1-5kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "1.5kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 852,
+    "desc": "PPVD FELINE UR TRATO URINARIO - 7,5KG",
+    "price": 325.03,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-feline-ur-trato-urinario-7-5kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 853,
+    "desc": "PPVD FELINE OM OBESIDADE - 1,5KG",
+    "price": 116.71,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-feline-om-obesidade-1-5kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "1.5kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 857,
+    "desc": "PRO PLAN ACTIVE MIND TDTM - 7,5KG",
+    "price": 244.89,
+    "suggested": {
+      "slug": "purina-proplan-active-mind-tdtm-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.307
+  },
+  {
+    "code": 859,
+    "desc": "PRO PLAN CAT ADULT 7+ - 7,5KG",
+    "price": 234.07,
+    "suggested": {
+      "slug": "purina-proplan-cat-adult-7-7-5kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.42
+  },
+  {
+    "code": 871,
+    "desc": "PRO PLAN SACHET ADULTO CARNE - 15X100G",
+    "price": 77.85,
+    "suggested": {
+      "slug": "purina-proplan-sachet-adulto-carne-15x100g",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "15x100g"
+    },
+    "best_partial_score": 0.375
+  },
+  {
+    "code": 885,
+    "desc": "PRO PLAN PUPPY MINI & PEQ. - 7,5KG",
+    "price": 222.88,
+    "suggested": {
+      "slug": "purina-proplan-puppy-mini-peq-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.455
+  },
+  {
+    "code": 889,
+    "desc": "PRO PLAN SENSITIVE SKIN MINI&PEQ 7,5KGBR",
+    "price": 222.88,
+    "suggested": {
+      "slug": "purina-proplan-sensitive-skin-mini-peq-7-5kgbr",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": ""
+    },
+    "best_partial_score": 0.452
+  },
+  {
+    "code": 892,
+    "desc": "PRO PLAN CAT STERILIZED - 3KG",
+    "price": 124.12,
+    "suggested": {
+      "slug": "purina-proplan-cat-sterilized-3kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "3kg"
+    },
+    "best_partial_score": 0.32
+  },
+  {
+    "code": 893,
+    "desc": "PRO PLAN CAT STERILIZED - 7,5KG",
+    "price": 234.07,
+    "suggested": {
+      "slug": "purina-proplan-cat-sterilized-7-5kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.319
+  },
+  {
+    "code": 897,
+    "desc": "PPVD CANINE HA HIDROLIZADA - 2KG",
+    "price": 109.02,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-canine-ha-hidrolizada-2kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "2kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 898,
+    "desc": "PPVD CANINE HA HIDROLIZADA - 7,5KG",
+    "price": 305.62,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-canine-ha-hidrolizada-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 900,
+    "desc": "PRO PLAN REDUCED CALORIE MINI & PEQ. - 7,5KG",
+    "price": 222.88,
+    "suggested": {
+      "slug": "purina-proplan-reduced-calorie-mini-peq-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.459
+  },
+  {
+    "code": 901,
+    "desc": "PPVD FELINE HA - 1,5KG",
+    "price": 127.15,
+    "suggested": {
+      "slug": "purina-proplan-ppvd-feline-ha-1-5kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "1.5kg"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 920,
+    "desc": "DOG CHOW ADULTOS MINIS E PEQUENOS 900G",
+    "price": 16.42,
+    "suggested": {
+      "slug": "purina-dogchow-adultos-minis-e-pequenos-900g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "900g"
+    },
+    "best_partial_score": 0.466
+  },
+  {
+    "code": 923,
+    "desc": "DOG CHOW ADULTOS MEDIOS E GRANDES 900G",
+    "price": 16.42,
+    "suggested": {
+      "slug": "purina-dogchow-adultos-medios-e-grandes-900g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "900g"
+    },
+    "best_partial_score": 0.323
+  },
+  {
+    "code": 924,
+    "desc": "DOG CHOW EXTRA LIFE ADULTOS MINIS E PEQUENOS - 2,5KG",
+    "price": 38.25,
+    "suggested": {
+      "slug": "purina-dogchow-extra-life-adultos-minis-e-pequenos-2-5kg",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "2.5kg"
+    },
+    "best_partial_score": 0.468
+  },
+  {
+    "code": 929,
+    "desc": "DOG CHOW EXTRA LIFE ADULTOS 7+ - 900G",
+    "price": 15.5,
+    "suggested": {
+      "slug": "purina-dogchow-extra-life-adultos-7-900g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "900g"
+    },
+    "best_partial_score": 0.315
+  },
+  {
+    "code": 937,
+    "desc": "DOG CHOW EXTRA LIFE FILHOTES MINIS E PEQUENOS - 2,5KG",
+    "price": 40.13,
+    "suggested": {
+      "slug": "purina-dogchow-extra-life-filhotes-minis-e-pequenos-2-5kg",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "2.5kg"
+    },
+    "best_partial_score": 0.382
+  },
+  {
+    "code": 938,
+    "desc": "DOG CHOW EXTRA LIFE FILHOTES MINIS E PEQUENOS - 900G",
+    "price": 15.42,
+    "suggested": {
+      "slug": "purina-dogchow-extra-life-filhotes-minis-e-pequenos-900g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "900g"
+    },
+    "best_partial_score": 0.378
+  },
+  {
+    "code": 962,
+    "desc": "PRO PLAN HIPOALERGENICO R. MINI&PEQ 7,5KG",
+    "price": 235.85,
+    "suggested": {
+      "slug": "purina-proplan-hipoalergenico-r-mini-peq-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.315
+  },
+  {
+    "code": 964,
+    "desc": "PRO PLAN CONTROLE PESO R. MED&GDE 10,1KG",
+    "price": 211.74,
+    "suggested": {
+      "slug": "purina-proplan-controle-peso-r-med-gde-10-1kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "10.1kg"
+    },
+    "best_partial_score": 0.449
+  },
+  {
+    "code": 965,
+    "desc": "PRO PLAN HIPOALERGENICO R. MED&GDE 10,1KG",
+    "price": 211.74,
+    "suggested": {
+      "slug": "purina-proplan-hipoalergenico-r-med-gde-10-1kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "10.1kg"
+    },
+    "best_partial_score": 0.312
+  },
+  {
+    "code": 966,
+    "desc": "PRO PLAN LONGEVIDADE R. MINI&PEQUENO 7,5KG",
+    "price": 225.12,
+    "suggested": {
+      "slug": "purina-proplan-longevidade-r-mini-pequeno-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.459
+  },
+  {
+    "code": 967,
+    "desc": "PRO PLAN PALADAR EXIGENTE 7,5KG",
+    "price": 235.85,
+    "suggested": {
+      "slug": "purina-proplan-paladar-exigente-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.223
+  },
+  {
+    "code": 968,
+    "desc": "PRO PLAN CAT HIPOALERGENICO 7,5KG",
+    "price": 269.45,
+    "suggested": {
+      "slug": "purina-proplan-cat-hipoalergenico-7-5kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.224
+  },
+  {
+    "code": 969,
+    "desc": "PRO PLAN ALTA VITALIDADE 12KG",
+    "price": 228.69,
+    "suggested": {
+      "slug": "purina-proplan-alta-vitalidade-12kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "12kg"
+    },
+    "best_partial_score": 0.224
+  },
+  {
+    "code": 970,
+    "desc": "PRO PLAN ADULT R. GRANDE 12KG",
+    "price": 228.69,
+    "suggested": {
+      "slug": "purina-proplan-adult-r-grande-12kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "12kg"
+    },
+    "best_partial_score": 0.463
+  },
+  {
+    "code": 971,
+    "desc": "PRO PLAN ADULT R. MED 12KG",
+    "price": 228.69,
+    "suggested": {
+      "slug": "purina-proplan-adult-r-med-12kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "12kg"
+    },
+    "best_partial_score": 0.454
+  },
+  {
+    "code": 972,
+    "desc": "PRO PLAN LONGEVIDADE R. MD&GD 12KG",
+    "price": 240.13,
+    "suggested": {
+      "slug": "purina-proplan-longevidade-r-md-gd-12kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "12kg"
+    },
+    "best_partial_score": 0.405
+  },
+  {
+    "code": 978,
+    "desc": "PRO PLAN CAT ADULT 7+ 3KG",
+    "price": 146.78,
+    "suggested": {
+      "slug": "purina-proplan-cat-adult-7-3kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "3kg"
+    },
+    "best_partial_score": 0.418
+  },
+  {
+    "code": 979,
+    "desc": "PRO PLAN CAT STERILISED 3KG - NOVO",
+    "price": 139.79,
+    "suggested": {
+      "slug": "purina-proplan-cat-sterilised-3kg-novo",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "3kg"
+    },
+    "best_partial_score": 0.318
+  },
+  {
+    "code": 981,
+    "desc": "PRO PLAN CAT FILHOTE 3KG",
+    "price": 146.78,
+    "suggested": {
+      "slug": "purina-proplan-cat-filhote-3kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "3kg"
+    },
+    "best_partial_score": 0.417
+  },
+  {
+    "code": 982,
+    "desc": "PRO PLAN CAT URINARY 3KG - NOVO",
+    "price": 153.76,
+    "suggested": {
+      "slug": "purina-proplan-cat-urinary-3kg-novo",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "3kg"
+    },
+    "best_partial_score": 0.317
+  },
+  {
+    "code": 983,
+    "desc": "PRO PLAN CAT HIPOALERGENICO 3KG",
+    "price": 153.76,
+    "suggested": {
+      "slug": "purina-proplan-cat-hipoalergenico-3kg",
+      "catalogPage": 5,
+      "category": "gatos",
+      "weight": "3kg"
+    },
+    "best_partial_score": 0.225
+  },
+  {
+    "code": 984,
+    "desc": "FRISKIES SACHET MIX DE CARNES 15X80G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-mix-de-carnes-15x80g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x80g"
+    },
+    "best_partial_score": 0.38
+  },
+  {
+    "code": 985,
+    "desc": "FRISKIES SACHET MAR DE SABORES 15X80G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-mar-de-sabores-15x80g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x80g"
+    },
+    "best_partial_score": 0.326
+  },
+  {
+    "code": 986,
+    "desc": "FRISKIES SACHET MEGAMIX 15X80G",
+    "price": 41.85,
+    "suggested": {
+      "slug": "purina-friskies-sachet-megamix-15x80g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "15x80g"
+    },
+    "best_partial_score": 0.319
+  },
+  {
+    "code": 987,
+    "desc": "DOG CHOW EXTRA LIFE FILHOTES MEDIOS E GRANDE - 2,5KG",
+    "price": 40.13,
+    "suggested": {
+      "slug": "purina-dogchow-extra-life-filhotes-medios-e-grande-2-5kg",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "2.5kg"
+    },
+    "best_partial_score": 0.382
+  },
+  {
+    "code": 988,
+    "desc": "DOG CHOW EXTRA LIFE FILHOTES MEDIO E GRANDE- 900G",
+    "price": 15.42,
+    "suggested": {
+      "slug": "purina-dogchow-extra-life-filhotes-medio-e-grande-900g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "900g"
+    },
+    "best_partial_score": 0.378
+  },
+  {
+    "code": 989,
+    "desc": "FRISKIES MEGAMIX CASTRADOS - 2,5KG",
+    "price": 38.03,
+    "suggested": {
+      "slug": "purina-friskies-megamix-castrados-2-5kg",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "2.5kg"
+    },
+    "best_partial_score": 0.462
+  },
+  {
+    "code": 990,
+    "desc": "FRISKIES MAR DE SABORES 850G",
+    "price": 16.26,
+    "suggested": {
+      "slug": "purina-friskies-mar-de-sabores-850g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "850g"
+    },
+    "best_partial_score": 0.416
+  },
+  {
+    "code": 992,
+    "desc": "FRISKIES DELICIAS DA GRANJA FRANGO - 850G",
+    "price": 16.26,
+    "suggested": {
+      "slug": "purina-friskies-delicias-da-granja-frango-850g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "850g"
+    },
+    "best_partial_score": 0.328
+  },
+  {
+    "code": 996,
+    "desc": "FRISKIES MEGAMIX CASTRADOS - 850G",
+    "price": 16.26,
+    "suggested": {
+      "slug": "purina-friskies-megamix-castrados-850g",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "850g"
+    },
+    "best_partial_score": 0.461
+  },
+  {
+    "code": 998,
+    "desc": "DOG CHOW ADULTO TRIPLOPROT 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-adulto-triploprot-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.313
+  },
+  {
+    "code": 999,
+    "desc": "DOG CHOW ADULTO TRIPLOPROT SLM 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-adulto-triploprot-slm-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.321
+  },
+  {
+    "code": 1000,
+    "desc": "DOG CHOW ADULTOS MULTIPROTEINA 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-adultos-multiproteina-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.264
+  },
+  {
+    "code": 1001,
+    "desc": "DOG CHOW FILHOTE FRANGO&LEITE 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-filhote-frango-leite-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.374
+  },
+  {
+    "code": 1002,
+    "desc": "DOG CHOW ADULTO ALTA PROTEINA 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-adulto-alta-proteina-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.32
+  },
+  {
+    "code": 1003,
+    "desc": "DOG CHOW ADULTO CORDEIRO&ARROZ 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-adulto-cordeiro-arroz-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.28
+  },
+  {
+    "code": 1004,
+    "desc": "DOG CHOW FILHOTE CARNE&LEITE 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-filhote-carne-leite-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.373
+  },
+  {
+    "code": 1005,
+    "desc": "DOG CHOW ADULTO FRANGO&ARROZ 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-adulto-frango-arroz-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.413
+  },
+  {
+    "code": 1006,
+    "desc": "DOG CHOW ADULTO CARNE&ARROZ 15X85G",
+    "price": 41.7,
+    "suggested": {
+      "slug": "purina-dogchow-adulto-carne-arroz-15x85g",
+      "catalogPage": 23,
+      "category": "caes",
+      "weight": "15x85g"
+    },
+    "best_partial_score": 0.411
+  },
+  {
+    "code": 1007,
+    "desc": "FANCY FEAST SUPREMO BACALHAU 15X75G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-supremo-bacalhau-15x75g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x75g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 1008,
+    "desc": "FANCY FEAST SUPREMO CARNE 15X75G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-supremo-carne-15x75g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x75g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 1009,
+    "desc": "FRISKIES MAR DE SABORES 2,5KG",
+    "price": 570.45,
+    "suggested": {
+      "slug": "purina-friskies-mar-de-sabores-2-5kg",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "2.5kg"
+    },
+    "best_partial_score": 0.418
+  },
+  {
+    "code": 1010,
+    "desc": "PRO PLAN URINARY - 7,5KG",
+    "price": 270.39,
+    "suggested": {
+      "slug": "purina-proplan-urinary-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.314
+  },
+  {
+    "code": 1011,
+    "desc": "PRO PLAN ADULT MINI&PEQ 7,5 KG",
+    "price": 214.4,
+    "suggested": {
+      "slug": "purina-proplan-adult-mini-peq-7-5-kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.458
+  },
+  {
+    "code": 1012,
+    "desc": "PRO PLAN CONTROLE PESO MINI&PEQ 7,5KG",
+    "price": 235.84,
+    "suggested": {
+      "slug": "purina-proplan-controle-peso-mini-peq-7-5kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.451
+  },
+  {
+    "code": 1015,
+    "desc": "PRO PLAN DES EXCP FILHOTE GRANDE 12KG",
+    "price": 240.13,
+    "suggested": {
+      "slug": "purina-proplan-des-excp-filhote-grande-12kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "12kg"
+    },
+    "best_partial_score": 0.461
+  },
+  {
+    "code": 1016,
+    "desc": "PRO PLAN DES EXCP FILHOTE MEDIO 12KG",
+    "price": 240.13,
+    "suggested": {
+      "slug": "purina-proplan-des-excp-filhote-medio-12kg",
+      "catalogPage": 5,
+      "category": "caes",
+      "weight": "12kg"
+    },
+    "best_partial_score": 0.46
+  },
+  {
+    "code": 1019,
+    "desc": "FRISKIES DELICIAS DA GRANJA FRANGO - 2,5KG - NOVO",
+    "price": 45.63,
+    "suggested": {
+      "slug": "purina-friskies-delicias-da-granja-frango-2-5kg-novo",
+      "catalogPage": 27,
+      "category": "gatos",
+      "weight": "2.5kg"
+    },
+    "best_partial_score": 0.326
+  },
+  {
+    "code": 1040,
+    "desc": "FANCY FEAST SUPREMO PEIXEBRANCO 15X75G",
+    "price": 67.05,
+    "suggested": {
+      "slug": "purina-fancy-feast-supremo-peixebranco-15x75g",
+      "catalogPage": 17,
+      "category": "gatos",
+      "weight": "15x75g"
+    },
+    "best_partial_score": 0.0
+  },
+  {
+    "code": 1041,
+    "desc": "PRPN STERILISED 7,5KG N1 BR",
+    "price": 245.81,
+    "suggested": {
+      "slug": "purina-prpn-sterilised-7-5kg-n1-br",
+      "catalogPage": null,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.196
+  },
+  {
+    "code": 1042,
+    "desc": "PRPN ADULT 7+ 7,5KG N2 BR",
+    "price": 258.11,
+    "suggested": {
+      "slug": "purina-prpn-adult-7-7-5kg-n2-br",
+      "catalogPage": null,
+      "category": "caes",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.219
+  },
+  {
+    "code": 1043,
+    "desc": "PRPN DES EXCP GATO FILHOTE 7,5KG BR",
+    "price": 258.11,
+    "suggested": {
+      "slug": "purina-prpn-des-excp-gato-filhote-7-5kg-br",
+      "catalogPage": null,
+      "category": "gatos",
+      "weight": "7.5kg"
+    },
+    "best_partial_score": 0.226
+  }
+]

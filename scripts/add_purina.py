@@ -308,6 +308,7 @@ def add_products(new_products: list[dict]) -> list[dict]:
         item = {"id": next_id, **item}
         products.append(item)
         inserted.append(item)
+        existing.add(key)
         next_id += 1
 
     payload = json.dumps(products, ensure_ascii=False, indent=2) + "\n"
